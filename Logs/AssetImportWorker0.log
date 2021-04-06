@@ -83,3 +83,19 @@ Received Import Request.
 Start importing Assets using Guid(00000000000000001000000000000000) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '819a33a9bd799f71faca6db75e8a216c') in 0.030852 seconds
   Import took 0.041174 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 465.407356 seconds.
+  path: Assets/DRSTONE.jpg
+  artifactKey: Guid(a9b4dcc8bb2f6d4429a20e316487b949) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/DRSTONE.jpg using Guid(a9b4dcc8bb2f6d4429a20e316487b949) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5ab8fead7fb6ab3cb89116d233b9825') in 0.249953 seconds
+  Import took 0.255056 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 382.376377 seconds.
+  path: Assets/21657.png
+  artifactKey: Guid(9a12e029b22386646bfd1ec9ac1f5b56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/21657.png using Guid(9a12e029b22386646bfd1ec9ac1f5b56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc9b7f1e3645bebbeab18c0e392b051c') in 0.036913 seconds
+  Import took 0.058423 seconds .
+
