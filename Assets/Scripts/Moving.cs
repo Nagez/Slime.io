@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class Moving : MonoBehaviour
 {
+    int StartWin = 0;
+
     public Transform[] StartRock;
     public Transform[] Rocks;
     public Transform[] PathRocks;
 
+    public Transform[] Path1;
+
     [SerializeField]
-    private float moveSpeed = 1f;
+    private float moveSpeed = 3f;
+    [SerializeField]
+    private int MoveNumber = 3;
+
 
     [HideInInspector]
     public int RockNumber = 0;
@@ -27,19 +34,36 @@ public class Moving : MonoBehaviour
     void Update()
     {
         if (moveAllowed)
-            MoveC();
+            MoveC(MoveNumber);
+
     }
 
-    void MoveC()
+    void MoveC(int MoveNumber)
     {
-        if(RockNumber <= Rocks.Length -1)
+        int Dice_num = 0;
+        if (Dice_num <= MoveNumber)
         {
-            transform.position = Vector2.MoveTowards(transform.position, Rocks[RockNumber].transform.position, moveSpeed * Time.deltaTime);
+            //Check if on banch ->move to start button
 
-            if(transform.position == Rocks[RockNumber].transform.position)
+            //from starting point -> Rock 0
+
+            //Rock 3 -> path1
+
+            //path 1-> Rock 16
+
+            transform.position = Vector2.MoveTowards(transform.position, Rocks[RockNumber].transform.position, moveSpeed * Time.deltaTime);//The moving to new position
+
+            if (transform.position == Rocks[RockNumber].transform.position)//when on the same position
             {
-                RockNumber +=1;
+                RockNumber += 1;
+            }
+            if((transform.position == PathRocks[0].transform.position)&&(RockNumber == MoveNumber))
+            {
+                RockNumber += 1;
             }
         }
+
+
+        
     }
 }

@@ -543,7 +543,6 @@ GameObject:
   m_Component:
   - component: {fileID: 320510740}
   - component: {fileID: 320510739}
-  - component: {fileID: 320510741}
   - component: {fileID: 320510742}
   m_Layer: 0
   m_Name: Frogy
@@ -617,22 +616,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &320510741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320510738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 068cd7b55646b8b4dae8a7755dac1068, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoint: []
-  moveSpeed: 0.01
-  waypointIndex: 0
-  moveAlloed: 0
 --- !u!114 &320510742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -648,19 +631,44 @@ MonoBehaviour:
   StartRock:
   - {fileID: 267312}
   Rocks:
-  - {fileID: 267312}
   - {fileID: 485571597}
   - {fileID: 1051268787}
   - {fileID: 388371417}
   - {fileID: 988062311}
-  - {fileID: 558966643}
   - {fileID: 340331382}
   - {fileID: 922657814}
   - {fileID: 1344082494}
   - {fileID: 1429986554}
+  - {fileID: 669817699}
+  - {fileID: 421645978}
+  - {fileID: 1604461651}
+  - {fileID: 162682483}
+  - {fileID: 1316412724}
+  - {fileID: 1296069047}
+  - {fileID: 1936379625}
+  - {fileID: 1593252647}
+  - {fileID: 1527481206}
+  - {fileID: 84723915}
+  - {fileID: 1910307806}
+  - {fileID: 2009975329}
+  - {fileID: 1257677229}
+  - {fileID: 1937064756}
+  - {fileID: 795684454}
+  - {fileID: 1167465807}
+  PathRocks:
   - {fileID: 558966643}
-  PathRocks: []
-  moveSpeed: 1
+  - {fileID: 1778711196}
+  - {fileID: 1746664355}
+  - {fileID: 1746283142}
+  Path1:
+  - {fileID: 1527481206}
+  - {fileID: 84723915}
+  - {fileID: 1746283142}
+  - {fileID: 795684454}
+  - {fileID: 1167465807}
+  - {fileID: 1746664355}
+  moveSpeed: 3
+  MoveNumber: 3
   RockNumber: 0
   moveAllowed: 1
 --- !u!1 &340331381
@@ -1294,7 +1302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795684453}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.11, y: -0.98, z: 1.5468267}
+  m_LocalPosition: {x: 4.52, y: -1.14, z: 1.5468267}
   m_LocalScale: {x: 0.18903555, y: 0.242174, z: 1}
   m_Children: []
   m_Father: {fileID: 1691794331}
@@ -1704,7 +1712,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167465806}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.61, y: -2.29, z: 1.5468267}
+  m_LocalPosition: {x: 6.58, y: -2.29, z: 1.5468267}
   m_LocalScale: {x: 0.18903555, y: 0.242174, z: 1}
   m_Children: []
   m_Father: {fileID: 1691794331}
@@ -2829,7 +2837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910307805}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.7, y: -1.37, z: 1.5468267}
+  m_LocalPosition: {x: 0.32, y: -1.03, z: 1.5468267}
   m_LocalScale: {x: 0.18903555, y: 0.242174, z: 1}
   m_Children: []
   m_Father: {fileID: 1691794331}
@@ -3075,7 +3083,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009975328}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.6, y: -2.31, z: 1.5468267}
+  m_LocalPosition: {x: -1.46, y: -2.18, z: 1.5468267}
   m_LocalScale: {x: 0.18903555, y: 0.242174, z: 1}
   m_Children: []
   m_Father: {fileID: 1691794331}
