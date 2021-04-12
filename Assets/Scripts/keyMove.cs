@@ -83,11 +83,7 @@ public class keyMove : MonoBehaviour
                 }
 
                 //Third Path
-                //out
-                else if((FrogPosition == 15) && (DiceNum == 0))//delet 15
-                {
-                    FrogPosition = 15;
-                }
+                
                 //in
                 else if((FrogPosition == 24) )
                 {
@@ -98,13 +94,9 @@ public class keyMove : MonoBehaviour
                 //out
                 else if((FrogPosition == 22) && (DiceNum == 0))
                 {
-                    FrogPosition = 26;
+                    FrogPosition = 27;
                 }
-                //in
-                else if((FrogPosition == 21) || (FrogPosition == 26))//delet 21
-                {
-                    FrogPosition = 21;
-                }
+                
                 //End
                 else if((FrogPosition == 19) || (FrogPosition == 28))
                 {
