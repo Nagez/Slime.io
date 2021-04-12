@@ -8,7 +8,7 @@ public class WayPointMove : MonoBehaviour
 	public Transform[] waypoint;
 
 	[SerializeField]
-	private float moveSpeed = 1f;
+	private float moveSpeed = 3f;
 
 	[HideInInspector]
 	public int waypointIndex = 0;
@@ -22,10 +22,7 @@ public class WayPointMove : MonoBehaviour
 
 	private void Update()
 	{
-        if (moveAlloed)
-        {
-			Move();
-        }
+		Move();
 	}
 
 	private void Move()
