@@ -19,7 +19,7 @@ public class newnumstep : MonoBehaviour
     private void onMouseDown()
     {
         if (!game.gameOver && coroutineAllowed)
-            StrartCoroutine("RollTheDice");//אם המשחק לא נגמר  אז זורקים קוביה מפעלים פונקציה
+            StartCoroutine("RollTheDice");//אם המשחק לא נגמר  אז זורקים קוביה מפעלים פונקציה
     }
     private IEnumerator RollThDice()
     {
@@ -34,7 +34,7 @@ public class newnumstep : MonoBehaviour
                 results[numofThrown] = randomDiceSide;
                 numofThrown++;
                 //rend.sprite = dicesides[randomDiceSide];//the new side on dice(קוביה)
-                yield return new WaitForSECONDS(0.05f);/?
+                yield return new WaitForSECONDS(0.05f);//?
 
             }
         }
