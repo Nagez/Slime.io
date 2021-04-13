@@ -11,6 +11,11 @@ public class NetworkController : MonoBehaviourPunCallbacks
         PhotonNetwork.ConnectUsingSettings(); //Connects to Photon master servers
     }
 
+    public override void OnConnectedToMaster()
+    {
+        Debug.Log("We are now connected to the " + PhotonNetwork.CloudRegion + " server"); //tell us which server we are connected to
+    }
+
     // Update is called once per frame
     void Update()
     {
