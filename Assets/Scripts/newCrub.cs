@@ -5,8 +5,10 @@ using UnityEngine;
 public class newnumstep : MonoBehaviour
 {
     private Sprite[] dicesides;
+    private int[] results;
     private SpriteRenderer rend;//to change sides of dice images
     private int whosTurn = 1;//who play-כהתחלה 1 הוא משתמש 1
+    private int numOfPlayers;
     private bool coroutineAllowed = true;
     private void Start()
     {
@@ -17,27 +19,38 @@ public class newnumstep : MonoBehaviour
     private void onMouseDown()
     {
         if (!game.gameOver && coroutineAllowed)
-            StrartCoroutine("RollTheDice");//אם המשחק לא נגמר  אז זורקים קוביה
+            StrartCoroutine("RollTheDice");//אם המשחק לא נגמר  אז זורקים קוביה מפעלים פונקציה
     }
     private IEnumerator RollThDice()
     {
         coroutineAllowed = false;
         int randomDiceSide = 0;
-        for (int i = 0; i <= 20; i++)
+        int numofThrown = 0;
+        while (randomDiceSide != 1 && randomDiceSide != 2 && randomDiceSide != 3)
         {
-            randomDiceSide = Random.Range(0, 6);//בחירת מספר אקראי
-            rend.sprite = dicesides[randomDiceSide];//the new side on dice(קוביה)
-            yield return new WaitForSECONDS(0.05f);
+            for (int i = 0; i <= 20; i++)
+            {
+                randomDiceSide = Random.Range(0, 6);//בחירת מספר אקראי
+                results[numofThrown] = randomDiceSide;
+                numofThrown++;
+                //rend.sprite = dicesides[randomDiceSide];//the new side on dice(קוביה)
+                yield return new WaitForSECONDS(0.05f);/?
 
+            }
         }
-        game.diceSideThrown = randomDiceSide + 1;
-        if (whosTurn == 1)
+        for(int i=0;i<=numofThrown;i++)
         {
-            game.MovePlayer(1);
-        }else if(whosTurn==-1)
-        {
-            game.MovePlayer(2);
+            game.diceSideThrown = randomDiceSide + 1;
+            if (whosTurn == 1)
+            {
+                game.MovePlayer(1);
+            }
+            else if (whosTurn == -1)
+            {
+                game.MovePlayer(2);
+            }
         }
+        
         whosTurn *= -1;
         coroutineAllowed = true;
     }
