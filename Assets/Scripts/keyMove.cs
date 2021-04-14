@@ -10,7 +10,7 @@ public class keyMove : MonoBehaviour
 
     int FrogPosition = 0;
     bool FirstRollMove = true;
-    int Path = 0;//0 main,1 pr, 2 pl, 3 pm
+    int Path = 0;
 
     [SerializeField] private float moveSpeed = 4f;
     [SerializeField] public int DiceNum = 0;
@@ -36,30 +36,12 @@ public class keyMove : MonoBehaviour
 
     void moveFrog(int DiceRoll)
     {
-        if (DiceRoll > 0)//3
+        if (DiceRoll > 0)
         {
-            //if(FrogPosition==28)
-            //{
-            //    FrogPosition = 0;
-            //}
+            
             int newRock = FrogPosition + 1;
 
-            //switch (Path)
-            //{
-            //    case 0:
-            //        transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime);
-            //        break;
-            //    case 1:
-            //        transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime);
-            //        break;
-            //    case 2:
-
-            //        break;
-            //    case 3:
-
-            //        break;
-            //}
-
+           
             transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime);
 
             if (transform.position == MainPath[newRock].transform.position)
@@ -105,7 +87,6 @@ public class keyMove : MonoBehaviour
 
 
             }
-
 
         }
 
