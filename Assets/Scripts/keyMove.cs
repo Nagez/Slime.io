@@ -98,9 +98,9 @@ public class keyMove : MonoBehaviour
                 }
                 
                 //End
-                else if((FrogPosition == 19) || (FrogPosition == 28))
+                else if((FrogPosition == 19) || (FrogPosition == 29))
                 {
-                    FrogPosition = -1;
+                    FrogPosition = 29;
                 }
 
 
