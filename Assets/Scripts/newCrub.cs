@@ -21,6 +21,7 @@ public class newnumstep : MonoBehaviour
         if (!game.gameOver && coroutineAllowed)
             StartCoroutine("RollTheDice");//אם המשחק לא נגמר  אז זורקים קוביה מפעלים פונקציה
     }
+    /*
     private IEnumerator RollThDice()
     {
         coroutineAllowed = false;
@@ -54,5 +55,6 @@ public class newnumstep : MonoBehaviour
         whosTurn *= -1;
         coroutineAllowed = true;
     }
+    */
 }
 
