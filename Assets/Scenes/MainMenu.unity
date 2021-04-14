@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 310912975}
   - component: {fileID: 310912974}
   m_Layer: 5
-  m_Name: FindGameButton
+  m_Name: newButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
