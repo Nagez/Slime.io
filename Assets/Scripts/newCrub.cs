@@ -16,32 +16,33 @@ public class newnumstep : MonoBehaviour
         dicesides = Resources.LoadAll<Sprite>("DiceSides/");
         rend.sprite = dicesides[5];//to be in the begining of the game the num 6 n th dice side
     }
-    private void onMouseDown()
+    private void onMouseDown() //2Dcollider needed for that
     {
         if (!game.gameOver && coroutineAllowed)
             StartCoroutine("RollTheDice");//אם המשחק לא נגמר  אז זורקים קוביה מפעלים פונקציה
     }
-    /*
-    private IEnumerator RollThDice()
+    
+    private IEnumerator RollThDice() 
     {
         coroutineAllowed = false;
         int randomDiceSide = 0;
         int numofThrown = 0;
         while (randomDiceSide != 1 && randomDiceSide != 2 && randomDiceSide != 3)
         {
-            for (int i = 0; i <= 20; i++)
+            for (int i = 0; i <= 20; i++) 
             {
                 randomDiceSide = Random.Range(0, 6);//בחירת מספר אקראי
                 results[numofThrown] = randomDiceSide;
                 numofThrown++;
                 //rend.sprite = dicesides[randomDiceSide];//the new side on dice(קוביה)
-                yield return new WaitForSECONDS(0.05f);//?
+                yield return new WaitForSeconds(0.05f);//?
 
             }
         }
+        /*
         for(int i=0;i<=numofThrown;i++)
         {
-            game.diceSideThrown = randomDiceSide + 1;
+            //game.diceSideThrown = randomDiceSide + 1;
             if (whosTurn == 1)
             {
                 game.MovePlayer(1);
@@ -51,10 +52,10 @@ public class newnumstep : MonoBehaviour
                 game.MovePlayer(2);
             }
         }
-        
+        */
         whosTurn *= -1;
         coroutineAllowed = true;
     }
-    */
+    
 }
 
