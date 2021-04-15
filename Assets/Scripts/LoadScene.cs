@@ -57,9 +57,9 @@ private IEnumerator DelayIt()
     public void LoadNextScene()
     {
         Debug.Log("delay1");
-        StartCoroutine(Delay());
+        StartCoroutine(DelayIt());
     }
-    public IEnumerator Delay()
+    public IEnumerator DelayIt()
     {
         Debug.Log("delay2");
         //load the scene asynchrounously, it's important you set allowsceneactivation to false
@@ -68,7 +68,7 @@ private IEnumerator DelayIt()
         sceneLoading.allowSceneActivation = false;
 
         //wait for the audioclip to end
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.2f);
         //wait for the scene to finish loading (it will always stop at 0.9 when allowSceneActivation is false
         while (sceneLoading.progress < 0.9f) yield return null;
         //allow the scene to load
