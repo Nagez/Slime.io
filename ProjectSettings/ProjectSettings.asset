@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: DefaultCompany
   productName: Slime.io
-  defaultCursor: {fileID: 0}
+  defaultCursor: {fileID: 2800000, guid: 36fc3a383615f874d80a51a724952103, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.103773594, g: 0.09535423, b: 0.09745907, a: 1}
   m_ShowUnitySplashScreen: 1
