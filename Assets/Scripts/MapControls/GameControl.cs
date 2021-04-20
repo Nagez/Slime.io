@@ -43,14 +43,12 @@ public class PlayerTurns : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Player1.GetComponent<keyMove>().FrogPosition 
-            > diceSide+ player1StartRock)
+        if(Player1.GetComponent<keyMove>().FrogPosition == 0)
         {
             Player1.GetComponent<keyMove>().moveAllowed = false;
-            Player1Move.gameObject.SetActive(false);
-            Player2Move.gameObject.SetActive(true);
-            Player3Move.gameObject.SetActive(false);
-            Player4Move.gameObject.SetActive(false);
+            TextGreen.gameObject.SetActive(false);
+            TextBlue.gameObject.SetActive(true);
+            
             player1StartRock = Player1.GetComponent<keyMove>().FrogPosition;
         }
     }
