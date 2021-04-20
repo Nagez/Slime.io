@@ -12,6 +12,7 @@ public class newtestcrubb : MonoBehaviour
     private bool coroutineAllowed = true;
     private void Start()
     {
+        results = new List<int>();
         rend = GetComponent<SpriteRenderer>();
         dicesides = Resources.LoadAll<Sprite>("dice/");
         //for (int i = 0; i < 5; i++) { Debug.Log(dicesides[i]); }
@@ -20,12 +21,10 @@ public class newtestcrubb : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("pressed1");
 
         //if (!game.gameOver && coroutineAllowed)
         if (coroutineAllowed)
         {
-            Debug.Log("pressed");
             StartCoroutine("RollTheDice");//אם המשחק לא נגמר  אז זורקים קוביה מפעלים פונקציה
         }
 
@@ -43,15 +42,16 @@ public class newtestcrubb : MonoBehaviour
             {
                 //randomDiceSide = Random.Range(0, 5);//צריך להכניס calcDiceResult=====בחירת מספר אקראי
                 randomDiceSide = calcDiceResult();
-                Debug.Log(randomDiceSide);
                 rend.sprite = dicesides[randomDiceSide-1];//the new side on dice(קוביה)
                 //Debug.Log("pressed");
                 yield return new WaitForSeconds(0.05f);//?
             }
             results.Add(randomDiceSide); //array of results
-            Debug.Log(results);
             // numofThrown++;
         }
+       foreach( var x in results) {        Debug.Log( x.ToString());       }
+
+
     }
     //function for calculating the result of the dice with precentages
     public int calcDiceResult()    {
@@ -59,7 +59,6 @@ public class newtestcrubb : MonoBehaviour
         res = Random.Range(1, 101);        if (res <= 19) { res = 1; } //19% chance for 1 trough 5 result
         if (res >= 20 && res <= 38) { res = 2; }
         if (res >= 39 && res <= 57) { res = 3; }        if (res >= 58 && res <= 76) { res = 4; }        if (res >= 77 && res <= 95) { res = 5; }        if (res >= 96) { res = 6; } //5% chance to get a 6
-        Debug.Log(res);
         return res;//הוא המספר שמופיע על הקוביה אחרי לחיצה לפי אחוזים    }
 
 }
