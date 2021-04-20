@@ -2982,7 +2982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056af3944cbc83541aeb3fce6554e3b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlimePrefab: {fileID: 0}
+  SlimePrefab: {fileID: 1427552035}
   position0: {fileID: 1733484090}
 --- !u!1 &1420199828
 GameObject:
@@ -3014,6 +3014,11 @@ Transform:
   m_Father: {fileID: 1350616469}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1427552035 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3988751080395723546, guid: 4f0916e82b421514fa1a9d9190116414, type: 3}
+  m_PrefabInstance: {fileID: 3170762339759689287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1429986553
 GameObject:
   m_ObjectHideFlags: 0
