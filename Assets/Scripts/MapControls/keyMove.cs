@@ -9,7 +9,7 @@ public class keyMove : MonoBehaviour
 
     public int FrogPosition = 0;
     bool FirstRollMove = true;
-    int Path = 0;
+    int dice = 0;
 
     [SerializeField] private float moveSpeed = 4f;
     [SerializeField] public int DiceNum = 0;
@@ -27,6 +27,7 @@ public class keyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //DiceNum = GameObject.Find("dice6").GetComponent<AlinasDice>().randomDiceSide;
         if (moveAllowed)
         {
             moveFrog(DiceNum);
@@ -40,7 +41,6 @@ public class keyMove : MonoBehaviour
             
             int newRock = FrogPosition + 1;
 
-           
             transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime);
 
             if (transform.position == MainPath[newRock].transform.position)
