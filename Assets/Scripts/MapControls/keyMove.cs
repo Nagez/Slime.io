@@ -6,9 +6,8 @@ public class keyMove : MonoBehaviour
 {
     public Transform[] StartRock;
     public Transform[] MainPath;
-    public Transform[] Path1;
 
-    int FrogPosition = 0;
+    public int FrogPosition = 0;
     bool FirstRollMove = true;
     int Path = 0;
 
@@ -17,12 +16,12 @@ public class keyMove : MonoBehaviour
 
     [HideInInspector]
     public int RockNumber = 0;
-    public bool moveAllowed = true;
+    public bool moveAllowed = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.position = MainPath[0].transform.position;
+        transform.position = StartRock[0].transform.position;
     }
 
     // Update is called once per frame

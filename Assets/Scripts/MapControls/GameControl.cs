@@ -5,16 +5,26 @@ using UnityEngine;
 public class PlayerTurns : MonoBehaviour
 {
 
-    private static GameObject PlayerMoving, player1Move, Player2Move, player3Move, Player4Move;
+    private static GameObject PlayerMoving, Player1Move, Player2Move, Player3Move, Player4Move;
     private static GameObject Player1, Player2, Player3, Player4;
+    private static GameObject TextGreen, TextBlue;
 
     public static int player1Rock = 0, player2Rock = 0;
 
     
+    /////////////////////////////////////////////////
+    public static int diceSide = 0;
+    public static int player1StartRock = 0;
+    public static int player2StartRock = 0;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Hows Turn
+        TextGreen = GameObject.Find("TextGreen");
+        TextBlue = GameObject.Find("TextBlue");
+        //add red
+        //add yellow
 
         //Players match
         Player1 = GameObject.Find("GreenSlime");
@@ -33,7 +43,16 @@ public class PlayerTurns : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Player1.GetComponent<keyMove>().FrogPosition 
+            > diceSide+ player1StartRock)
+        {
+            Player1.GetComponent<keyMove>().moveAllowed = false;
+            Player1Move.gameObject.SetActive(false);
+            Player2Move.gameObject.SetActive(true);
+            Player3Move.gameObject.SetActive(false);
+            Player4Move.gameObject.SetActive(false);
+            player1StartRock = Player1.GetComponent<keyMove>().FrogPosition;
+        }
     }
 
     public static void MovePlayer(int PlayerMoving)
