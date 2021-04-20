@@ -32,12 +32,12 @@ public class newtestcrubb : MonoBehaviour
             for (int i = 0; i <= 20; i++)
             {
                 randomDiceSide = Random.Range(0, 6);//בחירת מספר אקראי
-                results[numofThrown] = randomDiceSide;
-                numofThrown++;
                 rend.sprite = dicesides[randomDiceSide];//the new side on dice(קוביה)
                 yield return new WaitForSeconds(0.05f);//?
-
             }
+            results[numofThrown] = randomDiceSide; //array of results
+            numofThrown++;
+
         }
     }
 }
