@@ -670,7 +670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6539683536994354483, guid: 0bf106a0ab6e0e448b0a26962bb56cae, type: 3}
       propertyPath: m_Name
-      value: InputField (TMP)
+      value: PlayerName
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bf106a0ab6e0e448b0a26962bb56cae, type: 3}
@@ -1426,6 +1426,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4498945294294498568, guid: f8907642c008ae746a2278c34073b739, type: 3}
   m_PrefabInstance: {fileID: 752421904}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &752421906 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5005256899978712480, guid: f8907642c008ae746a2278c34073b739, type: 3}
+  m_PrefabInstance: {fileID: 752421904}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &925362436
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,6 +1645,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097768472}
   m_CullTransparentMesh: 1
+--- !u!1 &1104946228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1104946229}
+  m_Layer: 0
+  m_Name: RoomControllerCustomMatchmaking
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1104946229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104946228}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.801771, y: 50.230255, z: -24.208172}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1121889644
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2710,6 +2745,55 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1905709221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1905709223}
+  - component: {fileID: 1905709222}
+  m_Layer: 0
+  m_Name: LobbyControllerCustomMatchmaking
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1905709222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905709221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e95839b8e0551f046a9ec52528161e92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lobbyConnectButton: {fileID: 752421906}
+  lobbyPanel: {fileID: 435683948}
+  mainPanel: {fileID: 1271856490}
+  playerNameInput: {fileID: 0}
+  roomsContainer: {fileID: 0}
+  roomListingPrefab: {fileID: 0}
+--- !u!4 &1905709223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905709221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -16.801771, y: 50.230255, z: -24.208172}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1997131984
 PrefabInstance:
   m_ObjectHideFlags: 0
