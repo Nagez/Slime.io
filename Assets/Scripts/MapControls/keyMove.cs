@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class keyMove : MonoBehaviour
 {
+    bool IsMoved = false;
+    public Rigidbody2D GreenS;
+
     public Transform[] StartRock;
     public Transform[] MainPath;
 
@@ -31,6 +34,12 @@ public class keyMove : MonoBehaviour
         if (moveAllowed)
         {
             moveFrog(DiceNum);
+            IsStagnant();
+            if (!transform.hasChanged)
+            {
+                GameControl.WhoTurnItIs(GameObject.Find("dice6").GetComponent<AlinasDice>().whosTurn);
+                //AlinasDice.WhoTurnItIs(GameObject.Find("dice6").GetComponent<AlinasDice>().whosTurn);
+            }
         }
     }
 
@@ -47,7 +56,7 @@ public class keyMove : MonoBehaviour
             {
                 DiceNum--;
                 FrogPosition++;
-
+                
                 //First Path
                 //out
                 if ((FrogPosition == 5) && (DiceNum == 0))
@@ -88,8 +97,18 @@ public class keyMove : MonoBehaviour
             }
 
         }
+        
 
         FirstRollMove = false;
     }
-    
+
+    void IsStagnant()
+    {
+        if (GreenS.IsSleeping())
+        {
+            Debug.Log("Object is not moving");
+        }
+    }
+
+
 }

@@ -41,12 +41,22 @@ public class GameControl : MonoBehaviour
         Player3.GetComponent<keyMove>().moveAllowed = false;
         Player4.GetComponent<keyMove>().moveAllowed = false;
 
+        TextGreen.gameObject.SetActive(false);
+        TextBlue.gameObject.SetActive(false);
+        TextRed.gameObject.SetActive(false);
+        TextYellow.gameObject.SetActive(false);
+
+        //Player1 turn
+        TextGreen.gameObject.SetActive(true);
+        Player1.GetComponent<keyMove>().moveAllowed = true;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //WhoTurnItIs(GameObject.Find("dice6").GetComponent<AlinasDice>().whosTurn);
     }
 
     public static void MovePlayer(int PlayerMoving)
@@ -56,20 +66,54 @@ public class GameControl : MonoBehaviour
         Player3.GetComponent<keyMove>().moveAllowed = false;
         Player4.GetComponent<keyMove>().moveAllowed = false;
 
+
         switch (PlayerMoving)
         {
             case 1:
                 Player1.GetComponent<keyMove>().moveAllowed = true;
+                TextGreen.gameObject.SetActive(true);
                 break;
             case 2:
                 Player2.GetComponent<keyMove>().moveAllowed = true;
+                TextBlue.gameObject.SetActive(true);
                 break;
             case 3:
                 Player3.GetComponent<keyMove>().moveAllowed = true;
+                TextRed.gameObject.SetActive(true);
                 break;
             case 4:
                 Player4.GetComponent<keyMove>().moveAllowed = true;
+                TextYellow.gameObject.SetActive(true);
                 break;
+
+        }
+    }
+
+    public static void WhoTurnItIs(int whosTurn)
+    {
+        TextGreen.gameObject.SetActive(false);
+        TextBlue.gameObject.SetActive(false);
+        TextRed.gameObject.SetActive(false);
+        TextYellow.gameObject.SetActive(false);
+
+        if (whosTurn == 1)
+        {
+            TextGreen.gameObject.SetActive(true);
+
+        }
+        else if (whosTurn == 2)
+        {
+            TextBlue.gameObject.SetActive(true);
+
+        }
+        else if (whosTurn == 3)
+        {
+            TextRed.gameObject.SetActive(true);
+
+        }
+        else if (whosTurn == 4)
+        {
+            TextYellow.gameObject.SetActive(true);
 
         }
     }

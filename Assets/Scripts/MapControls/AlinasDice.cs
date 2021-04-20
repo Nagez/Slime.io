@@ -59,9 +59,6 @@ public class AlinasDice : MonoBehaviour
 
         Debug.Log(randomDiceSide);
         
-
-
     }
 
-    
 }
