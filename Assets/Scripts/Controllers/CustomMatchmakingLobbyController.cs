@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 {
@@ -13,8 +14,10 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     private GameObject lobbyPanel; //panel for displaying lobby.
     [SerializeField]
     private GameObject mainPanel; //panel for displaying the main menu
+   // [SerializeField]
+   // private InputField playerNameInput; //Input field so player can change their NickName
     [SerializeField]
-    private InputField playerNameInput; //Input field so player can change their NickName
+    private TMP_InputField playerNameInput; //Input field so player can change their NickName
 
     private string roomName; //string for saving room name
     private int roomSize; //int for saving room size
@@ -48,7 +51,6 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
             PhotonNetwork.NickName = "Player " + Random.Range(0, 1000);
         }
         playerNameInput.text = PhotonNetwork.NickName;
-
     }
 
     public void PlayerNameUpdate(string nameInput)

@@ -160,11 +160,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4498945294294498568, guid: f8907642c008ae746a2278c34073b739, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 515.25
+      value: 510.49
       objectReference: {fileID: 0}
     - target: {fileID: 4498945294294498568, guid: f8907642c008ae746a2278c34073b739, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 92.5
+      value: 139.4485
       objectReference: {fileID: 0}
     - target: {fileID: 4498945294294498568, guid: f8907642c008ae746a2278c34073b739, type: 3}
       propertyPath: m_LocalPosition.x
@@ -196,11 +196,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4498945294294498568, guid: f8907642c008ae746a2278c34073b739, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 2.3801
       objectReference: {fileID: 0}
     - target: {fileID: 4498945294294498568, guid: f8907642c008ae746a2278c34073b739, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -104
+      value: -80.5258
       objectReference: {fileID: 0}
     - target: {fileID: 4498945294294498568, guid: f8907642c008ae746a2278c34073b739, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5005256899978712480, guid: f8907642c008ae746a2278c34073b739, type: 3}
       propertyPath: m_Name
-      value: findGameButton
+      value: PlayButton
       objectReference: {fileID: 0}
     - target: {fileID: 5927157497193917596, guid: f8907642c008ae746a2278c34073b739, type: 3}
       propertyPath: m_Color.b
@@ -261,6 +261,22 @@ PrefabInstance:
     - target: {fileID: 5927157497193917597, guid: f8907642c008ae746a2278c34073b739, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927157497193917599, guid: f8907642c008ae746a2278c34073b739, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 254.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927157497193917599, guid: f8907642c008ae746a2278c34073b739, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 69.724
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927157497193917599, guid: f8907642c008ae746a2278c34073b739, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.35611
+      objectReference: {fileID: 0}
+    - target: {fileID: 5927157497193917599, guid: f8907642c008ae746a2278c34073b739, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.00013733
       objectReference: {fileID: 0}
     - target: {fileID: 5927157498656657102, guid: f8907642c008ae746a2278c34073b739, type: 3}
       propertyPath: m_text
@@ -942,6 +958,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: createRoomButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5005256899978712480, guid: f8907642c008ae746a2278c34073b739, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5927157497193917596, guid: f8907642c008ae746a2278c34073b739, type: 3}
       propertyPath: m_Color.g
       value: 0.8862745
@@ -1425,6 +1445,10 @@ PrefabInstance:
     - target: {fileID: 6539683536994354483, guid: 0bf106a0ab6e0e448b0a26962bb56cae, type: 3}
       propertyPath: m_Name
       value: InputField (TMP)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539683536994354483, guid: 0bf106a0ab6e0e448b0a26962bb56cae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bf106a0ab6e0e448b0a26962bb56cae, type: 3}
