@@ -106,7 +106,7 @@ public class keyMove : MonoBehaviour
     {
         if (GreenS.IsSleeping())
         {
-            Debug.Log("Object is not moving");
+            //Debug.Log("Object is not moving");
         }
     }
 
