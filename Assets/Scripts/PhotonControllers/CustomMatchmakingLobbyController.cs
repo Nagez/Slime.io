@@ -110,13 +110,19 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         }
     }
 
-    public void OnRoomNameChanged(string nameIn)
+    public void OnRoomNameChanged(string nameIn) //set the room name
     {
+        Debug.Log("room name get " + nameIn);
         roomName = nameIn;
+        Debug.Log("room name set to " + roomName);
+
     }
-    public void OnRoomSizeChanged(string sizeIn)
+    public void OnRoomSizeChanged(string sizeIn) //set room size aka number of alowed players
     {
+        Debug.Log("room size get " + sizeIn);
         roomSize = int.Parse(sizeIn);
+        Debug.Log("room size set to " + roomSize);
+
     }
 
     public void CreateRoom()

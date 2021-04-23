@@ -9,7 +9,7 @@ public class NetworkController : MonoBehaviourPunCallbacks
     void Start()
     {
         //remove // to connect to network
-       // PhotonNetwork.ConnectUsingSettings(); //Connects to Photon master servers
+        PhotonNetwork.ConnectUsingSettings(); //Connects to Photon master servers
     }
 
     public override void OnConnectedToMaster()
