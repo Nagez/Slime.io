@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
 {
@@ -25,7 +25,7 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
     private GameObject playerListingPrefab;
 
     [SerializeField]
-    private Text roomNameDisplay;
+    private TMP_Text roomNameDisplay;
 
     void ClearPlayerListings()
     {
@@ -82,12 +82,12 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
     {
         if(PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.CurrentRoom.IsOpen = false;
+            PhotonNetwork.CurrentRoom.IsOpen = false; //no new players can enter after game starts
             PhotonNetwork.LoadLevel(multiPlayerSceneIndex);
         }
     }
 
-    IEnumerator rejoinLobby()
+    IEnumerator rejoinLobby() //coroutine to rejoin
     {
         yield return new WaitForSeconds(1);
         PhotonNetwork.JoinLobby();
@@ -99,18 +99,7 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
         roomPanel.SetActive(false);
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LeaveLobby();
-        StartCoroutine(rejoinLobby());
+        StartCoroutine(rejoinLobby()); 
     }
 
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
 }
