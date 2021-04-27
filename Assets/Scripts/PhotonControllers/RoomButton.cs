@@ -28,6 +28,7 @@ public class RoomButton : MonoBehaviour
         playerCount = countInput;
         nameText.text = nameInput;
         sizeText.text = countInput + "/" + sizeInput;
+        Debug.Log(sizeText.text);
     }
 
 }

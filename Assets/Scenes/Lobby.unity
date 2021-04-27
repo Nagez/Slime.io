@@ -1412,7 +1412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &435683949
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2395,7 +2395,7 @@ MonoBehaviour:
   roomPanel: {fileID: 1097768472}
   startButtom: {fileID: 479557583}
   playersContainer: {fileID: 347272808}
-  playerListingPrefab: {fileID: 5516752251625137607, guid: 7e4f47dc201a58b4b9eaff469de0b209, type: 3}
+  playerListingPrefab: {fileID: 3117379001485377832, guid: 295fa9f8e3a94a5438f07404abb5385a, type: 3}
   roomNameDisplay: {fileID: 1349183253}
 --- !u!1001 &1121889644
 PrefabInstance:
@@ -2903,7 +2903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1271856491
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4044,7 +4044,7 @@ MonoBehaviour:
   mainPanel: {fileID: 1271856490}
   playerNameInput: {fileID: 224047911}
   roomsContainer: {fileID: 347272808}
-  roomListingPrefab: {fileID: 1153070279926383828, guid: 7e4f47dc201a58b4b9eaff469de0b209, type: 3}
+  roomListingPrefab: {fileID: 5516752251625137607, guid: 7e4f47dc201a58b4b9eaff469de0b209, type: 3}
 --- !u!4 &1905709223
 Transform:
   m_ObjectHideFlags: 0
