@@ -68,6 +68,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
+        Debug.Log("onroomlistupdate");
         int tempIndex;
         foreach(RoomInfo room in roomList)
         {
@@ -102,7 +103,9 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     void ListRoom(RoomInfo room)
     {
-        if(room.IsOpen && room.IsVisible)
+        Debug.Log("listrooms");
+
+        if (room.IsOpen && room.IsVisible)
         {
             GameObject tempListing = Instantiate(roomListingPrefab, roomsContainer);
             RoomButton tempButton = tempListing.GetComponent<RoomButton>();
@@ -144,15 +147,4 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveLobby();
     }
 
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
 }

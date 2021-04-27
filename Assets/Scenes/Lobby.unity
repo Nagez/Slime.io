@@ -282,7 +282,7 @@ GameObject:
   - component: {fileID: 189101036}
   - component: {fileID: 189101035}
   m_Layer: 5
-  m_Name: RoomScrollList
+  m_Name: PlayerScrollList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 347272810}
   - component: {fileID: 347272809}
   m_Layer: 5
-  m_Name: RoomContainerDisplay
+  m_Name: PlayerContainerDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -855,7 +855,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -2284,7 +2284,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1097768473
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2903,7 +2903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1271856491
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3683,7 +3683,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
@@ -4043,7 +4043,7 @@ MonoBehaviour:
   lobbyPanel: {fileID: 435683948}
   mainPanel: {fileID: 1271856490}
   playerNameInput: {fileID: 224047911}
-  roomsContainer: {fileID: 347272808}
+  roomsContainer: {fileID: 1611106839}
   roomListingPrefab: {fileID: 5516752251625137607, guid: 7e4f47dc201a58b4b9eaff469de0b209, type: 3}
 --- !u!4 &1905709223
 Transform:

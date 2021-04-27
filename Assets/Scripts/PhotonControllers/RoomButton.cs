@@ -18,6 +18,7 @@ public class RoomButton : MonoBehaviour
 
     public void JoinRoomOnClick()
     {
+        Debug.Log("" + roomName);
         PhotonNetwork.JoinRoom(roomName);
     }
 
@@ -28,7 +29,7 @@ public class RoomButton : MonoBehaviour
         playerCount = countInput;
         nameText.text = nameInput;
         sizeText.text = countInput + "/" + sizeInput;
-        Debug.Log(sizeText.text);
+        Debug.Log("creating room in list" + sizeText.text);
     }
 
 }
