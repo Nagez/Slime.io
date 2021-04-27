@@ -49,17 +49,30 @@ public class newtestcrubb : MonoBehaviour
             results.Add(randomDiceSide); //array of results
             // numofThrown++;
         }
-       foreach( var x in results) {        Debug.Log( x.ToString());       }
+       foreach( var x in results) {
+        Debug.Log( x.ToString());
+       }
 
+       //Alinas Code
+        
+        //GameObject.Find("GreenSlime").GetComponent<keyMove>().DiceMoves = results.ToArray();
+        
 
     }
     //function for calculating the result of the dice with precentages
-    public int calcDiceResult()    {
+    public int calcDiceResult()
+    {
         int res;
-        res = Random.Range(1, 101);        if (res <= 19) { res = 1; } //19% chance for 1 trough 5 result
+        res = Random.Range(1, 101);
+        if (res <= 19) { res = 1; } //19% chance for 1 trough 5 result
         if (res >= 20 && res <= 38) { res = 2; }
-        if (res >= 39 && res <= 57) { res = 3; }        if (res >= 58 && res <= 76) { res = 4; }        if (res >= 77 && res <= 95) { res = 5; }        if (res >= 96) { res = 6; } //5% chance to get a 6
-        return res;//הוא המספר שמופיע על הקוביה אחרי לחיצה לפי אחוזים    }
+        if (res >= 39 && res <= 57) { res = 3; }
+        if (res >= 58 && res <= 76) { res = 4; }
+        if (res >= 77 && res <= 95) { res = 5; }
+        if (res >= 96) { res = 6; } //5% chance to get a 6
+        
+        return res;//הוא המספר שמופיע על הקוביה אחרי לחיצה לפי אחוזים
+    }
 
 }
 

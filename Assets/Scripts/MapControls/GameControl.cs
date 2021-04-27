@@ -11,7 +11,8 @@ public class GameControl : MonoBehaviour
 
     public static int player1Rock = 0, player2Rock = 0;
 
-    
+    public static int whosTurn = 1;
+
     /////////////////////////////////////////////////
     public static int diceSide = 0;
 
@@ -30,91 +31,65 @@ public class GameControl : MonoBehaviour
         TextYellow = GameObject.Find("TextYellow");
 
         //Players match
-        Player1 = GameObject.Find("GreenSlime");
-        Player2 = GameObject.Find("BlueSlime");
-        Player3 = GameObject.Find("RedSlime");
-        Player4 = GameObject.Find("YellowSlime");
+        Player1 = GameObject.Find("Player1");
+        Player2 = GameObject.Find("Player2");
+        Player3 = GameObject.Find("Player3");
+        Player4 = GameObject.Find("Player4");
 
         //Playes moving
-        Player1.GetComponent<keyMove>().moveAllowed = false;
-        Player2.GetComponent<keyMove>().moveAllowed = false;
-        Player3.GetComponent<keyMove>().moveAllowed = false;
-        Player4.GetComponent<keyMove>().moveAllowed = false;
+
+        Player1.GetComponent<PlayerScript>().PTurn = false;
+        Player2.GetComponent<PlayerScript>().PTurn = false;
+        Player3.GetComponent<PlayerScript>().PTurn = false;
+        Player4.GetComponent<PlayerScript>().PTurn = false;
 
         TextGreen.gameObject.SetActive(false);
         TextBlue.gameObject.SetActive(false);
         TextRed.gameObject.SetActive(false);
         TextYellow.gameObject.SetActive(false);
-
-        //Player1 turn
-        TextGreen.gameObject.SetActive(true);
-        Player1.GetComponent<keyMove>().moveAllowed = true;
-
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //WhoTurnItIs(GameObject.Find("dice6").GetComponent<AlinasDice>().whosTurn);
+        MovePlayer(whosTurn);
     }
 
     public static void MovePlayer(int PlayerMoving)
-    {
-        Player1.GetComponent<keyMove>().moveAllowed = false;
-        Player2.GetComponent<keyMove>().moveAllowed = false;
-        Player3.GetComponent<keyMove>().moveAllowed = false;
-        Player4.GetComponent<keyMove>().moveAllowed = false;
-
-
-        switch (PlayerMoving)
-        {
-            case 1:
-                Player1.GetComponent<keyMove>().moveAllowed = true;
-                TextGreen.gameObject.SetActive(true);
-                break;
-            case 2:
-                Player2.GetComponent<keyMove>().moveAllowed = true;
-                TextBlue.gameObject.SetActive(true);
-                break;
-            case 3:
-                Player3.GetComponent<keyMove>().moveAllowed = true;
-                TextRed.gameObject.SetActive(true);
-                break;
-            case 4:
-                Player4.GetComponent<keyMove>().moveAllowed = true;
-                TextYellow.gameObject.SetActive(true);
-                break;
-
-        }
-    }
-
-    public static void WhoTurnItIs(int whosTurn)
     {
         TextGreen.gameObject.SetActive(false);
         TextBlue.gameObject.SetActive(false);
         TextRed.gameObject.SetActive(false);
         TextYellow.gameObject.SetActive(false);
 
-        if (whosTurn == 1)
+        switch (PlayerMoving)
         {
-            TextGreen.gameObject.SetActive(true);
-
-        }
-        else if (whosTurn == 2)
-        {
-            TextBlue.gameObject.SetActive(true);
-
-        }
-        else if (whosTurn == 3)
-        {
-            TextRed.gameObject.SetActive(true);
-
-        }
-        else if (whosTurn == 4)
-        {
-            TextYellow.gameObject.SetActive(true);
+            case 1:
+                Player1.GetComponent<PlayerScript>().PTurn = true;
+                TextGreen.gameObject.SetActive(true);
+                break;
+            case 2:
+                Player2.GetComponent<PlayerScript>().PTurn = true;
+                TextBlue.gameObject.SetActive(true);
+                break;
+            case 3:
+                Player3.GetComponent<PlayerScript>().PTurn = true;
+                TextRed.gameObject.SetActive(true);
+                break;
+            case 4:
+                Player4.GetComponent<PlayerScript>().PTurn = true;
+                TextYellow.gameObject.SetActive(true);
+                break;
 
         }
     }
+    public static void turnSwitch()
+    {
+        if (whosTurn < 4)
+            whosTurn++;
+        else
+            whosTurn = 1;
+    }
+
 }

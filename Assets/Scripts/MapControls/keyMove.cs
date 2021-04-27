@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class keyMove : MonoBehaviour
 {
-    bool IsMoved = false;
-    public Rigidbody2D GreenS;
+    public static bool IsMoved = false;
 
-    public Transform[] StartRock;
-    public Transform[] MainPath;
+    public GameObject Player;
+    public  Transform[] StartRock;
+    public  Transform[] MainPath;
 
-    public int FrogPosition = 0;
-    bool FirstRollMove = true;
-    int dice = 0;
+    [SerializeField] public int PlayerPosition = 0;
+    public bool FirstRollMove = true;
+    //public static int dice = 0;
+
 
     [SerializeField] private float moveSpeed = 4f;
     [SerializeField] public int DiceNum = 0;
@@ -27,88 +28,98 @@ public class keyMove : MonoBehaviour
         transform.position = StartRock[0].transform.position;
     }
 
+    
     // Update is called once per frame
     void Update()
     {
-        //DiceNum = GameObject.Find("dice6").GetComponent<AlinasDice>().randomDiceSide;
+        
         if (moveAllowed)
-        {
             moveFrog(DiceNum);
-            IsStagnant();
-            if (!transform.hasChanged)
-            {
-                GameControl.WhoTurnItIs(GameObject.Find("dice6").GetComponent<AlinasDice>().whosTurn);
-                //AlinasDice.WhoTurnItIs(GameObject.Find("dice6").GetComponent<AlinasDice>().whosTurn);
-            }
-        }
+
     }
 
-    void moveFrog(int DiceRoll)
+    public void moveFrog(int DiceRoll)
     {
         if (DiceRoll > 0)
         {
             
-            int newRock = FrogPosition + 1;
+            int newRock = PlayerPosition + 1;
+            Rigidbody2D SlimeMovment = GetComponent<Rigidbody2D>();
+            //Transform Oldtransform = transform.position;
 
             transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime);
 
-            if (transform.position == MainPath[newRock].transform.position)
+            //SlimeMovment = GetComponent<Rigidbody2D>();
+            if ((SlimeMovment.position.x == transform.position.x)&& (SlimeMovment.position.y == transform.position.y))//||SlimeMovment.IsSleeping()
+            //if (transform.position == MainPath[newRock].transform.position)
             {
                 DiceNum--;
-                FrogPosition++;
+                PlayerPosition++;
                 
                 //First Path
                 //out
-                if ((FrogPosition == 5) && (DiceNum == 0))
+                if ((PlayerPosition == 5) && (DiceNum == 0))
                 {
-                    FrogPosition = 19;
+                    PlayerPosition = 19;
                     
                 }
 
                 //Secend Path
                 //out
-                else if ((FrogPosition == 10) && (DiceNum == 0))
+                else if ((PlayerPosition == 10) && (DiceNum == 0))
                 {
-                    FrogPosition = 24;
+                    PlayerPosition = 24;
                 }
 
                 //Third Path
                 
                 //in
-                else if((FrogPosition == 24) )
+                else if((PlayerPosition == 24) )
                 {
-                    FrogPosition = 14;
+                    PlayerPosition = 14;
                 }
 
                 //Fourth Path
                 //out
-                else if((FrogPosition == 22) && (DiceNum == 0))
+                else if((PlayerPosition == 22) && (DiceNum == 0))
                 {
-                    FrogPosition = 27;
+                    PlayerPosition = 27;
                 }
                 
                 //End
-                else if((FrogPosition == 19) || (FrogPosition == 29))
+                else if((PlayerPosition == 19) || (PlayerPosition == 29))
                 {
-                    FrogPosition = 29;
+                    PlayerPosition = 29;
                 }
 
 
             }
 
         }
-        
+        if(DiceRoll == 0)
+        {
+            moveAllowed = false;
+            //GetComponentInParent<PlayerScript>(Player
+            Player.GetComponent<PlayerScript>().DiceMoves[0] = 0;
+            Player.GetComponent<PlayerScript>().FirstMove = true;
+
+        }
 
         FirstRollMove = false;
     }
 
-    void IsStagnant()
+    private void OnMouseDown()
     {
-        if (GreenS.IsSleeping())
+        if(GetComponentInParent<PlayerScript>().PTurn)
         {
-            //Debug.Log("Object is not moving");
+            DiceNum =GetComponentInParent<PlayerScript>().DiceMoves[0];
+            //Player.GetComponent<PlayerScript>().DiceMoves[0] = 0;
+            moveAllowed = true;
         }
+        
     }
+
+
 
 
 }
