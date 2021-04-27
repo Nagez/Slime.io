@@ -2395,7 +2395,7 @@ MonoBehaviour:
   roomPanel: {fileID: 1097768472}
   startButtom: {fileID: 479557583}
   playersContainer: {fileID: 347272808}
-  playerListingPrefab: {fileID: 1153070279926383828, guid: 7e4f47dc201a58b4b9eaff469de0b209, type: 3}
+  playerListingPrefab: {fileID: 5516752251625137607, guid: 7e4f47dc201a58b4b9eaff469de0b209, type: 3}
   roomNameDisplay: {fileID: 1349183253}
 --- !u!1001 &1121889644
 PrefabInstance:
