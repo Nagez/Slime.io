@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameControl : MonoBehaviour
 {
 
-    public int SlimesPerPlayer = 3;
+    public int SlimesPerPlayer = 1;
     public int PlayersAmount = 0;
 
     private static GameObject PlayerMoving, Player1Move, Player2Move, Player3Move, Player4Move;

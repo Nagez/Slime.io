@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public List<GameObject> SlimesN = new List<GameObject>();
-    public GameObject[] Slimes=new GameObject[5];
+    public List<GameObject> Slimes = new List<GameObject>();
+    //public GameObject[] Slimes=new GameObject[5];
     public int SlimesPerTPlayer = 0;
     public int playerNum;
 
@@ -71,7 +71,7 @@ public class PlayerScript : MonoBehaviour
     void SlimeSpawnNeeded()
     {
         //if (Slimes.Length < SlimesPerTPlayer)
-        if (SlimesN.Count < SlimesPerTPlayer)
+        if (Slimes.Count < SlimesPerTPlayer)
         {
             //works//Instantiate(Slimes[0], Slimes[0].GetComponent<keyMove>().StartRock[0].transform.position, Slimes[0].GetComponent<keyMove>().StartRock[0].transform.rotation);
 
@@ -79,10 +79,8 @@ public class PlayerScript : MonoBehaviour
             GameObject NewSlime = Instantiate(Slimes[0], Slimes[0].GetComponent<keyMove>().StartRock[0].transform.position, Slimes[0].GetComponent<keyMove>().StartRock[0].transform.rotation);
             NewSlime.transform.parent = GameObject.Find("Player"+ playerNum).transform;
             NewSlime.GetComponent<keyMove>().PlayerPosition = 0;
-            SlimesN.Add(NewSlime);
-            //Slimes[0].name;
-
-
+            Slimes.Add(NewSlime);
+            
             Debug.Log("spawned2");
         }
     }
