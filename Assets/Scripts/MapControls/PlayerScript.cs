@@ -43,19 +43,8 @@ public class PlayerScript : MonoBehaviour
                 DiceMoves[0] = AlinasDice.randomDiceSide;//wont do 0
             }
            
-
-
             //Pick The Slime
             //Enable Click only on players Slimes
-
-            //Spwns
-
-
-            //IsStagnant();
-            //if (!transform.hasChanged)
-            //{
-            //    GameControl.WhoTurnItIs(GameObject.Find("dice6").GetComponent<AlinasDice>().whosTurn);
-            //}
 
             if ((DiceMoves[0] == 0) && (FirstMove == true))
             {
@@ -75,7 +64,6 @@ public class PlayerScript : MonoBehaviour
         {
             //works//Instantiate(Slimes[0], Slimes[0].GetComponent<keyMove>().StartRock[0].transform.position, Slimes[0].GetComponent<keyMove>().StartRock[0].transform.rotation);
 
-            
             GameObject NewSlime = Instantiate(Slimes[0], Slimes[0].GetComponent<keyMove>().StartRock[0].transform.position, Slimes[0].GetComponent<keyMove>().StartRock[0].transform.rotation);
             NewSlime.transform.parent = GameObject.Find("Player"+ playerNum).transform;
             NewSlime.GetComponent<keyMove>().PlayerPosition = 0;

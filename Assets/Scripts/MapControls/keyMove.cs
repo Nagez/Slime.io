@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class keyMove : MonoBehaviour
 {
-    //public static bool IsMoved = false;
-
+ 
     public GameObject Player;
     public Transform[] StartRock;
     public Transform[] MainPath;
 
     public int PlayerPosition = 0;
     public bool FirstRollMove = true;
-    //public static int dice = 0;
-
-
+    
     [SerializeField] private float moveSpeed = 4f;
     [SerializeField] public int DiceNum = 0;
 
@@ -32,10 +29,8 @@ public class keyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (moveAllowed)
             moveFrog(DiceNum);
-
     }
 
     public void moveFrog(int DiceRoll)
@@ -45,13 +40,11 @@ public class keyMove : MonoBehaviour
             
             int newRock = PlayerPosition + 1;
             Rigidbody2D SlimeMovment = GetComponent<Rigidbody2D>();
-            //Transform Oldtransform = transform.position;
-
+            
             transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime);
 
             //SlimeMovment = GetComponent<Rigidbody2D>();
-            if ((SlimeMovment.position.x == transform.position.x)&& (SlimeMovment.position.y == transform.position.y))//||SlimeMovment.IsSleeping()
-            //if (transform.position == MainPath[newRock].transform.position)
+            if ((SlimeMovment.position.x == transform.position.x)&& (SlimeMovment.position.y == transform.position.y))
             {
                 DiceNum--;
                 PlayerPosition++;
@@ -99,7 +92,6 @@ public class keyMove : MonoBehaviour
         if(DiceRoll == 0)
         {
             moveAllowed = false;
-            //GetComponentInParent<PlayerScript>(Player
             Player.GetComponent<PlayerScript>().DiceMoves[0] = 0;
             Player.GetComponent<PlayerScript>().FirstMove = true;
 
@@ -113,7 +105,6 @@ public class keyMove : MonoBehaviour
         if(GetComponentInParent<PlayerScript>().PTurn)
         {
             DiceNum =GetComponentInParent<PlayerScript>().DiceMoves[0];
-            //Player.GetComponent<PlayerScript>().DiceMoves[0] = 0;
             moveAllowed = true;
         }
         

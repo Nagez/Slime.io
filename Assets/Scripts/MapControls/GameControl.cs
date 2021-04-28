@@ -95,9 +95,5 @@ public class GameControl : MonoBehaviour
             whosTurn = 1;
     }
 
-    public void EnterSlimeAmount()
-    {
-
-    }
 
 }
