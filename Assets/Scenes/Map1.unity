@@ -832,11 +832,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70adcd9c457b2a341b786cd54ac8485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlimesN:
-  - {fileID: 195124140}
   Slimes:
   - {fileID: 195124140}
   SlimesPerTPlayer: 0
+  playerNum: 1
   DiceMoves: 0000000000000000000000000000000000000000
   PTurn: 0
   FirstMove: 0
@@ -1119,10 +1118,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70adcd9c457b2a341b786cd54ac8485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlimesN: []
   Slimes:
   - {fileID: 1975158935}
   SlimesPerTPlayer: 0
+  playerNum: 4
   DiceMoves: 0000000000000000000000000000000000000000
   PTurn: 0
   FirstMove: 0
@@ -1951,10 +1950,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70adcd9c457b2a341b786cd54ac8485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlimesN: []
   Slimes:
   - {fileID: 1310072459}
   SlimesPerTPlayer: 0
+  playerNum: 3
   DiceMoves: 0000000000000000000000000000000000000000
   PTurn: 0
   FirstMove: 0
@@ -10527,7 +10526,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2f9360be1f09947a3224fc60af2e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlimesPerPlayer: 3
+  SlimesPerPlayer: 5
   PlayersAmount: 0
 --- !u!1 &1501811278
 GameObject:
@@ -11457,10 +11456,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70adcd9c457b2a341b786cd54ac8485a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlimesN: []
   Slimes:
   - {fileID: 138931147}
   SlimesPerTPlayer: 0
+  playerNum: 2
   DiceMoves: 0000000000000000000000000000000000000000
   PTurn: 0
   FirstMove: 0
