@@ -5,6 +5,9 @@ using UnityEngine;
 public class GameControl : MonoBehaviour
 {
 
+    public int SlimesPerPlayer = 3;
+    public int PlayersAmount = 0;
+
     private static GameObject PlayerMoving, Player1Move, Player2Move, Player3Move, Player4Move;
     private static GameObject Player1, Player2, Player3, Player4;
     private static GameObject TextGreen, TextBlue, TextRed, TextYellow;
@@ -90,6 +93,11 @@ public class GameControl : MonoBehaviour
             whosTurn++;
         else
             whosTurn = 1;
+    }
+
+    public void EnterSlimeAmount()
+    {
+
     }
 
 }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class keyMove : MonoBehaviour
 {
-    public static bool IsMoved = false;
+    //public static bool IsMoved = false;
 
     public GameObject Player;
-    public  Transform[] StartRock;
-    public  Transform[] MainPath;
+    public Transform[] StartRock;
+    public Transform[] MainPath;
 
-    [SerializeField] public int PlayerPosition = 0;
+    public int PlayerPosition = 0;
     public bool FirstRollMove = true;
     //public static int dice = 0;
 

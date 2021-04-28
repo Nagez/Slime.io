@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    public GameObject[] Slimes;
+    public List<GameObject> SlimesN = new List<GameObject>();
+    public GameObject[] Slimes=new GameObject[5];
+    public int SlimesPerTPlayer = 0;
+    public int playerNum;
+
     public int[] DiceMoves = new int[5];
     public bool PTurn = false;
     public bool FirstMove = false;
@@ -12,16 +16,15 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Slimes[0].GetComponent<keyMove>().moveAllowed = false;
-        //GameControl.MovePlayer(1);
+        GameObject GameControlPlayer = GameObject.Find("GameControls");
+        SlimesPerTPlayer = GameControlPlayer.GetComponent<GameControl>().SlimesPerPlayer;
     }
-
     // Update is called once per frame
-    void Update()
+        void Update()
     {
         if(PTurn)
         {
-            PlayersTurn(PTurn);
+            PlayersTurn(PTurn); 
         }
         
     }
@@ -60,7 +63,27 @@ public class PlayerScript : MonoBehaviour
                 //whosTurn();
                 GameControl.turnSwitch();
                 FirstMove = false;
+                SlimeSpawnNeeded();
             }
+        }
+    }
+
+    void SlimeSpawnNeeded()
+    {
+        //if (Slimes.Length < SlimesPerTPlayer)
+        if (SlimesN.Count < SlimesPerTPlayer)
+        {
+            //works//Instantiate(Slimes[0], Slimes[0].GetComponent<keyMove>().StartRock[0].transform.position, Slimes[0].GetComponent<keyMove>().StartRock[0].transform.rotation);
+
+            
+            GameObject NewSlime = Instantiate(Slimes[0], Slimes[0].GetComponent<keyMove>().StartRock[0].transform.position, Slimes[0].GetComponent<keyMove>().StartRock[0].transform.rotation);
+            NewSlime.transform.parent = GameObject.Find("Player"+ playerNum).transform;
+            NewSlime.GetComponent<keyMove>().PlayerPosition = 0;
+            SlimesN.Add(NewSlime);
+            //Slimes[0].name;
+
+
+            Debug.Log("spawned2");
         }
     }
 }

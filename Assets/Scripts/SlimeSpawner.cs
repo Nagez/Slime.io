@@ -26,4 +26,5 @@ public class SlimeSpawner : MonoBehaviour
         Debug.Log("hover");
 
     }
+
 }
