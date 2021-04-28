@@ -85,7 +85,6 @@ public class keyMove : MonoBehaviour
                     PlayerPosition = 29;
                 }
 
-
             }
 
         }
@@ -94,6 +93,7 @@ public class keyMove : MonoBehaviour
             moveAllowed = false;
             Player.GetComponent<PlayerScript>().DiceMoves[0] = 0;
             Player.GetComponent<PlayerScript>().FirstMove = true;
+            GetComponent<BoxCollider2D>().isTrigger = false;
 
         }
 
@@ -104,12 +104,26 @@ public class keyMove : MonoBehaviour
     {
         if(GetComponentInParent<PlayerScript>().PTurn)
         {
+            GetComponent<BoxCollider2D>().isTrigger = true;
             DiceNum =GetComponentInParent<PlayerScript>().DiceMoves[0];
             moveAllowed = true;
         }
         
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if((DiceNum == 0) && (Player.GetComponent<PlayerScript>().PTurn == true))
+            if(collision.name == this.name)
+            {
+                Debug.Log("Upgrade!");
+            }
+            else
+            {
+                Debug.Log("Del "+ collision.name);
+            }
+        
+    }
 
 
 
