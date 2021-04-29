@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AlinasDice : MonoBehaviour
 {
-    public static int randomDiceSide=0;
+    public static int randomDiceSide=-1;
     private Sprite[] diceSides;
     private SpriteRenderer rend;
     //public int whosTurn = 1;
@@ -29,7 +29,8 @@ public class AlinasDice : MonoBehaviour
         randomDiceSide = Random.Range(1, 6);
 
         //coroutineAllowed = true;
-
+        GameObject.Find("Player" + GameControl.whosTurn).GetComponent<PlayerScript>().DiceMoves[0] = randomDiceSide;
+        //;
         Debug.Log(randomDiceSide);
         
     }

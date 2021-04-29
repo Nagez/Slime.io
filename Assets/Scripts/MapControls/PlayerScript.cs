@@ -20,13 +20,12 @@ public class PlayerScript : MonoBehaviour
         SlimesPerTPlayer = GameControlPlayer.GetComponent<GameControl>().SlimesPerPlayer;
     }
     // Update is called once per frame
-        void Update()
+    void Update()
     {
         if(PTurn)
         {
             PlayersTurn(PTurn); 
-        }
-        
+        } 
     }
 
     void PlayersTurn(bool moveAllowed)
@@ -40,13 +39,13 @@ public class PlayerScript : MonoBehaviour
             //dice pick
             if(FirstMove==false)
             {
-                DiceMoves[0] = AlinasDice.randomDiceSide;//wont do 0
+                //DiceMoves[0] = AlinasDice.randomDiceSide;//wont do 0
             }
            
             //Pick The Slime
             //Enable Click only on players Slimes
 
-            if ((DiceMoves[0] == 0) && (FirstMove == true))
+            if ((DiceMoves[0] == -1) && (FirstMove == true))
             {
                 PTurn = false;
                 //whosTurn();
@@ -59,6 +58,7 @@ public class PlayerScript : MonoBehaviour
 
     void SlimeSpawnNeeded()
     {
+        //add collishion check
         //if (Slimes.Length < SlimesPerTPlayer)
         if (Slimes.Count < SlimesPerTPlayer)
         {

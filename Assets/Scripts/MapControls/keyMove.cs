@@ -46,6 +46,7 @@ public class keyMove : MonoBehaviour
             //SlimeMovment = GetComponent<Rigidbody2D>();
             if ((SlimeMovment.position.x == transform.position.x)&& (SlimeMovment.position.y == transform.position.y))
             {
+                Player.GetComponent<PlayerScript>().DiceMoves[0]--;
                 DiceNum--;
                 PlayerPosition++;
                 
@@ -91,9 +92,9 @@ public class keyMove : MonoBehaviour
         if(DiceRoll == 0)
         {
             moveAllowed = false;
-            Player.GetComponent<PlayerScript>().DiceMoves[0] = 0;
+            Player.GetComponent<PlayerScript>().DiceMoves[0] = -1;
             Player.GetComponent<PlayerScript>().FirstMove = true;
-            GetComponent<BoxCollider2D>().isTrigger = false;
+            //GetComponent<BoxCollider2D>().isTrigger = true;
 
         }
 
@@ -104,26 +105,62 @@ public class keyMove : MonoBehaviour
     {
         if(GetComponentInParent<PlayerScript>().PTurn)
         {
-            GetComponent<BoxCollider2D>().isTrigger = true;
             DiceNum =GetComponentInParent<PlayerScript>().DiceMoves[0];
             moveAllowed = true;
         }
         
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if((DiceNum == 0) && (Player.GetComponent<PlayerScript>().PTurn == true))
-            if(collision.name == this.name)
-            {
-                Debug.Log("Upgrade!");
-            }
-            else
-            {
-                Debug.Log("Del "+ collision.name);
-            }
-        
-    }
+    
+
+    //void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    Debug.Log("collision!");
+    //    if (this.PlayerPosition == collision.gameObject.GetComponent<keyMove>().PlayerPosition)
+    //    {
+    //        if (collision.gameObject.name == this.name)
+    //        {
+    //            Debug.Log("Upgrade!");
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("Del " + collision.gameObject.name);
+    //        }
+    //    }
+    //}
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (this.PlayerPosition == collision.gameObject.GetComponent<keyMove>().PlayerPosition)
+    //    {
+    //        if (collision.name == this.name)
+    //        {
+    //            Debug.Log("Upgrade!");
+    //        }
+    //        else
+    //        {
+    //            Debug.Log("Del " + collision.name);
+    //        }
+    //    }
+
+
+    //    //Rigidbody2D SlimeMovment = GetComponent<Rigidbody2D>();
+    //    //if ((SlimeMovment.position.x == transform.position.x) && (SlimeMovment.position.y == transform.position.y))
+    //    //{
+    //    //    if ((DiceNum == 0) && (Player.GetComponent<PlayerScript>().PTurn == true))
+    //    //        if (collision.name == this.name)
+    //    //        {
+    //    //            Debug.Log("Upgrade!");
+    //    //        }
+    //    //        else
+    //    //        {
+    //    //            Debug.Log("Del " + collision.name);
+    //    //        }
+    //    //    GetComponent<BoxCollider2D>().isTrigger = false;
+    //    //}
+
+            
+    //}
 
 
 

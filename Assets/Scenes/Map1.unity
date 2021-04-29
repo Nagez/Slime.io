@@ -836,7 +836,7 @@ MonoBehaviour:
   - {fileID: 195124140}
   SlimesPerTPlayer: 0
   playerNum: 1
-  DiceMoves: 0000000000000000000000000000000000000000
+  DiceMoves: ffffffffffffffffffffffffffffffffffffffff
   PTurn: 0
   FirstMove: 0
 --- !u!1 &116500916
@@ -883,6 +883,7 @@ GameObject:
   - component: {fileID: 138931151}
   - component: {fileID: 138931152}
   - component: {fileID: 138931153}
+  - component: {fileID: 138931154}
   m_Layer: 0
   m_Name: BlueSlime
   m_TagString: Untagged
@@ -1035,18 +1036,18 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138931147}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &138931153
 BoxCollider2D:
@@ -1074,6 +1075,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.36113608, y: 0.28789186}
   m_EdgeRadius: 0
+--- !u!114 &138931154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138931147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b89c2fcfcb8ce4ca4e92e098b54904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &161743140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1300,9 +1313,11 @@ GameObject:
   - component: {fileID: 195124141}
   - component: {fileID: 195124142}
   - component: {fileID: 195124143}
-  - component: {fileID: 195124144}
   - component: {fileID: 195124145}
   - component: {fileID: 195124146}
+  - component: {fileID: 195124144}
+  - component: {fileID: 195124147}
+  - component: {fileID: 195124148}
   m_Layer: 0
   m_Name: GreenSlime
   m_TagString: Untagged
@@ -1455,14 +1470,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 195124140}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1494,6 +1509,68 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3633306, y: 0.21742246}
   m_EdgeRadius: 0
+--- !u!114 &195124147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195124140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b89c2fcfcb8ce4ca4e92e098b54904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &195124148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195124140}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe132f6fe1ee37140b1483eeb297e02b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 99039514}
+  StartingRockPossition: {fileID: 1033785179}
+  MainMapPath:
+  - {fileID: 1733484091}
+  - {fileID: 806779259}
+  - {fileID: 1008316507}
+  - {fileID: 1317562323}
+  - {fileID: 1831958218}
+  - {fileID: 1531955185}
+  - {fileID: 1501811279}
+  - {fileID: 426223725}
+  - {fileID: 116500917}
+  - {fileID: 1128212037}
+  - {fileID: 1768756893}
+  - {fileID: 2061642983}
+  - {fileID: 517444390}
+  - {fileID: 1152448982}
+  - {fileID: 1623320114}
+  - {fileID: 1755721482}
+  - {fileID: 981394}
+  - {fileID: 400283106}
+  - {fileID: 1022523194}
+  - {fileID: 90995555}
+  - {fileID: 1886814192}
+  - {fileID: 745023932}
+  - {fileID: 1089021152}
+  - {fileID: 2137605762}
+  - {fileID: 684662232}
+  - {fileID: 248403754}
+  - {fileID: 76433509}
+  - {fileID: 915871746}
+  - {fileID: 493736129}
+  - {fileID: 1175346754}
+  - {fileID: 1420199829}
+  SlimePosition: 0
+  CurrentDice: 0
+  SlimeSpeed: 4
+  SlimeMovmentAllowed: 0
 --- !u!1 &248403753
 GameObject:
   m_ObjectHideFlags: 0
@@ -11460,7 +11537,7 @@ MonoBehaviour:
   - {fileID: 138931147}
   SlimesPerTPlayer: 0
   playerNum: 2
-  DiceMoves: 0000000000000000000000000000000000000000
+  DiceMoves: ffffffffffffffffffffffffffffffffffffffff
   PTurn: 0
   FirstMove: 0
 --- !u!1 &1722613087
