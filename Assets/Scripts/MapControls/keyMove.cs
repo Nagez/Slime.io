@@ -25,7 +25,6 @@ public class keyMove : MonoBehaviour
         transform.position = StartRock[0].transform.position;
     }
 
-    
     // Update is called once per frame
     void Update()
     {
@@ -35,82 +34,83 @@ public class keyMove : MonoBehaviour
 
     public void moveFrog(int DiceRoll)
     {
-        if (DiceRoll > 0)
-        {
-            
-            int newRock = PlayerPosition + 1;
-            Rigidbody2D SlimeMovment = GetComponent<Rigidbody2D>();
-            
-            transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime);
-
-            //SlimeMovment = GetComponent<Rigidbody2D>();
-            if ((SlimeMovment.position.x == transform.position.x)&& (SlimeMovment.position.y == transform.position.y))
+        
+            if (DiceRoll > 0)
             {
-                Player.GetComponent<PlayerScript>().DiceMoves[0]--;
-                DiceNum--;
-                PlayerPosition++;
-                
-                //First Path
-                //out
-                if ((PlayerPosition == 5) && (DiceNum == 0))
-                {
-                    PlayerPosition = 19;
-                    
-                }
 
-                //Secend Path
-                //out
-                else if ((PlayerPosition == 10) && (DiceNum == 0))
-                {
-                    PlayerPosition = 24;
-                }
+                int newRock = PlayerPosition + 1;
+                Rigidbody2D SlimeMovment = GetComponent<Rigidbody2D>();
 
-                //Third Path
-                
-                //in
-                else if((PlayerPosition == 24) )
-                {
-                    PlayerPosition = 14;
-                }
+                transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime);
 
-                //Fourth Path
-                //out
-                else if((PlayerPosition == 22) && (DiceNum == 0))
+                //SlimeMovment = GetComponent<Rigidbody2D>();
+                if ((SlimeMovment.position.x == transform.position.x) && (SlimeMovment.position.y == transform.position.y))
                 {
-                    PlayerPosition = 27;
-                }
-                
-                //End
-                else if((PlayerPosition == 19) || (PlayerPosition == 29))
-                {
-                    PlayerPosition = 29;
+                    Player.GetComponent<PlayerScript>().DiceMoves[0]--;
+                    DiceNum--;
+                    PlayerPosition++;
+
+                    //First Path
+                    //out
+                    if ((PlayerPosition == 5) && (DiceNum == 0))
+                    {
+                        PlayerPosition = 19;
+
+                    }
+
+                    //Secend Path
+                    //out
+                    else if ((PlayerPosition == 10) && (DiceNum == 0))
+                    {
+                        PlayerPosition = 24;
+                    }
+
+                    //Third Path
+
+                    //in
+                    else if ((PlayerPosition == 24))
+                    {
+                        PlayerPosition = 14;
+                    }
+
+                    //Fourth Path
+                    //out
+                    else if ((PlayerPosition == 22) && (DiceNum == 0))
+                    {
+                        PlayerPosition = 27;
+                    }
+
+                    //End
+                    else if ((PlayerPosition == 19) || (PlayerPosition == 29))
+                    {
+                        PlayerPosition = 29;
+                    }
+
                 }
 
             }
-
-        }
-        if(DiceRoll == 0)
-        {
-            if (Player.GetComponent<PlayerScript>().FirstMove)
-                DiceNum--;
+            if (DiceRoll == 0)
+            {
+                if (Player.GetComponent<PlayerScript>().FirstMove)
+                    DiceNum--;
                 //Player.GetComponent<PlayerScript>().DiceMoves[0] = -1;
 
-            Player.GetComponent<PlayerScript>().DiceMoves[0] = 0;
-            Player.GetComponent<PlayerScript>().FirstMove = true;
-            
-            ////GetComponent<BoxCollider2D>().isTrigger = true;
-            ///
-            
+                Player.GetComponent<PlayerScript>().DiceMoves[0] = 0;
+                Player.GetComponent<PlayerScript>().FirstMove = true;
 
-        }
-        if(DiceRoll == -1)
-        {
-            moveAllowed = false;
-            Player.GetComponent<PlayerScript>().DiceMoves[0] = -1;
-            Player.GetComponent<PlayerScript>().FirstMove = true;
-            //GetComponent<BoxCollider2D>().isTrigger = true;
-        }
+                ////GetComponent<BoxCollider2D>().isTrigger = true;
+                ///
 
+
+            }
+            if (DiceRoll == -1)
+            {
+                moveAllowed = false;
+                Player.GetComponent<PlayerScript>().DiceMoves[0] = -1;
+                Player.GetComponent<PlayerScript>().FirstMove = true;
+                //GetComponent<BoxCollider2D>().isTrigger = true;
+            }
+        
         FirstRollMove = false;
     }
 

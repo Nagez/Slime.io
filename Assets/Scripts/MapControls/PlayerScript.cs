@@ -70,9 +70,11 @@ public class PlayerScript : MonoBehaviour
         //if (Slimes.Length < SlimesPerTPlayer)
         if (Slimes.Count < SlimesPerTPlayer)
         {
-            //works//Instantiate(Slimes[0], Slimes[0].GetComponent<keyMove>().StartRock[0].transform.position, Slimes[0].GetComponent<keyMove>().StartRock[0].transform.rotation);
             //add slime detector 
+            if(true)
+            { 
 
+            }
             GameObject NewSlime = Instantiate(Slimes[0], Slimes[0].GetComponent<keyMove>().StartRock[0].transform.position, Slimes[0].GetComponent<keyMove>().StartRock[0].transform.rotation);
             NewSlime.transform.parent = GameObject.Find("Player"+ playerNum).transform;
             NewSlime.GetComponent<keyMove>().PlayerPosition = 0;
