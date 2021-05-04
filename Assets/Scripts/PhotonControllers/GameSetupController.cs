@@ -17,6 +17,7 @@ public class GameSetupController : MonoBehaviour
     {
         //file location name need to match actual location in unity case sensitive
         Debug.Log("creating player");
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs","PhotonPlayer"),Vector3.zero,Quaternion.identity);//params(file location for photon plyaer prefab,position to start, rotation) 
+
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs","greenplayer"),Vector3.zero,Quaternion.identity);//params(file location for photon plyaer prefab,position to start, rotation) 
     }
 }
