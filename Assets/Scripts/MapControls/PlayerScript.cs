@@ -13,7 +13,7 @@ public class PlayerScript : MonoBehaviour
     public bool PTurn = false;//player turn
     public bool FirstMove = false;
 
-    //public GameObject GameControlPlayer;
+    public GameObject GameControlPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,7 @@ public class PlayerScript : MonoBehaviour
         //locate Slimes per player
         //add function
 
-        GameObject GameControlPlayer = GameObject.Find("GameControls");
+        //GameObject GameControlPlayer = GameObject.Find("GameControls");
         SlimesPerTPlayer = GameControlPlayer.GetComponent<GameControl>().SlimesPerPlayer;
     }
     // Update is called once per frame
