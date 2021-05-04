@@ -321,6 +321,7 @@ MonoBehaviour:
   DiceMoves: ffffffffffffffffffffffffffffffffffffffff
   PTurn: 0
   FirstMove: 0
+  GameControlPlayer: {fileID: 0}
 --- !u!114 &3296817336260120332
 MonoBehaviour:
   m_ObjectHideFlags: 0
