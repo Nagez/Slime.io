@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 {
@@ -13,8 +14,10 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     private GameObject lobbyPanel; //panel for displaying lobby.
     [SerializeField]
     private GameObject mainPanel; //panel for displaying the main menu
+   // [SerializeField]
+   // private InputField playerNameInput; //Input field so player can change their NickName
     [SerializeField]
-    private InputField playerNameInput; //Input field so player can change their NickName
+    private TMP_InputField playerNameInput; //Input field so player can change their NickName
 
     private string roomName; //string for saving room name
     private int roomSize; //int for saving room size
@@ -48,7 +51,6 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
             PhotonNetwork.NickName = "Player " + Random.Range(0, 1000);
         }
         playerNameInput.text = PhotonNetwork.NickName;
-
     }
 
     public void PlayerNameUpdate(string nameInput)
@@ -66,6 +68,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
+        Debug.Log("onroomlistupdate");
         int tempIndex;
         foreach(RoomInfo room in roomList)
         {
@@ -100,7 +103,9 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     void ListRoom(RoomInfo room)
     {
-        if(room.IsOpen && room.IsVisible)
+        Debug.Log("listrooms");
+
+        if (room.IsOpen && room.IsVisible)
         {
             GameObject tempListing = Instantiate(roomListingPrefab, roomsContainer);
             RoomButton tempButton = tempListing.GetComponent<RoomButton>();
@@ -108,13 +113,19 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         }
     }
 
-    public void OnRoomNameChanged(string nameIn)
+    public void OnRoomNameChanged(string nameIn) //set the room name
     {
+        Debug.Log("room name get " + nameIn);
         roomName = nameIn;
+        Debug.Log("room name set to " + roomName);
+
     }
-    public void OnRoomSizeChanged(string sizeIn)
+    public void OnRoomSizeChanged(string sizeIn) //set room size aka number of alowed players
     {
+        Debug.Log("room size get " + sizeIn);
         roomSize = int.Parse(sizeIn);
+        Debug.Log("room size set to " + roomSize);
+
     }
 
     public void CreateRoom()
@@ -136,15 +147,4 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveLobby();
     }
 
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-        
-    //}
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
 }

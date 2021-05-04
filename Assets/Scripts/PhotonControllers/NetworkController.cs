@@ -5,10 +5,16 @@ using UnityEngine;
 
 public class NetworkController : MonoBehaviourPunCallbacks
 {
+    [SerializeField] private bool AbleConnection = true;
     // Start is called before the first frame update
     void Start()
     {
-        PhotonNetwork.ConnectUsingSettings(); //Connects to Photon master servers
+        if (AbleConnection == true)
+        {
+            //remove // to connect to network
+            PhotonNetwork.ConnectUsingSettings(); //Connects to Photon master servers
+        }
+       
     }
 
     public override void OnConnectedToMaster()
