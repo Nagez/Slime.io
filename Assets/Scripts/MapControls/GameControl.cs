@@ -6,19 +6,20 @@ public class GameControl : MonoBehaviour
 {
 
     public int SlimesPerPlayer = 1;
-    public int PlayersAmount = 0;
+    public int PlayersAmount = 4;
 
-    private static GameObject PlayerMoving, Player1Move, Player2Move, Player3Move, Player4Move;
+    private static GameObject PlayerMoving, Player1Move, Player2Move, Player3Move, Player4Move;//not using
     private static GameObject Player1, Player2, Player3, Player4;
-    private static GameObject TextGreen, TextBlue, TextRed, TextYellow;
+    private static GameObject TextGreen, TextBlue, TextRed, TextYellow;//Playes turn text in hud
 
-    public static int player1Rock = 0, player2Rock = 0;
+    public static int player1Rock = 0, player2Rock = 0; //not using
 
     public static int whosTurn = 1;
 
     /////////////////////////////////////////////////
-    public static int diceSide = 0;
+    public static int diceSide = 0;//check if using
 
+    //player element 0 start
     public static int player1StartRock = 0;
     public static int player2StartRock = 0;
     public static int player3StartRock = 0;
@@ -34,18 +35,20 @@ public class GameControl : MonoBehaviour
         TextYellow = GameObject.Find("TextYellow");
 
         //Players match
-        Player1 = GameObject.Find("Player1");
+        Player1 = GameObject.Find("Player1");//can be problem
         Player2 = GameObject.Find("Player2");
         Player3 = GameObject.Find("Player3");
         Player4 = GameObject.Find("Player4");
 
         //Playes moving
+        
+        //Player1.GetComponent<PlayerScript>().PTurn = false;
+        //Player2.GetComponent<PlayerScript>().PTurn = false;
+        //Player3.GetComponent<PlayerScript>().PTurn = false;
+        //Player4.GetComponent<PlayerScript>().PTurn = false;
 
-        Player1.GetComponent<PlayerScript>().PTurn = false;
-        Player2.GetComponent<PlayerScript>().PTurn = false;
-        Player3.GetComponent<PlayerScript>().PTurn = false;
-        Player4.GetComponent<PlayerScript>().PTurn = false;
 
+        //off turn text
         TextGreen.gameObject.SetActive(false);
         TextBlue.gameObject.SetActive(false);
         TextRed.gameObject.SetActive(false);
@@ -59,16 +62,17 @@ public class GameControl : MonoBehaviour
         MovePlayer(whosTurn);
     }
 
-    public static void MovePlayer(int PlayerMoving)
+    public static void MovePlayer(int whosTurnN)
     {
         TextGreen.gameObject.SetActive(false);
         TextBlue.gameObject.SetActive(false);
         TextRed.gameObject.SetActive(false);
         TextYellow.gameObject.SetActive(false);
 
-        switch (PlayerMoving)
+        switch (whosTurnN)
         {
             case 1:
+                
                 Player1.GetComponent<PlayerScript>().PTurn = true;
                 TextGreen.gameObject.SetActive(true);
                 break;
