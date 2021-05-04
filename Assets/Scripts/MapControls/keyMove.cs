@@ -105,6 +105,7 @@ public class keyMove : MonoBehaviour
             }
             if (DiceRoll == -1)
             {
+                CollisionChacking();
                 moveAllowed = false;
                 Player.GetComponent<PlayerScript>().DiceMoves[0] = -1;
                 Player.GetComponent<PlayerScript>().FirstMove = true;
@@ -124,7 +125,53 @@ public class keyMove : MonoBehaviour
         
     }
 
-    
+    public void CollisionChacking()
+    {
+        Rigidbody2D CurrentSlime = GetComponent<Rigidbody2D>();
+
+        for(int i=0;i<4;i++)//add mex players
+        {
+            GameObject GameControlsP = GameObject.Find("GameControls");//GetComponent<GameControl>().Players[i];
+            GameObject PlayerS = GameControlsP.GetComponent<GameControl>().Players[i];
+
+            for (int j=0;j< PlayerS.GetComponent<PlayerScript>().Slimes.Count ; j++)
+            {
+                GameObject testSlime = PlayerS.GetComponent<PlayerScript>().Slimes[j];
+
+                if(CurrentSlime.GetComponent<keyMove>().PlayerPosition == testSlime.GetComponent<keyMove>().PlayerPosition)
+                {
+                    if (CurrentSlime.GetComponentInParent<PlayerScript>().playerNum == testSlime.GetComponentInParent<PlayerScript>().playerNum)
+                    {
+                        if(CurrentSlime.name == testSlime.name)
+                        {
+                            
+                        }
+                        else
+                        {
+                            Debug.Log("levelUp");
+                            Debug.Log("Destroy " + testSlime.name);
+
+                            Destroy(testSlime);
+                            PlayerS.GetComponent<PlayerScript>().Slimes.RemoveAt(j);
+                            //myItems.RemoveAt(myIndex);
+                            break;
+                        }
+                        
+                    }
+                    else
+                    {
+                        Debug.Log("Destroy "+ testSlime.name);
+                        Destroy(testSlime);
+
+                        PlayerS.GetComponent<PlayerScript>().Slimes.RemoveAt(j);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+
 
     //void OnCollisionEnter2D(Collision2D collision)
     //{
@@ -172,7 +219,7 @@ public class keyMove : MonoBehaviour
     //    //    GetComponent<BoxCollider2D>().isTrigger = false;
     //    //}
 
-            
+
     //}
 
 

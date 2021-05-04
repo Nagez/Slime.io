@@ -482,6 +482,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4387503327255912444, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
   m_PrefabInstance: {fileID: 4387503327329354832}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &240026663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1875291135138276451, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
+  m_PrefabInstance: {fileID: 1875291135491951177}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &248403754 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7669840400840677431, guid: 0d55d5239e30a2f469c38984bf80fd75, type: 3}
@@ -1327,6 +1332,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642875775}
   m_CullTransparentMesh: 1
+--- !u!1 &650472934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2556815277328337507, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+  m_PrefabInstance: {fileID: 2556815277974195327}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &659835812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,6 +1496,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7669840401478259397, guid: 0d55d5239e30a2f469c38984bf80fd75, type: 3}
   m_PrefabInstance: {fileID: 7669840401087467293}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &722164908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4387503327284870474, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
+  m_PrefabInstance: {fileID: 4387503327329354832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &740645235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,6 +1585,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 7669840401893979750, guid: 0d55d5239e30a2f469c38984bf80fd75, type: 3}
   m_PrefabInstance: {fileID: 7669840401087467293}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &823738326 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 70365114160044701, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
+  m_PrefabInstance: {fileID: 70365114321263545}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &915871746 stripped
 Transform:
@@ -6739,6 +6759,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1875291136398578882, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
   m_PrefabInstance: {fileID: 1875291135491951177}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1310072466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310072459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b89c2fcfcb8ce4ca4e92e098b54904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1317562323 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7669840399771003086, guid: 0d55d5239e30a2f469c38984bf80fd75, type: 3}
@@ -7150,6 +7182,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlimesPerPlayer: 5
   PlayersAmount: 0
+  Players:
+  - {fileID: 722164908}
+  - {fileID: 650472934}
+  - {fileID: 240026663}
+  - {fileID: 823738326}
 --- !u!4 &1501811279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7669840400156319058, guid: 0d55d5239e30a2f469c38984bf80fd75, type: 3}
@@ -7814,6 +7851,18 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 70365113555112750, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
   m_PrefabInstance: {fileID: 70365114321263545}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1975158942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975158935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7b89c2fcfcb8ce4ca4e92e098b54904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2000325923
 GameObject:
   m_ObjectHideFlags: 0
@@ -12971,6 +13020,10 @@ PrefabInstance:
       propertyPath: StartRock.Array.data[0]
       value: 
       objectReference: {fileID: 525027204}
+    - target: {fileID: 70365113555112741, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 70365114160044700, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -13212,6 +13265,10 @@ PrefabInstance:
       propertyPath: StartRock.Array.data[0]
       value: 
       objectReference: {fileID: 1825423270}
+    - target: {fileID: 1875291136398578905, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
 --- !u!1001 &2556815277974195327
@@ -13225,6 +13282,18 @@ PrefabInstance:
       propertyPath: GameControlPlayer
       value: 
       objectReference: {fileID: 1467106165}
+    - target: {fileID: 2556815277328337505, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+      propertyPath: DiceMoves.Array.data[0]
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556815277328337505, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+      propertyPath: DiceMoves.Array.data[1]
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556815277328337505, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+      propertyPath: DiceMoves.Array.data[2]
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 2556815277328337506, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -13272,6 +13341,14 @@ PrefabInstance:
     - target: {fileID: 2556815277328337507, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
       propertyPath: m_Name
       value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556815277836101551, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556815277836101551, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2556815277836101552, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
       propertyPath: MainPath.Array.data[0]
@@ -13538,6 +13615,10 @@ PrefabInstance:
       propertyPath: StartRock.Array.data[0]
       value: 
       objectReference: {fileID: 1033785180}
+    - target: {fileID: 4387503327255912417, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4387503327255912420, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
       propertyPath: StartingRockPossition
       value: 

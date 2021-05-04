@@ -52,35 +52,49 @@ public class PlayerScript : MonoBehaviour
 
             if ((DiceMoves[0] == -1) && (FirstMove == true))
             {
+
+                //GetComponent<keyMove>().CollisionChacking();
                 PTurn = false;
                 //whosTurn();
-
-                
                 GameControl.turnSwitch();
-
                 FirstMove = false;
                 SlimeSpawnNeeded();
             }
         }
     }
-
+    
     void SlimeSpawnNeeded()
     {
         //add collishion check
         //if (Slimes.Length < SlimesPerTPlayer)
         if (Slimes.Count < SlimesPerTPlayer)
         {
+            bool SlimeE = false;
             //add slime detector 
-            if(true)
-            { 
+            for (int i = 0; i < this.Slimes.Count; i++)
+            {
+                if (this.Slimes[i].GetComponent<keyMove>().PlayerPosition == 0)
+                    SlimeE = true;
+            }
+
+            if (!SlimeE)
+            {
+                GameObject NewSlime = Instantiate(Slimes[0], Slimes[0].GetComponent<keyMove>().StartRock[0].transform.position, Slimes[0].GetComponent<keyMove>().StartRock[0].transform.rotation);
+                GameObject PlayerT = GameObject.Find("Player" + playerNum);
+                NewSlime.transform.parent = PlayerT.transform;
+                NewSlime.GetComponent<keyMove>().PlayerPosition = 0;
+                int countN = PlayerT.GetComponent<PlayerScript>().Slimes.Count;//NewSlime.GetComponentsInParent<PlayerScript>().Length;
+                NewSlime.name = NewSlime.name.ToString() + countN;
+                Slimes.Add(NewSlime);
 
             }
-            GameObject NewSlime = Instantiate(Slimes[0], Slimes[0].GetComponent<keyMove>().StartRock[0].transform.position, Slimes[0].GetComponent<keyMove>().StartRock[0].transform.rotation);
-            NewSlime.transform.parent = GameObject.Find("Player"+ playerNum).transform;
-            NewSlime.GetComponent<keyMove>().PlayerPosition = 0;
-            Slimes.Add(NewSlime);
+            //GameObject NewSlime = Instantiate(Slimes[0], Slimes[0].GetComponent<keyMove>().StartRock[0].transform.position, Slimes[0].GetComponent<keyMove>().StartRock[0].transform.rotation);
+            //NewSlime.transform.parent = GameObject.Find("Player" + playerNum).transform;
+            //NewSlime.GetComponent<keyMove>().PlayerPosition = 0;
+            //Slimes.Add(NewSlime);
+
+
             
-            Debug.Log("spawned2");
         }
     }
 }

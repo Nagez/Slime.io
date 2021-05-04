@@ -7,6 +7,7 @@ public class GameControl : MonoBehaviour
 
     public int SlimesPerPlayer = 1;
     public int PlayersAmount = 4;
+    public List<GameObject> Players = new List<GameObject>();
 
     private static GameObject PlayerMoving, Player1Move, Player2Move, Player3Move, Player4Move;//not using
     private static GameObject Player1, Player2, Player3, Player4;
