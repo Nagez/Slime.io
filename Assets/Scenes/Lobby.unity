@@ -3726,7 +3726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6607361beed4ce245bfeb731948e7713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiPlayerSceneIndex: 2
+  multiPlayerSceneIndex: 3
   lobbyPanel: {fileID: 435683948}
   roomPanel: {fileID: 1097768472}
   startButtom: {fileID: 479557583}
@@ -4492,7 +4492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf7e6f0d600b6142bfa70100d01c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AbleConnection: 0
+  AbleConnection: 1
 --- !u!4 &1296794909
 Transform:
   m_ObjectHideFlags: 0
