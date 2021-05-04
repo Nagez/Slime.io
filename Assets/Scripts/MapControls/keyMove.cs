@@ -9,6 +9,7 @@ public class keyMove : MonoBehaviour
     public Transform[] StartRock;
     public Transform[] MainPath;
 
+    public int slimeLevel = 1;
     public int PlayerPosition = 0;
     public bool FirstRollMove = true;
     
@@ -148,18 +149,19 @@ public class keyMove : MonoBehaviour
                         }
                         else
                         {
-                            Debug.Log("levelUp");
+                            Debug.Log("levelUp "+CurrentSlime.name);
+                            LevelUP(CurrentSlime, testSlime);
                             Debug.Log("Destroy " + testSlime.name);
 
                             Destroy(testSlime);
                             PlayerS.GetComponent<PlayerScript>().Slimes.RemoveAt(j);
-                            //myItems.RemoveAt(myIndex);
                             break;
                         }
                         
                     }
                     else
                     {
+                        
                         Debug.Log("Destroy "+ testSlime.name);
                         Destroy(testSlime);
 
@@ -169,6 +171,12 @@ public class keyMove : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void LevelUP(Rigidbody2D CurrentSlime, GameObject testSlime)
+    {
+        int addLevel = CurrentSlime.GetComponent<keyMove>().slimeLevel + testSlime.GetComponent<keyMove>().slimeLevel;
+        CurrentSlime.GetComponent<keyMove>().slimeLevel = addLevel;
     }
 
 

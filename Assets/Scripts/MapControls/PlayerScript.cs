@@ -67,22 +67,26 @@ public class PlayerScript : MonoBehaviour
     {
         //add collishion check
         //if (Slimes.Length < SlimesPerTPlayer)
+        
         if (Slimes.Count < SlimesPerTPlayer)
         {
             bool SlimeE = false;
+            int slimeCount = 0;
             //add slime detector 
             for (int i = 0; i < this.Slimes.Count; i++)
             {
                 if (this.Slimes[i].GetComponent<keyMove>().PlayerPosition == 0)
                     SlimeE = true;
+                slimeCount= slimeCount+this.Slimes[i].GetComponent<keyMove>().slimeLevel;
             }
 
-            if (!SlimeE)
+            if (!SlimeE && (slimeCount<=5))
             {
                 GameObject NewSlime = Instantiate(Slimes[0], Slimes[0].GetComponent<keyMove>().StartRock[0].transform.position, Slimes[0].GetComponent<keyMove>().StartRock[0].transform.rotation);
                 GameObject PlayerT = GameObject.Find("Player" + playerNum);
                 NewSlime.transform.parent = PlayerT.transform;
                 NewSlime.GetComponent<keyMove>().PlayerPosition = 0;
+                NewSlime.GetComponent<keyMove>().slimeLevel = 1;
                 int countN = PlayerT.GetComponent<PlayerScript>().Slimes.Count;//NewSlime.GetComponentsInParent<PlayerScript>().Length;
                 NewSlime.name = NewSlime.name.ToString() + countN;
                 Slimes.Add(NewSlime);
