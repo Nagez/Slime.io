@@ -91,11 +91,24 @@ public class keyMove : MonoBehaviour
         }
         if(DiceRoll == 0)
         {
+            if (Player.GetComponent<PlayerScript>().FirstMove)
+                DiceNum--;
+                //Player.GetComponent<PlayerScript>().DiceMoves[0] = -1;
+
+            Player.GetComponent<PlayerScript>().DiceMoves[0] = 0;
+            Player.GetComponent<PlayerScript>().FirstMove = true;
+            
+            ////GetComponent<BoxCollider2D>().isTrigger = true;
+            ///
+            
+
+        }
+        if(DiceRoll == -1)
+        {
             moveAllowed = false;
             Player.GetComponent<PlayerScript>().DiceMoves[0] = -1;
             Player.GetComponent<PlayerScript>().FirstMove = true;
             //GetComponent<BoxCollider2D>().isTrigger = true;
-
         }
 
         FirstRollMove = false;

@@ -20,7 +20,8 @@ public class SlimeCollision : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(this.gameObject.GetComponentInParent<PlayerScript>().DiceMoves[0] == 0)
+        Debug.Log("Coll!");
+        if (this.gameObject.GetComponentInParent<PlayerScript>().DiceMoves[0] == 0)//add function
         {
             Debug.Log(this.name + "collision With" + collision.gameObject.name);
             if ((this.gameObject.GetComponent<keyMove>().PlayerPosition == collision.gameObject.GetComponent<keyMove>().PlayerPosition))
