@@ -480,7 +480,7 @@ Transform:
   - {fileID: 497424569}
   - {fileID: 359995785}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &88225060
 GameObject:
@@ -6440,6 +6440,7 @@ MonoBehaviour:
   DiceMoves: 0000000000000000000000000000000000000000
   PTurn: 0
   FirstMove: 0
+  GameControlPlayer: {fileID: 0}
 --- !u!4 &359995785
 Transform:
   m_ObjectHideFlags: 0
@@ -7030,6 +7031,7 @@ MonoBehaviour:
   DiceMoves: 0000000000000000000000000000000000000000
   PTurn: 0
   FirstMove: 0
+  GameControlPlayer: {fileID: 0}
 --- !u!1 &497714967
 GameObject:
   m_ObjectHideFlags: 0
@@ -8769,6 +8771,7 @@ MonoBehaviour:
   DiceMoves: ffffffffffffffffffffffffffffffffffffffff
   PTurn: 0
   FirstMove: 0
+  GameControlPlayer: {fileID: 0}
 --- !u!1 &840011789
 GameObject:
   m_ObjectHideFlags: 0
@@ -16026,7 +16029,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382227900}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.12, y: 2.34, z: 5.546526}
+  m_LocalPosition: {x: 8.12, y: 0.28, z: 5.546526}
   m_LocalScale: {x: 1.3171, y: 1.3471, z: 1}
   m_Children: []
   m_Father: {fileID: 379589756}
@@ -17443,6 +17446,7 @@ MonoBehaviour:
   DiceMoves: ffffffffffffffffffffffffffffffffffffffff
   PTurn: 0
   FirstMove: 0
+  GameControlPlayer: {fileID: 0}
 --- !u!1 &1835030033
 GameObject:
   m_ObjectHideFlags: 0
@@ -17586,7 +17590,7 @@ Transform:
   - {fileID: 430442826}
   - {fileID: 840011790}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1928405726
 GameObject:
@@ -18339,11 +18343,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2677657623118341301, guid: c3500abba665e91449b97c684d8410eb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3637142
+      value: 7.45
       objectReference: {fileID: 0}
     - target: {fileID: 2677657623118341301, guid: c3500abba665e91449b97c684d8410eb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.58317775
+      value: -3.88
       objectReference: {fileID: 0}
     - target: {fileID: 2677657623118341301, guid: c3500abba665e91449b97c684d8410eb, type: 3}
       propertyPath: m_LocalPosition.z
