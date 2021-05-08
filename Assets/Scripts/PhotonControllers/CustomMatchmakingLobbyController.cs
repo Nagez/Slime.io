@@ -20,7 +20,10 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     private TMP_InputField playerNameInput; //Input field so player can change their NickName
 
     private string roomName; //string for saving room name
-    private int roomSize; //int for saving room size
+    private int roomSize = 4; //int for saving room size
+    List<int> Sizes = new List<int>() { 5, 4, 3, 2, 1 };
+    [SerializeField]
+    private Dropdown roomSizeDropDownList;
 
     private List<RoomInfo> roomListings; //list of current rooms
     [SerializeField]
@@ -120,10 +123,11 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         Debug.Log("room name set to " + roomName);
 
     }
-    public void OnRoomSizeChanged(string sizeIn) //set room size aka number of alowed players
+    public void OnRoomSizeChanged(int sizeIn) //set room size aka number of alowed players
     {
-        Debug.Log("room size get " + sizeIn);
-        roomSize = int.Parse(sizeIn);
+        Debug.Log("drop: " + sizeIn);
+        roomSize = Sizes[sizeIn+1]; //did +1 because the list start with 5 but room sizes start in 4 (start in 5 because i use the array in slimeNumber also)
+        //roomSize = int.Parse(sizeIn);
         Debug.Log("room size set to " + roomSize);
 
     }
