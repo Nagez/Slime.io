@@ -24,6 +24,9 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     List<int> Sizes = new List<int>() { 5, 4, 3, 2, 1 };
     [SerializeField]
     private Dropdown roomSizeDropDownList;
+    private int NumOfSlimes = 5; //int for saving Nummber Of Slimes available to each player
+    [SerializeField]
+    private Dropdown NumOfSlimesDropDownList;
 
     private List<RoomInfo> roomListings; //list of current rooms
     [SerializeField]
@@ -118,24 +121,28 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     public void OnRoomNameChanged(string nameIn) //set the room name
     {
-        Debug.Log("room name get " + nameIn);
         roomName = nameIn;
-        Debug.Log("room name set to " + roomName);
 
     }
     public void OnRoomSizeChanged(int sizeIn) //set room size aka number of alowed players
     {
-        Debug.Log("drop: " + sizeIn);
         roomSize = Sizes[sizeIn+1]; //did +1 because the list start with 5 but room sizes start in 4 (start in 5 because i use the array in slimeNumber also)
         //roomSize = int.Parse(sizeIn);
-        Debug.Log("room size set to " + roomSize);
+        //Debug.Log("room size set to " + roomSize);
 
     }
+    public void OnRoomNumOfSlimesChanged(int sizeIn) //set room size aka number of alowed players
+    {
+        Debug.Log("NumOfSlimes before " + NumOfSlimes);
+        NumOfSlimes = Sizes[sizeIn]; //droplist values start at 0, get actual value from array
+        Debug.Log("NumOfSlimes set to " + NumOfSlimes);
 
+    }
     public void CreateRoom()
     {
         Debug.Log("Creating room now");
         RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize };
+        if (roomName == null) { roomName = PlayerPrefs.GetString("NickName") + "'s Room"; } //if room name was not given, the player nickname will be the room's name
         PhotonNetwork.CreateRoom(roomName, roomOps);
     }
 
