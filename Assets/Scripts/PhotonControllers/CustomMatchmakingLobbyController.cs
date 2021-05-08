@@ -36,7 +36,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 
     public override void OnConnectedToMaster()
     {
-        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.AutomaticallySyncScene = true; //all the clients will load to the same scene as the master client
         lobbyConnectButton.SetActive(true);
         roomListings = new List<RoomInfo>(); //initializing roomListing
 
@@ -72,11 +72,11 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby();
     }
 
-    public override void OnRoomListUpdate(List<RoomInfo> roomList)
+    public override void OnRoomListUpdate(List<RoomInfo> roomList) //called when in lobby
     {
         Debug.Log("onroomlistupdate");
         int tempIndex;
-        foreach(RoomInfo room in roomList)
+        foreach(RoomInfo room in roomList) //check all rooms
         {
             if(roomListings != null)
             {
@@ -111,7 +111,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     {
         Debug.Log("listrooms");
 
-        if (room.IsOpen && room.IsVisible)
+        if (room.IsOpen && room.IsVisible) //if the room is open display them
         {
             GameObject tempListing = Instantiate(roomListingPrefab, roomsContainer);
             RoomButton tempButton = tempListing.GetComponent<RoomButton>();
