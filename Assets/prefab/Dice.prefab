@@ -81,7 +81,7 @@ SpriteRenderer:
   m_Size: {x: 1.55, y: 1.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &5982733762351022547
@@ -96,6 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6446080f781b8644960c57e263b5676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlimePrefab: {fileID: 0}
+  num1: {fileID: 0}
+  position0: {fileID: 0}
 --- !u!61 &5982733762351022550
 BoxCollider2D:
   m_ObjectHideFlags: 0
