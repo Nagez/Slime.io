@@ -30,17 +30,23 @@ public class newtestcrubb : MonoBehaviour
         dicesides = Resources.LoadAll<Sprite>("dice/");
         NumSides = Resources.LoadAll<Sprite>("NumRes/");
         //for (int i = 0; i < 5; i++) { Debug.Log(dicesides[i]); }
-        rend.sprite = dicesides[1];//to be in the begining of the game the num 2 n th dice side
+        //rend.sprite = dicesides[1];//to be in the begining of the game the num 2 n th dice side
     }
 
     private void OnMouseDown()
     {
+        rend.sprite = dicesides[1];//to be in the begining of the game the num 2 n th dice side
         //if (!game.gameOver && coroutineAllowed)
         if (coroutineAllowed)
         {
             StartCoroutine("RollTheDice");//אם המשחק לא נגמר  אז זורקים קוביה מפעלים פונקציה
         }
-       // updateArr(results);
+        //testnum = 555;
+        //Debug.Log(testnum.ToString());
+        results.Add(4);
+        results.Add(1);
+        updateArr(results);
+        
     }
 
 
@@ -62,11 +68,13 @@ public class newtestcrubb : MonoBehaviour
                 //randomDiceSide = Random.Range(0, 5);//צריך להכניס calcDiceResult=====בחירת מספר אקראי
                 randomDiceSide = calcDiceResult();
                 rend.sprite = dicesides[randomDiceSide - 1];//the new side on dice(קוביה)
+                //results.Add(randomDiceSide); //array of results
+
                 //rendSquare.sprite = NumSides[randomDiceSide];
                 //Debug.Log("pressed");
                 yield return new WaitForSeconds(0.05f);//?
             }
-            results.Add(randomDiceSide); //array of results
+             results.Add(randomDiceSide); //array of results
             // numofThrown++;
         }
         foreach (var x in results)//לראות את הlist
@@ -75,7 +83,7 @@ public class newtestcrubb : MonoBehaviour
         }
 
         Debug.Log(testnum.ToString());
-        updateArr(results);
+       // updateArr(results);
 
     }
     //function for calculating the result of the dice with precentages
@@ -91,7 +99,7 @@ public class newtestcrubb : MonoBehaviour
         if (res >= 96) { res = 6; } //5% chance to get a 6
         return res;//הוא המספר שמופיע על הקוביה אחרי לחיצה לפי אחוזים
     }
-    private IEnumerator updateArr(List<int> results)
+    private IEnumerator updateArr(List<int>results)
     {
         testnum = 6666;
         Debug.Log(testnum.ToString());
@@ -363,14 +371,15 @@ public class newtestcrubb : MonoBehaviour
         //        }
         //    }
         //}
-
-
+        List<int> ListNumStep;
         int j = 0;
         int num = 0;//if there is num on the list
         for (int i = 0; i < 5; i++)
         {
             results.RemoveAt(i);
             num = results.Count;//number in the list
+            ListNumStep = new List<int>();
+            ListNumStep.Add(num);
             if (num != 0)//is not the end of list
             {
                 j++;//to know for who place to ad the num in the array
@@ -387,6 +396,22 @@ public class newtestcrubb : MonoBehaviour
 
             }
         }
+       
+    }
+    public int ChooseNumSteps(List<int> results,int Placenumber)//קריאה לפונקציה מסקריבת חדש בפונקציה שךו onMouse
+    {
+        int numSteps;
+        results.RemoveAt(Placenumber);
+        numSteps = results.Count;
+        return numSteps;
+    }
+    public IEnumerator DeletNumStepsFommArr(List<int> results, int Placenumber)//קריאה לפונקציה מסקריבת חדש בפונקציה שךו onMouse
+    {
+        int numSteps;
+        results.RemoveAt(Placenumber);
+        numSteps = results.Count;
+        updateArr(results);
+        yield return new WaitForSeconds(0.05f);//?
     }
 }
 

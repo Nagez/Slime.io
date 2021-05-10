@@ -753,6 +753,7 @@ GameObject:
   m_Component:
   - component: {fileID: 320510740}
   - component: {fileID: 320510739}
+  - component: {fileID: 320510741}
   m_Layer: 0
   m_Name: Frogy
   m_TagString: Untagged
@@ -825,6 +826,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &320510741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320510738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44110f9c531ce6a44b705703e1aed118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  StartRock: []
+  MainPath: []
+  slimeLevel: 1
+  PlayerPosition: 0
+  FirstRollMove: 1
+  moveSpeed: 4
+  DiceNum: 0
+  RockNumber: 0
+  moveAllowed: 0
 --- !u!1 &340331381
 GameObject:
   m_ObjectHideFlags: 0
@@ -2321,6 +2344,7 @@ GameObject:
   - component: {fileID: 934708540}
   - component: {fileID: 934708539}
   - component: {fileID: 934708542}
+  - component: {fileID: 934708543}
   m_Layer: 0
   m_Name: Dice
   m_TagString: Untagged
@@ -2434,6 +2458,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.55, y: 1.52}
   m_EdgeRadius: 0
+--- !u!114 &934708543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934708538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92ba25af85ca8ec44b0ea834ca63f828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &988062310
 GameObject:
   m_ObjectHideFlags: 0
@@ -3648,7 +3684,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1506435542}
   - component: {fileID: 1506435541}
-  - component: {fileID: 1506435540}
   m_Layer: 0
   m_Name: Frogy2
   m_TagString: Untagged
@@ -3656,56 +3691,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1506435540
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506435539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44110f9c531ce6a44b705703e1aed118, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  StartRock:
-  - {fileID: 1886854367}
-  MainPath:
-  - {fileID: 1733484091}
-  - {fileID: 806779259}
-  - {fileID: 1008316507}
-  - {fileID: 1317562323}
-  - {fileID: 1831958218}
-  - {fileID: 1531955185}
-  - {fileID: 1501811279}
-  - {fileID: 426223725}
-  - {fileID: 116500917}
-  - {fileID: 1128212037}
-  - {fileID: 1768756893}
-  - {fileID: 2061642983}
-  - {fileID: 517444390}
-  - {fileID: 1152448982}
-  - {fileID: 1623320114}
-  - {fileID: 1755721482}
-  - {fileID: 981394}
-  - {fileID: 400283106}
-  - {fileID: 1022523194}
-  - {fileID: 90995555}
-  - {fileID: 1886814192}
-  - {fileID: 745023932}
-  - {fileID: 1089021152}
-  - {fileID: 2137605762}
-  - {fileID: 684662232}
-  - {fileID: 248403754}
-  - {fileID: 76433509}
-  - {fileID: 915871746}
-  - {fileID: 493736129}
-  - {fileID: 1175346754}
-  FrogPosition: 0
-  moveSpeed: 4
-  DiceNum: 0
-  RockNumber: 0
-  moveAllowed: 1
 --- !u!212 &1506435541
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3868,6 +3853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlimePrefab: {fileID: 2094511874}
   position0: {fileID: 1733484090}
+  particles: {fileID: 0}
 --- !u!1 &1527481205
 GameObject:
   m_ObjectHideFlags: 0
