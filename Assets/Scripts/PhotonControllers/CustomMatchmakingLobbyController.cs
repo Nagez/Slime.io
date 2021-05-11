@@ -115,7 +115,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         {
             GameObject tempListing = Instantiate(roomListingPrefab, roomsContainer);
             RoomButton tempButton = tempListing.GetComponent<RoomButton>();
-            tempButton.SetRoom(room.Name, room.MaxPlayers, room.PlayerCount);
+            tempButton.SetRoom(room.Name, room.MaxPlayers, room.PlayerCount); //from roomButton script
         }
     }
 
@@ -145,6 +145,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         //Debug.Log(PlayerPrefs.GetString("NickName"));
         if (roomName == null) { roomName = PlayerPrefs.GetString("NickName") + "'s Room"; } //if room name was not given, the player nickname will be the room's name
         PhotonNetwork.CreateRoom(roomName, roomOps);
+
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)

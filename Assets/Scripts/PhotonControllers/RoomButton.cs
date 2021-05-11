@@ -14,7 +14,7 @@ public class RoomButton : MonoBehaviour
 
     private string roomName; //string for saving room name
     private int roomSize; //int for saving room size
-    private int playerCount; 
+    private int playerCount;  
 
     public void JoinRoomOnClick()
     {
