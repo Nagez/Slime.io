@@ -22,12 +22,12 @@ public class SlimeCollision : MonoBehaviour
     {
         Debug.Log("Coll!");
 
-        if(this.gameObject.GetComponent<Slime>().PlayerPosition == collision.gameObject.GetComponent<Slime>().PlayerPosition)
+        if(this.gameObject.GetComponent<keyMove>().PlayerPosition == collision.gameObject.GetComponent<keyMove>().PlayerPosition)
 
         //if (this.gameObject.GetComponentInParent<PlayerScript>().DiceMoves[0] == 0)//add function
         {
             Debug.Log(this.name + "collision With" + collision.gameObject.name);
-            if ((this.gameObject.GetComponent<Slime>().PlayerPosition == collision.gameObject.GetComponent<Slime>().PlayerPosition))
+            if ((this.gameObject.GetComponent<keyMove>().PlayerPosition == collision.gameObject.GetComponent<keyMove>().PlayerPosition))
             {
                 if (collision.gameObject.name == this.name)
                 {

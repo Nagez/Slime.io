@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Slime : MonoBehaviour
+public class keyMove : MonoBehaviour
 {
  
     public GameObject Player;
@@ -32,17 +32,10 @@ public class Slime : MonoBehaviour
         if (moveAllowed)
         {
             moveFrog(DiceNum);
-        }   
+        }
+            
     }
-    public void Init(int playerNum, int slimeNumber)
-    {
-        GameObject PlayerT = GameObject.Find("Player" + playerNum);
-        transform.parent = PlayerT.transform;
-        PlayerPosition = 0;
-        slimeLevel = 1;
-        int countN = PlayerT.GetComponent<PlayerScript>().Slimes.Count;//NewSlime.GetComponentsInParent<PlayerScript>().Length;
-        name += slimeNumber;
-    }
+
     public void moveFrog(int DiceRoll)
     {
         
@@ -116,7 +109,7 @@ public class Slime : MonoBehaviour
             }
             if (DiceRoll == -1)
             {
-                CollisionChecking();
+                CollisionChacking();
                 moveAllowed = false;
                 Player.GetComponent<PlayerScript>().DiceMoves[0] = -1;
                 Player.GetComponent<PlayerScript>().FirstMove = true;
@@ -136,11 +129,11 @@ public class Slime : MonoBehaviour
         
     }
 
-    public void CollisionChecking()
+    public void CollisionChacking()
     {
         Rigidbody2D CurrentSlime = GetComponent<Rigidbody2D>();
-        
-        for (int i=0;i<4;i++)//add mex players
+
+        for(int i=0;i<4;i++)//add mex players
         {
             GameObject GameControlsP = GameObject.Find("GameControls");//GetComponent<GameControl>().Players[i];
             GameObject PlayerS = GameControlsP.GetComponent<GameControl>().Players[i];
@@ -149,7 +142,7 @@ public class Slime : MonoBehaviour
             {
                 GameObject testSlime = PlayerS.GetComponent<PlayerScript>().Slimes[j];
 
-                if(CurrentSlime.GetComponent<Slime>().PlayerPosition == testSlime.GetComponent<Slime>().PlayerPosition)
+                if(CurrentSlime.GetComponent<keyMove>().PlayerPosition == testSlime.GetComponent<keyMove>().PlayerPosition)
                 {
                     if (CurrentSlime.GetComponentInParent<PlayerScript>().playerNum == testSlime.GetComponentInParent<PlayerScript>().playerNum)
                     {
@@ -183,13 +176,11 @@ public class Slime : MonoBehaviour
         }
     }
 
-    
-
     public void LevelUP(Rigidbody2D CurrentSlime, GameObject testSlime)
     {
-        int addLevel = CurrentSlime.GetComponent<Slime>().slimeLevel + testSlime.GetComponent<Slime>().slimeLevel;
-        CurrentSlime.GetComponent<Slime>().slimeLevel = addLevel;
-        Debug.Log(CurrentSlime.GetComponent<Slime>().slimeLevel + "+"+ testSlime.GetComponent<Slime>().slimeLevel+"=" + addLevel);
+        int addLevel = CurrentSlime.GetComponent<keyMove>().slimeLevel + testSlime.GetComponent<keyMove>().slimeLevel;
+        CurrentSlime.GetComponent<keyMove>().slimeLevel = addLevel;
+        Debug.Log(CurrentSlime.GetComponent<keyMove>().slimeLevel + "+"+ testSlime.GetComponent<keyMove>().slimeLevel+"=" + addLevel);
     }
 
 

@@ -67,6 +67,7 @@ public class GameControl : MonoBehaviour
         switch (whosTurnN)
         {
             case 1:
+                
                 Player1.GetComponent<PlayerScript>().PTurn = true;
                 TextGreen.gameObject.SetActive(true);
                 break;
@@ -103,11 +104,6 @@ public class GameControl : MonoBehaviour
             whosTurnT = 1;
 
         whosTurn = whosTurnT;
-    }
-
-    public void CollisionCheckingg()
-    {
-        
     }
 
 }
