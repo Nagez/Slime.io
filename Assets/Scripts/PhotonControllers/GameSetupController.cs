@@ -6,6 +6,7 @@ using Photon.Pun;
 
 public class GameSetupController : MonoBehaviour
 {
+    public GameObject position0;
     // this script will be added to multiplayer scenes
     void Start()
     {
@@ -18,6 +19,6 @@ public class GameSetupController : MonoBehaviour
         //file location name need to match actual location in unity case sensitive
         Debug.Log("creating player");
 
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs","greenplayer"),Vector3.zero,Quaternion.identity);//params(file location for photon plyaer prefab,position to start, rotation) 
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs","greenplayer"), position0.transform.position, Quaternion.identity);//params(file location for photon plyaer prefab,position to start, rotation) 
     }
 }
