@@ -30,7 +30,10 @@ public class keyMove : MonoBehaviour
     void Update()
     {
         if (moveAllowed)
+        {
             moveFrog(DiceNum);
+        }
+            
     }
 
     public void moveFrog(int DiceRoll)
@@ -177,6 +180,7 @@ public class keyMove : MonoBehaviour
     {
         int addLevel = CurrentSlime.GetComponent<keyMove>().slimeLevel + testSlime.GetComponent<keyMove>().slimeLevel;
         CurrentSlime.GetComponent<keyMove>().slimeLevel = addLevel;
+        Debug.Log(CurrentSlime.GetComponent<keyMove>().slimeLevel + "+"+ testSlime.GetComponent<keyMove>().slimeLevel+"=" + addLevel);
     }
 
 

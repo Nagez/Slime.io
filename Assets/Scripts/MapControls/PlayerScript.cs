@@ -56,7 +56,9 @@ public class PlayerScript : MonoBehaviour
                 //GetComponent<keyMove>().CollisionChacking();
                 PTurn = false;
                 //whosTurn();
-                GameControl.turnSwitch();
+                //GetCompone
+                //GameControl.turnSwitch();
+                GameControlPlayer.GetComponent<GameControl>().SwitchTurns();
                 FirstMove = false;
                 SlimeSpawnNeeded();
             }

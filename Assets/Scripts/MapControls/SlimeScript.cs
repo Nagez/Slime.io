@@ -29,6 +29,7 @@ public class SlimeScript : MonoBehaviour
     {
         if (GetComponentInParent<PlayerScript>().PTurn)
         {
+            //if()
             CurrentDice = GetComponentInParent<PlayerScript>().DiceMoves[0];
             SlimeMovmentAllowed = true;
         }

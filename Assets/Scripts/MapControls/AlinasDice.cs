@@ -29,6 +29,9 @@ public class AlinasDice : MonoBehaviour
         randomDiceSide = Random.Range(1, 6);
 
         //coroutineAllowed = true;
+        
+
+        //GameObject.Find("Player" + GameControl.whosTurn).GetComponent<PlayerScript>().DiceMoves[0] = randomDiceSide;
         GameObject.Find("Player" + GameControl.whosTurn).GetComponent<PlayerScript>().DiceMoves[0] = randomDiceSide;
         //;
         Debug.Log(randomDiceSide);

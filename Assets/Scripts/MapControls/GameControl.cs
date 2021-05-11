@@ -6,7 +6,7 @@ public class GameControl : MonoBehaviour
 {
 
     public int SlimesPerPlayer = 1;
-    public int PlayersAmount = 4;
+    public int PlayersAmount = 3;
     public List<GameObject> Players = new List<GameObject>();
 
     private static GameObject PlayerMoving, Player1Move, Player2Move, Player3Move, Player4Move;//not using
@@ -16,7 +16,7 @@ public class GameControl : MonoBehaviour
     public static int player1Rock = 0, player2Rock = 0; //not using
 
     public static int whosTurn = 1;
-
+    public int whosTurnT = 1;
     /////////////////////////////////////////////////
     public static int diceSide = 0;//check if using
 
@@ -29,6 +29,7 @@ public class GameControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         //Hows Turn
         TextGreen = GameObject.Find("TextGreen");
         TextBlue = GameObject.Find("TextBlue");
@@ -41,14 +42,6 @@ public class GameControl : MonoBehaviour
         Player3 = GameObject.Find("Player3");
         Player4 = GameObject.Find("Player4");
 
-        //Playes moving
-        
-        //Player1.GetComponent<PlayerScript>().PTurn = false;
-        //Player2.GetComponent<PlayerScript>().PTurn = false;
-        //Player3.GetComponent<PlayerScript>().PTurn = false;
-        //Player4.GetComponent<PlayerScript>().PTurn = false;
-
-
         //off turn text
         TextGreen.gameObject.SetActive(false);
         TextBlue.gameObject.SetActive(false);
@@ -60,7 +53,8 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MovePlayer(whosTurn);
+        //MovePlayer(whosTurn);
+        MovePlayer(whosTurnT);
     }
 
     public static void MovePlayer(int whosTurnN)
@@ -92,6 +86,8 @@ public class GameControl : MonoBehaviour
 
         }
     }
+
+    //not in use
     public static void turnSwitch()
     {
         if (whosTurn < 4)
@@ -100,5 +96,14 @@ public class GameControl : MonoBehaviour
             whosTurn = 1;
     }
 
+    public void SwitchTurns()
+    {
+        if (whosTurnT < PlayersAmount)
+            whosTurnT++;
+        else
+            whosTurnT = 1;
+
+        whosTurn = whosTurnT;
+    }
 
 }
