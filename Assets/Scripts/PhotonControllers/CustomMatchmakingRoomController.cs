@@ -47,9 +47,13 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom() //called when local player joins the room
     {
+        if (PhotonNetwork.CurrentRoom == null)
+        {
+            Debug.Log("current room is null");
+            return;
+        }
         roomPanel.SetActive(true);
         lobbyPanel.SetActive(false);
-        Debug.Log("onjoinedroom currentroom" + PhotonNetwork.CurrentRoom.Name);
         roomNameDisplay.text = PhotonNetwork.CurrentRoom.Name;
         if(PhotonNetwork.IsMasterClient) //show the start button only for host
         {

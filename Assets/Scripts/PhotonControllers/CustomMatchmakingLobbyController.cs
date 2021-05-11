@@ -34,8 +34,9 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject roomListingPrefab; //prefab for displayer each room in the lobby
 
-    public override void OnConnectedToMaster()
+    public override void OnConnectedToMaster() //when the player connected to the server
     {
+
         PhotonNetwork.AutomaticallySyncScene = true; //all the clients will load to the same scene as the master client
         lobbyConnectButton.SetActive(true);
         roomListings = new List<RoomInfo>(); //initializing roomListing
@@ -147,7 +148,10 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         PhotonNetwork.CreateRoom(roomName, roomOps);
 
     }
-
+    public override void OnCreatedRoom()
+    {
+        Debug.Log("Room was created");
+    }
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         Debug.Log("Tried to create a new room but failed, there must already be a room with the same name");
