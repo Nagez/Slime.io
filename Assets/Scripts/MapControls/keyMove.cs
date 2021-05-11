@@ -23,7 +23,7 @@ public class keyMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //transform.position = StartRock[0].transform.position;
+        transform.position = StartRock[0].transform.position;
     }
 
     // Update is called once per frame
