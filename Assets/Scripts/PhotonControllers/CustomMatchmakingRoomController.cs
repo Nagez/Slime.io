@@ -49,6 +49,7 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
     {
         roomPanel.SetActive(true);
         lobbyPanel.SetActive(false);
+        Debug.Log("onjoinedroom currentroom" + PhotonNetwork.CurrentRoom.Name);
         roomNameDisplay.text = PhotonNetwork.CurrentRoom.Name;
         if(PhotonNetwork.IsMasterClient) //show the start button only for host
         {

@@ -128,7 +128,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     {
         roomSize = Sizes[sizeIn+1]; //did +1 because the list start with 5 but room sizes start in 4 (start in 5 because i use the array in slimeNumber also)
         //roomSize = int.Parse(sizeIn);
-        //Debug.Log("room size set to " + roomSize);
+        Debug.Log("room size set to " + roomSize);
 
     }
     public void OnRoomNumOfSlimesChanged(int sizeIn) //set room size aka number of alowed players
