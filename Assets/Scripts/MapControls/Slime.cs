@@ -20,6 +20,9 @@ public class Slime : MonoBehaviour
     public int RockNumber = 0;
     public bool moveAllowed = false;
 
+    [SerializeField] ParticleSystem smokeParticles;
+    [SerializeField] ParticleSystem starsParticles;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -161,6 +164,8 @@ public class Slime : MonoBehaviour
                         {
                             Debug.Log("levelUp "+CurrentSlime.name);
                             LevelUP(CurrentSlime, testSlime);
+                            testSlime.GetComponent<Slime>().starsParticles.Play();
+                            CurrentSlime.GetComponent<Slime>().starsParticles.Play();
                             Debug.Log("Destroy " + testSlime.name);
 
                             Destroy(testSlime);
@@ -173,8 +178,9 @@ public class Slime : MonoBehaviour
                     {
                         
                         Debug.Log("Destroy "+ testSlime.name);
+                        testSlime.GetComponent<Slime>().starsParticles.Play();
+                        CurrentSlime.GetComponent<Slime>().starsParticles.Play();
                         Destroy(testSlime);
-
                         PlayerS.GetComponent<PlayerScript>().Slimes.RemoveAt(j);
                         break;
                     }
