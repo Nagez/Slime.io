@@ -57,11 +57,12 @@ private IEnumerator DelayIt()
 }*/
     public void LoadNextScene()
     {
+        Debug.Log("delay1");
         StartCoroutine(DelayIt());
     }
     public IEnumerator DelayIt()
     {
-        //Debug.Log("delay2");
+        Debug.Log("delay2");
         //load the scene asynchrounously, it's important you set allowsceneactivation to false
         //in order to wait for the audioclip to finish playing
         AsyncOperation sceneLoading = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
