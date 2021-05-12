@@ -22,7 +22,7 @@ public class RoomButton : MonoBehaviour
         PhotonNetwork.JoinRoom(roomName);
     }
 
-    public void SetRoom(string nameInput, int sizeInput, int countInput)
+    public void SetRoom(string nameInput, int sizeInput, int countInput) //the lobby controller will instantiate room buttons for every room
     {
         roomName = nameInput;
         roomSize = sizeInput;

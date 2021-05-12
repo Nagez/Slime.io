@@ -5,8 +5,9 @@ using UnityEngine;
 public class GameControl : MonoBehaviour
 {
 
-    public int SlimesPerPlayer = 1;
-    public int PlayersAmount = 3;
+    public int SlimesPerPlayer; //value is initialized at the start
+    public int PlayersAmount;
+
     public List<GameObject> Players = new List<GameObject>();
 
     private static GameObject PlayerMoving, Player1Move, Player2Move, Player3Move, Player4Move;//not using
@@ -29,7 +30,8 @@ public class GameControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        initPrefrences();
+
         //Hows Turn
         TextGreen = GameObject.Find("TextGreen");
         TextBlue = GameObject.Find("TextBlue");
@@ -109,5 +111,12 @@ public class GameControl : MonoBehaviour
     {
         
     }
+    public void initPrefrences()
+    {
+        SlimesPerPlayer = GamePrefrences.instance.numberOfSlimes;
+        PlayersAmount = GamePrefrences.instance.numberOfPlayers;
+
+    }
+
 
 }

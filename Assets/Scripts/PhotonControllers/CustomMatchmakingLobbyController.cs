@@ -34,6 +34,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject roomListingPrefab; //prefab for displayer each room in the lobby
 
+    
     public override void OnConnectedToMaster() //when the player connected to the server
     {
 
