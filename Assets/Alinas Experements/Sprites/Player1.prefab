@@ -143,7 +143,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.034583718, y: -0.04929592}
+  m_Offset: {x: -0.06852862, y: -0.029372513}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -154,7 +154,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.3633306, y: 0.21742246}
+  m_Size: {x: 0.50665337, y: 0.42551118}
   m_EdgeRadius: 0
 --- !u!114 &4387503327255912416
 MonoBehaviour:
@@ -210,6 +210,8 @@ MonoBehaviour:
   DiceNum: 0
   RockNumber: 0
   moveAllowed: 0
+  smokeParticles: {fileID: 0}
+  starsParticles: {fileID: 0}
 --- !u!114 &4387503327255912419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,6 +395,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4387503327255912445}
     m_Modifications:
+    - target: {fileID: 3320215785540139552, guid: ba4726db86d0c5641af103e0a00cca9e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3320215785540139553, guid: ba4726db86d0c5641af103e0a00cca9e, type: 3}
       propertyPath: m_RootOrder
       value: 0

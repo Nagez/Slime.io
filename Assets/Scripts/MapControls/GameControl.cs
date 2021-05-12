@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameControl : MonoBehaviour
 {
 
-    public int SlimesPerPlayer; //value is initialized at the start
+    public int SlimesPerPlayer; //value is initialized at unity field if no gameprefence exists
     public int PlayersAmount;
 
     public List<GameObject> Players = new List<GameObject>();
@@ -32,7 +32,7 @@ public class GameControl : MonoBehaviour
     {
         initPrefrences();
 
-        //Hows Turn
+        //Whos Turn
         TextGreen = GameObject.Find("TextGreen");
         TextBlue = GameObject.Find("TextBlue");
         TextRed = GameObject.Find("TextRed");
@@ -113,9 +113,11 @@ public class GameControl : MonoBehaviour
     }
     public void initPrefrences()
     {
-        SlimesPerPlayer = GamePrefrences.instance.numberOfSlimes;
-        PlayersAmount = GamePrefrences.instance.numberOfPlayers;
-
+        if (GamePrefrences.instance)
+        {
+            SlimesPerPlayer = GamePrefrences.instance.numberOfSlimes;
+            PlayersAmount = GamePrefrences.instance.numberOfPlayers;
+        }      
     }
 
 

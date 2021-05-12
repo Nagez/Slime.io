@@ -133,7 +133,7 @@ public class Slime : MonoBehaviour
     {
         if(GetComponentInParent<PlayerScript>().PTurn)
         {
-            DiceNum =GetComponentInParent<PlayerScript>().DiceMoves[0];
+            DiceNum = GetComponentInParent<PlayerScript>().DiceMoves[0];
             moveAllowed = true;
         }
         
@@ -164,7 +164,6 @@ public class Slime : MonoBehaviour
                         {
                             Debug.Log("levelUp "+CurrentSlime.name);
                             LevelUP(CurrentSlime, testSlime);
-                            testSlime.GetComponent<Slime>().starsParticles.Play();
                             CurrentSlime.GetComponent<Slime>().starsParticles.Play();
                             Debug.Log("Destroy " + testSlime.name);
 
@@ -178,8 +177,7 @@ public class Slime : MonoBehaviour
                     {
                         
                         Debug.Log("Destroy "+ testSlime.name);
-                        testSlime.GetComponent<Slime>().starsParticles.Play();
-                        CurrentSlime.GetComponent<Slime>().starsParticles.Play();
+                        CurrentSlime.GetComponent<Slime>().smokeParticles.Play();
                         Destroy(testSlime);
                         PlayerS.GetComponent<PlayerScript>().Slimes.RemoveAt(j);
                         break;

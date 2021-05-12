@@ -7,8 +7,9 @@ public class GamePrefrences : MonoBehaviour
 {
     public static GamePrefrences instance;
 
-    public int numberOfSlimes = 5; //how many slime lives to start with, default is 5
-    public int numberOfPlayers = 4; //how many player are connected when starting the game
+    public int numberOfSlimes; //how many slime lives to start with, default is 5
+    public int numberOfPlayers; //how many player are connected when starting the game
+
     public GameObject controller;
     private void Awake()
     {

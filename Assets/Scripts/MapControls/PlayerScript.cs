@@ -6,7 +6,7 @@ public class PlayerScript : MonoBehaviour
 {
     public List<GameObject> Slimes = new List<GameObject>();
     //public GameObject[] Slimes=new GameObject[5];
-    public int SlimesPerTPlayer = 0;//slime lives per player
+    public int SlimesPerTPlayer;//slime lives per player
     public int playerNum;//player ID //player1
 
     public int[] DiceMoves = new int[5];
@@ -22,7 +22,8 @@ public class PlayerScript : MonoBehaviour
         //add function
 
         //GameObject GameControlPlayer = GameObject.Find("GameControls");
-        SlimesPerTPlayer = GameControlPlayer.GetComponent<GameControl>().SlimesPerPlayer;
+        //SlimesPerTPlayer = GameControlPlayer.GetComponent<GameControl>().SlimesPerPlayer;
+        getSlimePerPlayer();
     }
     // Update is called once per frame
     void Update()
@@ -32,7 +33,17 @@ public class PlayerScript : MonoBehaviour
             PlayersTurn(PTurn); 
         } 
     }
-
+    public void getSlimePerPlayer()
+    {
+        if (GamePrefrences.instance) //take from lobby
+        {
+            SlimesPerTPlayer = GamePrefrences.instance.numberOfSlimes;
+        }
+        else //take from gamecontrol
+        {
+            SlimesPerTPlayer = GameControlPlayer.GetComponent<GameControl>().SlimesPerPlayer;
+        }
+    }
     void PlayersTurn(bool moveAllowed)
     {
         if (moveAllowed)
