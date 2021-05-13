@@ -242,23 +242,22 @@ namespace Photon.Pun
             get { return this.controllerActorNr; }
             set
             {
-                if (value != 0 && this.controllerActorNr == value)
-                {
-                    return;
-                }
-
                 Player prevController = this.Controller;
-                this.controllerActorNr = value;
-                this.Controller = PhotonNetwork.CurrentRoom == null ? null : PhotonNetwork.CurrentRoom.GetPlayer(this.controllerActorNr, true);
+
+                this.Controller = PhotonNetwork.CurrentRoom == null ? null : PhotonNetwork.CurrentRoom.GetPlayer(value, true);
+                this.controllerActorNr = this.Controller != null ? this.Controller.ActorNumber : value;
+
                 this.IsMine = PhotonNetwork.LocalPlayer != null && this.controllerActorNr == PhotonNetwork.LocalPlayer.ActorNumber;
 
-                this.UpdateCallbackLists();
-
-                if (!ReferenceEquals(this.OnControllerChangeCallbacks, null))
+                if (!ReferenceEquals(this.Controller, prevController))
                 {
-                    for (int i = 0, cnt = this.OnControllerChangeCallbacks.Count; i < cnt; ++i)
+                    this.UpdateCallbackLists();
+                    if (!ReferenceEquals(this.OnControllerChangeCallbacks, null))
                     {
-                        this.OnControllerChangeCallbacks[i].OnControllerChange(this.Controller, prevController);
+                        for (int i = 0, cnt = this.OnControllerChangeCallbacks.Count; i < cnt; ++i)
+                        {
+                            this.OnControllerChangeCallbacks[i].OnControllerChange(this.Controller, prevController);
+                        }
                     }
                 }
             }
@@ -298,7 +297,7 @@ namespace Photon.Pun
 
                 this.viewIdField = value;
                 this.CreatorActorNr = value / PhotonNetwork.MAX_VIEW_IDS;   // the creator can be derived from the viewId. this is also the initial owner and creator.
-                this.OwnerActorNr = this.CreatorActorNr;        
+                this.OwnerActorNr = this.CreatorActorNr;
                 this.ControllerActorNr = this.CreatorActorNr;
                 this.RebuildControllerCache();
 
@@ -329,8 +328,10 @@ namespace Photon.Pun
             {
                 return;
             }
+            
             if (this.sceneViewId != 0)
             {
+                // PhotonNetwork.Instantiate will set a ViewID != 0 before the object awakes. So only objects loaded with the scene ever use the sceneViewId (even if the obj got pooled)
                 this.ViewID = this.sceneViewId;
             }
 
@@ -434,7 +435,8 @@ namespace Photon.Pun
         //    //            this.OnControllerChangeCallbacks[i].OnControllerChange(newController, prevController);
         //}
 
-        /// Called by OnJoinedRoom, OnMasterClientSwitched, OnPlayerEnteredRoom, OnPlayerLeftRoom and OnEvent for OwnershipUpdate
+        /// Called by OnJoinedRoom, OnMasterClientSwitched, OnPlayerEnteredRoom and OnEvent for OwnershipUpdate
+        /// OnPlayerLeftRoom will set a new controller directly, if the controller or owner left
         internal void RebuildControllerCache(bool ownerHasChanged = false)
         {
             //var prevController = this.controller;
