@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using System.IO;
 
 public class GameControl : MonoBehaviour
 {
@@ -28,6 +30,9 @@ public class GameControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Player1 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "greenplayer"));//params(file location for photon plyaer prefab,position to start, rotation) 
+        //Players.Add();
+
         Players[0].GetComponent<PlayerScript>().PTurn = true;
         GameObject.Find("dice6").GetComponent<AlinasDice>().coroutineAllowed = true;
 

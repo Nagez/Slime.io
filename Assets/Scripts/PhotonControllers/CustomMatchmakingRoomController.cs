@@ -88,6 +88,8 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
         if(PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.CurrentRoom.IsOpen = false; //no new players can enter after game starts
+            Debug.Log(PhotonNetwork.CountOfPlayers);
+            //GamePrefrences.instance.UpdatePrefrencess();
             PhotonNetwork.LoadLevel(multiPlayerSceneIndex);
         }
     }
