@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 3977701094432697425}
+  GameControl: {fileID: 0}
   StartRock:
   - {fileID: 0}
   MainPath:
@@ -206,8 +207,9 @@ MonoBehaviour:
   FirstRollMove: 1
   moveSpeed: 4
   DiceNum: 0
-  RockNumber: 0
   moveAllowed: 0
+  smokeParticles: {fileID: 0}
+  starsParticles: {fileID: 0}
 --- !u!114 &8335250611161671788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,9 +319,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slimes:
   - {fileID: 239734291077843330}
-  SlimesPerTPlayer: 0
+  SlimesLeft: 0
+  SlimesSpawned: 0
   playerNum: 1
-  DiceMoves: ffffffffffffffffffffffffffffffffffffffff
   PTurn: 0
   FirstMove: 0
   GameControlPlayer: {fileID: 0}

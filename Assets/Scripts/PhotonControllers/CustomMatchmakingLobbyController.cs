@@ -145,7 +145,7 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         Debug.Log("Creating room now");
         RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize };
         Debug.Log(PlayerPrefs.GetString("NickName"));
-        Debug.Log("roomName:" + roomName);
+        //Debug.Log("roomName:" + roomName);
         if (roomName == null) { roomName = PlayerPrefs.GetString("NickName") + "'s Room"; } //if room name was not given, the player nickname will be the room's name
         PhotonNetwork.CreateRoom(roomName, roomOps);
 
