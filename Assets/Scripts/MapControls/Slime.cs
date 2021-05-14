@@ -6,6 +6,7 @@ public class Slime : MonoBehaviour
 {
  
     public GameObject Player;
+    public GameObject GameControl;
     public Transform[] StartRock;
     public Transform[] MainPath;
 
@@ -16,8 +17,7 @@ public class Slime : MonoBehaviour
     [SerializeField] private float moveSpeed = 4f;
     [SerializeField] public int DiceNum = 0;
 
-    [HideInInspector]
-    public int RockNumber = 0;
+    
     public bool moveAllowed = false;
 
     [SerializeField] ParticleSystem smokeParticles;
@@ -34,111 +34,10 @@ public class Slime : MonoBehaviour
     {
         if (moveAllowed)
         {
-            moveFrog(DiceNum);
+            SlimeMovment(DiceNum);
         }   
     }
-    public void Init(int playerNum, int slimeNumber)
-    {
-        GameObject PlayerT = GameObject.Find("Player" + playerNum);
-        transform.parent = PlayerT.transform;
-        PlayerPosition = 0;
-        slimeLevel = 1;
-        int countN = PlayerT.GetComponent<PlayerScript>().Slimes.Count;//NewSlime.GetComponentsInParent<PlayerScript>().Length;
-        name += slimeNumber;
-    }
-    public void moveFrog(int DiceRoll)
-    {
-        
-            if (DiceRoll > 0)
-            {
-
-                int newRock = PlayerPosition + 1;
-                Rigidbody2D SlimeMovment = GetComponent<Rigidbody2D>();
-
-                transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime);
-
-                //SlimeMovment = GetComponent<Rigidbody2D>();
-                if ((SlimeMovment.position.x == transform.position.x) && (SlimeMovment.position.y == transform.position.y))
-                {
-                    Player.GetComponent<PlayerScript>().DiceMoves[0]--;
-                    DiceNum--;
-                    PlayerPosition++;
-
-                    //First Path
-                    //out
-                    if ((PlayerPosition == 5) && (DiceNum == 0))
-                    {
-                        PlayerPosition = 19;
-
-                    }
-
-                    //Secend Path
-                    //out
-                    else if ((PlayerPosition == 10) && (DiceNum == 0))
-                    {
-                        PlayerPosition = 24;
-                    }
-
-                    //Third Path
-
-                    //in
-                    else if ((PlayerPosition == 24))
-                    {
-                        PlayerPosition = 14;
-                    }
-
-                    //Fourth Path
-                    //out
-                    else if ((PlayerPosition == 22) && (DiceNum == 0))
-                    {
-                        PlayerPosition = 27;
-                    }
-
-                    //End
-                    else if ((PlayerPosition == 19) || (PlayerPosition == 29))
-                    {
-                        PlayerPosition = 29;
-                    }
-
-                }
-
-            }
-            if (DiceRoll == 0)
-            {
-                if (Player.GetComponent<PlayerScript>().FirstMove)
-                    DiceNum--;
-                //Player.GetComponent<PlayerScript>().DiceMoves[0] = -1;
-
-                Player.GetComponent<PlayerScript>().DiceMoves[0] = 0;
-                Player.GetComponent<PlayerScript>().FirstMove = true;
-
-                ////GetComponent<BoxCollider2D>().isTrigger = true;
-                ///
-
-
-            }
-            if (DiceRoll == -1)
-            {
-                CollisionChecking();
-                moveAllowed = false;
-                Player.GetComponent<PlayerScript>().DiceMoves[0] = -1;
-                Player.GetComponent<PlayerScript>().FirstMove = true;
-                //GetComponent<BoxCollider2D>().isTrigger = true;
-            }
-        
-        FirstRollMove = false;
-    }
-
-    private void OnMouseDown()
-    {
-        if(GetComponentInParent<PlayerScript>().PTurn)
-        {
-            DiceNum = GetComponentInParent<PlayerScript>().DiceMoves[0];
-            moveAllowed = true;
-        }
-        
-    }
-
+    
     public void CollisionChecking()
     {
         Rigidbody2D CurrentSlime = GetComponent<Rigidbody2D>();
@@ -166,8 +65,12 @@ public class Slime : MonoBehaviour
                             LevelUP(CurrentSlime, testSlime);
                             CurrentSlime.GetComponent<Slime>().starsParticles.Play();
                             Debug.Log("Destroy " + testSlime.name);
-
+                            testSlime.GetComponentInParent<PlayerScript>().SlimeSpawnNeeded();
+                            //SlimeSpawnNeeded();
                             Destroy(testSlime);
+                            
+
+
                             PlayerS.GetComponent<PlayerScript>().Slimes.RemoveAt(j);
                             break;
                         }
@@ -178,7 +81,10 @@ public class Slime : MonoBehaviour
                         
                         Debug.Log("Destroy "+ testSlime.name);
                         CurrentSlime.GetComponent<Slime>().smokeParticles.Play();
+                        testSlime.GetComponentInParent<PlayerScript>().SlimeSpawnNeeded();
                         Destroy(testSlime);
+                        
+                        //add cube if no 5 cubes
                         PlayerS.GetComponent<PlayerScript>().Slimes.RemoveAt(j);
                         break;
                     }
@@ -187,66 +93,117 @@ public class Slime : MonoBehaviour
         }
     }
 
-    
 
+    //////FIXED FUNCS
+    /////New Slime Generator
+    public void InitNewSlime(int playerNum, int slimeNumber)
+    {
+        GameObject PlayerT = GameObject.Find("Player" + playerNum);
+        transform.parent = PlayerT.transform;
+        PlayerPosition = 0;
+        slimeLevel = 1;
+        DiceNum = 0;
+        moveAllowed = false;
+        int countN = PlayerT.GetComponent<PlayerScript>().Slimes.Count;//NewSlime.GetComponentsInParent<PlayerScript>().Length;
+        name += slimeNumber;
+    }
+
+    //Slime selection for movment
+    private void OnMouseDown()
+    {
+        if (GetComponentInParent<PlayerScript>().PTurn)
+        {
+            //DiceNum = 
+            DiceNum = GameControl.GetComponent<GameControl>().DiceMoves[0];
+            moveAllowed = true;
+        }
+
+    }
+
+    //Slime Fusion
     public void LevelUP(Rigidbody2D CurrentSlime, GameObject testSlime)
     {
         int addLevel = CurrentSlime.GetComponent<Slime>().slimeLevel + testSlime.GetComponent<Slime>().slimeLevel;
         CurrentSlime.GetComponent<Slime>().slimeLevel = addLevel;
-        Debug.Log(CurrentSlime.GetComponent<Slime>().slimeLevel + "+"+ testSlime.GetComponent<Slime>().slimeLevel+"=" + addLevel);
+        Debug.Log(CurrentSlime.GetComponent<Slime>().slimeLevel + "+" + testSlime.GetComponent<Slime>().slimeLevel + "=" + addLevel);
     }
 
+    //slime movment
+    public void SlimeMovment(int DiceRoll)
+    {
+
+        if (DiceRoll > 0)
+        {
+            int newRock = PlayerPosition + 1;
+            Rigidbody2D SlimeMovment = GetComponent<Rigidbody2D>();
+
+            transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime);
+
+            if ((SlimeMovment.position.x == transform.position.x) && (SlimeMovment.position.y == transform.position.y))
+            {
+                //Player.GetComponent<PlayerScript>().DiceMoves[0]--;
+                DiceNum--;
+                PlayerPosition++;
+
+                //First Path
+                //out
+                if ((PlayerPosition == 5) && (DiceNum == 0))
+                {
+                    PlayerPosition = 19;
+
+                }
+
+                //Secend Path
+                //out
+                else if ((PlayerPosition == 10) && (DiceNum == 0))
+                {
+                    PlayerPosition = 24;
+                }
+
+                //Third Path
+
+                //in
+                else if ((PlayerPosition == 24))
+                {
+                    PlayerPosition = 14;
+                }
+
+                //Fourth Path
+                //out
+                else if ((PlayerPosition == 22) && (DiceNum == 0))
+                {
+                    PlayerPosition = 27;
+                }
+
+                //End
+                else if ((PlayerPosition == 19) || (PlayerPosition == 29))
+                {
+                    PlayerPosition = 29;
+                }
+
+            }
+
+        }
+        if (DiceRoll == 0)
+        {
+            if (Player.GetComponent<PlayerScript>().FirstMove)
+                DiceNum--;
+            moveAllowed = false;
+            CollisionChecking();
+
+            GameControl.GetComponent<GameControl>().DiceMoves[0] = 0;
+            Player.GetComponent<PlayerScript>().FirstMove = true;
 
 
-    //void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    Debug.Log("collision!");
-    //    if (this.PlayerPosition == collision.gameObject.GetComponent<keyMove>().PlayerPosition)
-    //    {
-    //        if (collision.gameObject.name == this.name)
-    //        {
-    //            Debug.Log("Upgrade!");
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("Del " + collision.gameObject.name);
-    //        }
-    //    }
-    //}
+        }
+        //if (DiceRoll == -1)
+        //{
+        //    CollisionChecking();
+        //    moveAllowed = false;
+        //    GameControl.GetComponent<GameControl>().DiceMoves[0] = -1;
+        //    Player.GetComponent<PlayerScript>().FirstMove = true;
+        //}
 
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    if (this.PlayerPosition == collision.gameObject.GetComponent<keyMove>().PlayerPosition)
-    //    {
-    //        if (collision.name == this.name)
-    //        {
-    //            Debug.Log("Upgrade!");
-    //        }
-    //        else
-    //        {
-    //            Debug.Log("Del " + collision.name);
-    //        }
-    //    }
-
-
-    //    //Rigidbody2D SlimeMovment = GetComponent<Rigidbody2D>();
-    //    //if ((SlimeMovment.position.x == transform.position.x) && (SlimeMovment.position.y == transform.position.y))
-    //    //{
-    //    //    if ((DiceNum == 0) && (Player.GetComponent<PlayerScript>().PTurn == true))
-    //    //        if (collision.name == this.name)
-    //    //        {
-    //    //            Debug.Log("Upgrade!");
-    //    //        }
-    //    //        else
-    //    //        {
-    //    //            Debug.Log("Del " + collision.name);
-    //    //        }
-    //    //    GetComponent<BoxCollider2D>().isTrigger = false;
-    //    //}
-
-
-    //}
-
-
-
+        FirstRollMove = false;
+    }
 }

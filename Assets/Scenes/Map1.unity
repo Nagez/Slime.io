@@ -590,6 +590,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04034c8b8e4d61f4085225f2bc87a8e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameControll: {fileID: 1467106165}
+  coroutineAllowed: 0
 --- !u!4 &90995555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7669840401035850878, guid: 0d55d5239e30a2f469c38984bf80fd75, type: 3}
@@ -2378,18 +2380,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1875291136398578882, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
   m_PrefabInstance: {fileID: 1875291135491951177}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1310072466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1310072459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7b89c2fcfcb8ce4ca4e92e098b54904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1317562323 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7669840399771003086, guid: 0d55d5239e30a2f469c38984bf80fd75, type: 3}
@@ -2797,13 +2787,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2f9360be1f09947a3224fc60af2e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlimesPerPlayer: 2
-  PlayersAmount: 4
+  SlimesPerPlayer: 1
+  PlayersAmount: 2
   Players:
   - {fileID: 722164908}
   - {fileID: 650472934}
   - {fileID: 240026663}
   - {fileID: 823738326}
+  DiceMoves: 0000000000000000000000000000000000000000
+  firstDiceThrown: 0
   whosTurnT: 1
 --- !u!4 &1501811279 stripped
 Transform:
@@ -3550,18 +3542,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 70365113555112750, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
   m_PrefabInstance: {fileID: 70365114321263545}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1975158942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975158935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7b89c2fcfcb8ce4ca4e92e098b54904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2048503679
 GameObject:
   m_ObjectHideFlags: 0
@@ -3729,6 +3709,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 70365113555112736, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
+      propertyPath: GameControl
+      value: 
+      objectReference: {fileID: 1467106165}
     - target: {fileID: 70365113555112736, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
       propertyPath: smokeParticles
       value: 
@@ -3997,6 +3981,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1467106165}
     - target: {fileID: 1875291136398578884, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
+      propertyPath: GameControl
+      value: 
+      objectReference: {fileID: 1467106165}
+    - target: {fileID: 1875291136398578884, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
       propertyPath: smokeParticles
       value: 
       objectReference: {fileID: 1875291135491951179}
@@ -4232,6 +4220,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2556815277836101552, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+      propertyPath: GameControl
+      value: 
+      objectReference: {fileID: 1467106165}
+    - target: {fileID: 2556815277836101552, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
       propertyPath: smokeParticles
       value: 
       objectReference: {fileID: 2556815277974195329}
@@ -4371,7 +4363,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2556815277836101549, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
 --- !u!198 &2556815277974195328 stripped
 ParticleSystem:
@@ -4394,6 +4387,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4387503327255912416, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
+      propertyPath: GameControl
+      value: 
+      objectReference: {fileID: 1467106165}
     - target: {fileID: 4387503327255912416, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
       propertyPath: smokeParticles
       value: 
@@ -4730,7 +4727,9 @@ PrefabInstance:
       propertyPath: GameControlPlayer
       value: 
       objectReference: {fileID: 1467106165}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4387503327255912420, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
+    - {fileID: 4387503327255912419, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
 --- !u!198 &4387503327329354833 stripped
 ParticleSystem:

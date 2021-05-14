@@ -9,8 +9,11 @@ public class GameControl : MonoBehaviour
     public int PlayersAmount;
 
     public List<GameObject> Players = new List<GameObject>();
+    public int[] DiceMoves = new int[5];
 
-    private static GameObject PlayerMoving, Player1Move, Player2Move, Player3Move, Player4Move;//not using
+    public bool firstDiceThrown = false;
+
+
     private static GameObject Player1, Player2, Player3, Player4;
     private static GameObject TextGreen, TextBlue, TextRed, TextYellow;//Playes turn text in hud
 
@@ -21,15 +24,13 @@ public class GameControl : MonoBehaviour
     /////////////////////////////////////////////////
     public static int diceSide = 0;//check if using
 
-    //player element 0 start
-    public static int player1StartRock = 0;
-    public static int player2StartRock = 0;
-    public static int player3StartRock = 0;
-    public static int player4StartRock = 0;
-
+    
     // Start is called before the first frame update
     void Start()
     {
+        Players[0].GetComponent<PlayerScript>().PTurn = true;
+        GameObject.Find("dice6").GetComponent<AlinasDice>().coroutineAllowed = true;
+
         initPrefrences();
 
         //Whos Turn
@@ -39,10 +40,10 @@ public class GameControl : MonoBehaviour
         TextYellow = GameObject.Find("TextYellow");
 
         //Players match
-        Player1 = GameObject.Find("Player1");//can be problem
-        Player2 = GameObject.Find("Player2");
-        Player3 = GameObject.Find("Player3");
-        Player4 = GameObject.Find("Player4");
+        //Player1 = GameObject.Find("Player1");//can be problem
+        //Player2 = GameObject.Find("Player2");
+        //Player3 = GameObject.Find("Player3");
+        //Player4 = GameObject.Find("Player4");
 
         //off turn text
         TextGreen.gameObject.SetActive(false);
@@ -55,70 +56,99 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //MovePlayer(whosTurn);
+        if(CheckEndTurn()&&firstDiceThrown)
+        {
+            SwitchTurns();
+            MovePlayer(whosTurnT);
+        }
         MovePlayer(whosTurnT);
     }
 
-    public static void MovePlayer(int whosTurnN)
+    //TEMP only for display
+    public static void MovePlayer(int whosTurnN)//2
     {
         TextGreen.gameObject.SetActive(false);
         TextBlue.gameObject.SetActive(false);
         TextRed.gameObject.SetActive(false);
         TextYellow.gameObject.SetActive(false);
 
+        //Player1.GetComponent<PlayerScript>().PTurn = false;
+        //Player2.GetComponent<PlayerScript>().PTurn = false;
+        //Player3.GetComponent<PlayerScript>().PTurn = false;
+        //Player4.GetComponent<PlayerScript>().PTurn = false;
+
+
         switch (whosTurnN)
         {
             case 1:
-                Player1.GetComponent<PlayerScript>().PTurn = true;
+                //Player1.GetComponent<PlayerScript>().PTurn = true;
                 TextGreen.gameObject.SetActive(true);
                 break;
             case 2:
-                Player2.GetComponent<PlayerScript>().PTurn = true;
+                //Player2.GetComponent<PlayerScript>().PTurn = true;
                 TextBlue.gameObject.SetActive(true);
                 break;
             case 3:
-                Player3.GetComponent<PlayerScript>().PTurn = true;
+                //Player3.GetComponent<PlayerScript>().PTurn = true;
                 TextRed.gameObject.SetActive(true);
                 break;
             case 4:
-                Player4.GetComponent<PlayerScript>().PTurn = true;
+                //Player4.GetComponent<PlayerScript>().PTurn = true;
                 TextYellow.gameObject.SetActive(true);
                 break;
 
         }
     }
 
-    //not in use
-    public static void turnSwitch()
-    {
-        if (whosTurn < 4)
-            whosTurn++;
-        else
-            whosTurn = 1;
-    }
-
-    public void SwitchTurns()
-    {
-        if (whosTurnT < PlayersAmount)
-            whosTurnT++;
-        else
-            whosTurnT = 1;
-
-        whosTurn = whosTurnT;
-    }
-
     public void CollisionCheckingg()
     {
         
     }
+
+ 
+    /////////////////////////////////////////Working
+    //Is the player turn ended?
+
+    //check if need to end turn
+    public bool CheckEndTurn()
+    {
+    ///insode player    
+    for(int i=0; i < DiceMoves.Length ;i++)
+        {
+            if (DiceMoves[i] != 0)
+            {
+                return false;
+            }  
+        }
+        return true;
+    }
+
+    //Get slimes number
     public void initPrefrences()
     {
         if (GamePrefrences.instance)
         {
             SlimesPerPlayer = GamePrefrences.instance.numberOfSlimes;
             PlayersAmount = GamePrefrences.instance.numberOfPlayers;
-        }      
+        }
     }
 
+    public void SwitchTurns()
+    {
+        Players[whosTurnT - 1].GetComponent<PlayerScript>().PTurn = false;
+
+        if (whosTurnT < PlayersAmount)
+            whosTurnT++;
+        else
+            whosTurnT = 1;
+
+        whosTurn = whosTurnT;
+
+        Players[whosTurnT - 1].GetComponent<PlayerScript>().PTurn = true;
+
+        firstDiceThrown = false;
+
+        GameObject.Find("dice6").GetComponent<AlinasDice>().coroutineAllowed = true;
+    }
 
 }
