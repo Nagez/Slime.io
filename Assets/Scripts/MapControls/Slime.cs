@@ -143,19 +143,37 @@ public class Slime : MonoBehaviour
     //slime movment
     public void SlimeMovment(int DiceRoll)
     {
+        if (PlayerPosition == 31)
+        {
+            Player.GetComponent<PlayerScript>().SlimesLeft -= slimeLevel;
+            Player.GetComponent<PlayerScript>().Slimes.Remove(this.gameObject);
+            Destroy(this.gameObject);
+            Destroy(this);
+            Debug.Log("OK");
+        }
 
         if (DiceRoll > 0)
         {
             int newRock = PlayerPosition + 1;
+
             Rigidbody2D SlimeMovment = GetComponent<Rigidbody2D>();
 
-            transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime);
+            try { transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime); }
+            catch (System.IndexOutOfRangeException e) { Debug.Log("boom"); }
+            
 
             if ((SlimeMovment.position.x == transform.position.x) && (SlimeMovment.position.y == transform.position.y))
             {
                 //Player.GetComponent<PlayerScript>().DiceMoves[0]--;
                 DiceNum--;
                 PlayerPosition++;
+
+                //if (PlayerPosition == 31)
+                //{
+                //    Player.GetComponent<PlayerScript>().SlimesLeft -= slimeLevel;
+                //    Destroy(SlimeMovment);
+                //}
+
 
                 //First Path
                 //out
@@ -218,4 +236,6 @@ public class Slime : MonoBehaviour
 
         FirstRollMove = false;
     }
+
+    
 }
