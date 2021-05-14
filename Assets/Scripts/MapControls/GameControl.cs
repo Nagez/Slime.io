@@ -21,7 +21,7 @@ public class GameControl : MonoBehaviour
 
     public static int player1Rock = 0, player2Rock = 0; //not using
 
-    public static int whosTurn = 1;
+    //public static int whosTurn = 1;
     public int whosTurnT = 1;
     /////////////////////////////////////////////////
     public static int diceSide = 0;//check if using
@@ -61,12 +61,14 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(CheckEndTurn()&&firstDiceThrown)
+        NoMoreSlimes();
+        if (CheckEndTurn()&&firstDiceThrown)
         {
             SwitchTurns();
             MovePlayer(whosTurnT);
         }
         MovePlayer(whosTurnT);
+        
     }
 
     //TEMP only for display
@@ -147,13 +149,20 @@ public class GameControl : MonoBehaviour
         else
             whosTurnT = 1;
 
-        whosTurn = whosTurnT;
-
         Players[whosTurnT - 1].GetComponent<PlayerScript>().PTurn = true;
 
         firstDiceThrown = false;
 
         GameObject.Find("dice6").GetComponent<AlinasDice>().coroutineAllowed = true;
+    }
+
+    public void NoMoreSlimes()
+    {
+        if (Players[whosTurnT - 1].GetComponent<PlayerScript>().SlimesLeft == 0)
+        {
+            Debug.Log("Player " + whosTurnT + " Won the game");
+        }
+       
     }
 
 }
