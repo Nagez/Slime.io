@@ -64,9 +64,15 @@ public class Slime : MonoBehaviour
                             Debug.Log("levelUp "+CurrentSlime.name);
                             LevelUP(CurrentSlime, testSlime);
                             CurrentSlime.GetComponent<Slime>().starsParticles.Play();
+
                             Debug.Log("Destroy " + testSlime.name);
+
+                            
                             testSlime.GetComponentInParent<PlayerScript>().SlimeSpawnNeeded();
                             //SlimeSpawnNeeded();
+
+
+
                             Destroy(testSlime);
                             
 
@@ -81,7 +87,11 @@ public class Slime : MonoBehaviour
                         
                         Debug.Log("Destroy "+ testSlime.name);
                         CurrentSlime.GetComponent<Slime>().smokeParticles.Play();
+                        
+                        testSlime.GetComponentInParent<PlayerScript>().SlimesSpawned -= testSlime.GetComponent<Slime>().slimeLevel;
+
                         testSlime.GetComponentInParent<PlayerScript>().SlimeSpawnNeeded();
+                        
                         Destroy(testSlime);
                         
                         //add cube if no 5 cubes
@@ -111,7 +121,7 @@ public class Slime : MonoBehaviour
     //Slime selection for movment
     private void OnMouseDown()
     {
-        if (GetComponentInParent<PlayerScript>().PTurn)
+        if (GetComponentInParent<PlayerScript>().PTurn && !(GameObject.Find("dice6").GetComponent<AlinasDice>().coroutineAllowed))
         {
             //DiceNum = 
             DiceNum = GameControl.GetComponent<GameControl>().DiceMoves[0];
@@ -123,9 +133,11 @@ public class Slime : MonoBehaviour
     //Slime Fusion
     public void LevelUP(Rigidbody2D CurrentSlime, GameObject testSlime)
     {
+        Debug.Log(CurrentSlime.GetComponent<Slime>().slimeLevel + "+" + testSlime.GetComponent<Slime>().slimeLevel);
         int addLevel = CurrentSlime.GetComponent<Slime>().slimeLevel + testSlime.GetComponent<Slime>().slimeLevel;
+        Debug.Log("=" + addLevel);
         CurrentSlime.GetComponent<Slime>().slimeLevel = addLevel;
-        Debug.Log(CurrentSlime.GetComponent<Slime>().slimeLevel + "+" + testSlime.GetComponent<Slime>().slimeLevel + "=" + addLevel);
+        
     }
 
     //slime movment

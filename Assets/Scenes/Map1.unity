@@ -2787,7 +2787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2f9360be1f09947a3224fc60af2e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlimesPerPlayer: 1
+  SlimesPerPlayer: 2
   PlayersAmount: 2
   Players:
   - {fileID: 722164908}
@@ -3906,6 +3906,10 @@ PrefabInstance:
       value: Player4
       objectReference: {fileID: 0}
     - target: {fileID: 70365114160044703, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
+      propertyPath: SlimesSpawned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 70365114160044703, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
       propertyPath: GameControlPlayer
       value: 
       objectReference: {fileID: 1467106165}
@@ -3975,6 +3979,10 @@ PrefabInstance:
     - target: {fileID: 1875291135138276451, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
       propertyPath: m_Name
       value: Player3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875291135138276453, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
+      propertyPath: SlimesSpawned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1875291135138276453, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
       propertyPath: GameControlPlayer
@@ -4147,6 +4155,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2556815277328337505, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+      propertyPath: SlimesSpawned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2556815277328337505, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
       propertyPath: GameControlPlayer
       value: 
@@ -4718,6 +4730,10 @@ PrefabInstance:
     - target: {fileID: 4387503327284870475, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387503327284870476, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
+      propertyPath: SlimesSpawned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4387503327284870476, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
       propertyPath: SlimesPerTPlayer

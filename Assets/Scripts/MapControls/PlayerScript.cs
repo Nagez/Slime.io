@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     public List<GameObject> Slimes = new List<GameObject>();
-    public int SlimesPerTPlayer;//slime lives per player
+    public int SlimesLeft;//slime lives per player
+    public int SlimesSpawned;//THe slimes spawned in game
     public int playerNum;//player ID //player1
 
     //public int[] DiceMoves = new int[5];
@@ -36,11 +37,11 @@ public class PlayerScript : MonoBehaviour
     {
         if (GamePrefrences.instance) //take from lobby
         {
-            SlimesPerTPlayer = GamePrefrences.instance.numberOfSlimes;
+            SlimesLeft = GamePrefrences.instance.numberOfSlimes;
         }
         else //take from gamecontrol
         {
-            SlimesPerTPlayer = GameControlPlayer.GetComponent<GameControl>().SlimesPerPlayer;
+            SlimesLeft = GameControlPlayer.GetComponent<GameControl>().SlimesPerPlayer;
         }
     }
 
@@ -61,23 +62,24 @@ public class PlayerScript : MonoBehaviour
     
     public void SlimeSpawnNeeded()
     {
-        if (Slimes.Count < SlimesPerTPlayer)
+        if (SlimesSpawned < SlimesLeft)
         {
-            bool SlimeE = false;
-            int slimeCount = 0;
+            bool slimeBenchPosition = false;
+            //int slimeLevelCount = 0;
             for (int i = 0; i < this.Slimes.Count; i++)
             {
                 if (this.Slimes[i].GetComponent<Slime>().PlayerPosition == 0)
-                    SlimeE = true;
-                slimeCount= slimeCount+this.Slimes[i].GetComponent<Slime>().slimeLevel;
+                    slimeBenchPosition = true;
+                //slimeLevelCount= slimeLevelCount+this.Slimes[i].GetComponent<Slime>().slimeLevel;
             }
 
-            if (!SlimeE && (slimeCount<=5))
+            if (!slimeBenchPosition) //&& (slimeLevelCount< SlimesLeft))
             {
                 GameObject NewSlime = Instantiate(Slimes[0], Slimes[0].GetComponent<Slime>().StartRock[0].transform.position, Slimes[0].GetComponent<Slime>().StartRock[0].transform.rotation);
                 var newSlime=NewSlime.GetComponent<Slime>();
                 newSlime.InitNewSlime(playerNum, Slimes.Count);
                 Slimes.Add(NewSlime);
+                SlimesSpawned++;
 
             }
             
