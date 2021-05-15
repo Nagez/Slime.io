@@ -11,10 +11,14 @@ public class GameControl : MonoBehaviour
     public int PlayersAmount;
 
     public List<GameObject> Players = new List<GameObject>();
+
+    public GameObject HudPanel;
+    public GameObject PlayerHud;
+    public List<GameObject> HudArr = new List<GameObject>();
+
     public int[] DiceMoves = new int[5];
 
     public bool firstDiceThrown = false;
-
 
     private static GameObject Player1, Player2, Player3, Player4;
     private static GameObject TextGreen, TextBlue, TextRed, TextYellow;//Playes turn text in hud
@@ -34,7 +38,7 @@ public class GameControl : MonoBehaviour
         {
             PlayersAmount=PhotonNetwork.CurrentRoom.PlayerCount;
         }
-
+        initHUD();
         //Player1 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "greenplayer"));//params(file location for photon plyaer prefab,position to start, rotation) 
         //Players.Add();
 
@@ -112,9 +116,13 @@ public class GameControl : MonoBehaviour
         }
     }
 
-    public void CollisionCheckingg()
+    public void initHUD()
     {
-        
+        for (int i = 0; i < PlayersAmount; i++)
+        {
+            HudArr.Add(Instantiate(PlayerHud, Vector3.zero, Quaternion.identity, HudPanel.transform));
+            //HudArr[i].transform. = 
+        }
     }
 
  
@@ -134,16 +142,6 @@ public class GameControl : MonoBehaviour
         }
         return true;
     }
-
-    //Get slimes number
-    //public void initPrefrences()
-    //{
-    //    if (GamePrefrences.instance)
-    //    {
-    //        SlimesPerPlayer = GamePrefrences.instance.numberOfSlimes;
-    //        PlayersAmount = GamePrefrences.instance.numberOfPlayers;
-    //    }
-    //}
 
     public void SwitchTurns()
     {
@@ -169,5 +167,16 @@ public class GameControl : MonoBehaviour
         }
        
     }
+
+    //Get slimes number
+    //public void initPrefrences()
+    //{
+    //    if (GamePrefrences.instance)
+    //    {
+    //        SlimesPerPlayer = GamePrefrences.instance.numberOfSlimes;
+    //        PlayersAmount = GamePrefrences.instance.numberOfPlayers;
+    //    }
+    //}
+
 
 }

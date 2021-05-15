@@ -487,7 +487,7 @@ GameObject:
   - component: {fileID: 7354210950213786089}
   - component: {fileID: 8811737634633094297}
   m_Layer: 5
-  m_Name: slime
+  m_Name: slimeIMG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
