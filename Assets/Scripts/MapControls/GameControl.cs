@@ -41,7 +41,7 @@ public class GameControl : MonoBehaviour
         Players[0].GetComponent<PlayerScript>().PTurn = true;
         GameObject.Find("dice6").GetComponent<AlinasDice>().coroutineAllowed = true;
 
-        initPrefrences();
+       // initPrefrences();
 
         //Whos Turn
         TextGreen = GameObject.Find("TextGreen");
@@ -136,14 +136,14 @@ public class GameControl : MonoBehaviour
     }
 
     //Get slimes number
-    public void initPrefrences()
-    {
-        if (GamePrefrences.instance)
-        {
-            SlimesPerPlayer = GamePrefrences.instance.numberOfSlimes;
-            PlayersAmount = GamePrefrences.instance.numberOfPlayers;
-        }
-    }
+    //public void initPrefrences()
+    //{
+    //    if (GamePrefrences.instance)
+    //    {
+    //        SlimesPerPlayer = GamePrefrences.instance.numberOfSlimes;
+    //        PlayersAmount = GamePrefrences.instance.numberOfPlayers;
+    //    }
+    //}
 
     public void SwitchTurns()
     {

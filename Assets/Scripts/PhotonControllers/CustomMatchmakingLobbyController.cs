@@ -147,6 +147,8 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         Hashtable RoomCustomProps = new Hashtable(); //custom room property for starting slime lives
         RoomCustomProps.Add("NumOfSlimes", NumOfSlimes);
         roomOps.CustomRoomProperties = RoomCustomProps;
+        Debug.Log(roomName);
+        Debug.Log(PlayerPrefs.GetString("NickName"));
         if (roomName == null) { roomName = PlayerPrefs.GetString("NickName") + "'s Room"; } //if room name was not given, the player nickname will be the room's name
         PhotonNetwork.CreateRoom(roomName, roomOps);
 
