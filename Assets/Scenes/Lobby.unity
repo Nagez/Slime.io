@@ -370,7 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &114225549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,8 +383,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03a0ea00f3b107f4b8179c157c8b01cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfSlimes: 1
-  numberOfPlayers: 2
+  numberOfSlimes: 3
+  numberOfPlayers: 3
   controller: {fileID: 1905709221}
 --- !u!4 &114225550
 Transform:
@@ -4613,7 +4613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6607361beed4ce245bfeb731948e7713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiPlayerSceneIndex: 2
+  multiPlayerSceneIndex: 3
   lobbyPanel: {fileID: 435683948}
   roomPanel: {fileID: 1097768472}
   startButtom: {fileID: 479557583}

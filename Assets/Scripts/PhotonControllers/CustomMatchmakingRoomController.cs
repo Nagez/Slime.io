@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
 {
@@ -88,8 +89,6 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
         if(PhotonNetwork.IsMasterClient)
         {
             PhotonNetwork.CurrentRoom.IsOpen = false; //no new players can enter after game starts
-            Debug.Log(PhotonNetwork.CountOfPlayers);
-            //GamePrefrences.instance.UpdatePrefrencess();
             PhotonNetwork.LoadLevel(multiPlayerSceneIndex);
         }
     }

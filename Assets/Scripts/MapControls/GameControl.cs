@@ -30,6 +30,11 @@ public class GameControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (PhotonNetwork.IsConnected) //check how many players are connected if connected online
+        {
+            PlayersAmount=PhotonNetwork.CurrentRoom.PlayerCount;
+        }
+
         //Player1 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "greenplayer"));//params(file location for photon plyaer prefab,position to start, rotation) 
         //Players.Add();
 

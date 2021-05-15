@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 {
     [SerializeField]
@@ -143,9 +143,10 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     public void CreateRoom()
     {
         Debug.Log("Creating room now");
-        RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize };
-        Debug.Log(PlayerPrefs.GetString("NickName"));
-        //Debug.Log("roomName:" + roomName);
+        RoomOptions roomOps = new RoomOptions() { IsVisible = true, IsOpen = true, MaxPlayers = (byte)roomSize }; //basic room options
+        Hashtable RoomCustomProps = new Hashtable(); //custom room property for starting slime lives
+        RoomCustomProps.Add("NumOfSlimes", NumOfSlimes);
+        roomOps.CustomRoomProperties = RoomCustomProps;
         if (roomName == null) { roomName = PlayerPrefs.GetString("NickName") + "'s Room"; } //if room name was not given, the player nickname will be the room's name
         PhotonNetwork.CreateRoom(roomName, roomOps);
 

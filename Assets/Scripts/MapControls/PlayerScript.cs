@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -35,9 +36,9 @@ public class PlayerScript : MonoBehaviour
     }
     public void getSlimePerPlayer()
     {
-        if (GamePrefrences.instance) //take from lobby
+        if (PhotonNetwork.IsConnected) //take from lobby if connected online
         {
-            SlimesLeft = GamePrefrences.instance.numberOfSlimes;
+            SlimesLeft = int.Parse(PhotonNetwork.CurrentRoom.CustomProperties["NumOfSlimes"].ToString());
         }
         else //take from gamecontrol
         {
