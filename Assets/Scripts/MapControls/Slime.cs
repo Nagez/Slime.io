@@ -42,7 +42,7 @@ public class Slime : MonoBehaviour
     {
         Rigidbody2D CurrentSlime = GetComponent<Rigidbody2D>();
         
-        for (int i=0;i<4;i++)//add mex players
+        for (int i=0;i< 4 ; i++)//add mex players
         {
             GameObject GameControlsP = GameObject.Find("GameControls");//GetComponent<GameControl>().Players[i];
             GameObject PlayerS = GameControlsP.GetComponent<GameControl>().Players[i];
@@ -159,7 +159,7 @@ public class Slime : MonoBehaviour
             Rigidbody2D SlimeMovment = GetComponent<Rigidbody2D>();
 
             try { transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime); }
-            catch (System.IndexOutOfRangeException e) { Debug.Log("boom"); }
+            catch (System.IndexOutOfRangeException e) { Debug.Log("boom"+e); }
             
 
             if ((SlimeMovment.position.x == transform.position.x) && (SlimeMovment.position.y == transform.position.y))
