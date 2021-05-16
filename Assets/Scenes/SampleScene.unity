@@ -2366,7 +2366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlimePrefab: {fileID: 770956497}
   num1: {fileID: 0}
-  position0: {fileID: 2094511874}
+  position0: {fileID: 0}
 --- !u!212 &934708540
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2415,7 +2415,7 @@ SpriteRenderer:
   m_Size: {x: 1.55, y: 1.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &934708541

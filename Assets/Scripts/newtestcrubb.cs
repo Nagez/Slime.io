@@ -9,19 +9,14 @@ public class newtestcrubb : MonoBehaviour
     int testnum = 3333;
     public GameObject SlimePrefab;
     public GameObject num1;
-    //public GameObject num2;
-    //public GameObject num3;
-    //public GameObject num4;
-    //public GameObject num5;
-    //public GameObject num6;
     public GameObject position0;
     private Sprite[] dicesides;
-    private List<int> results;
+    public List<int> results;
     private SpriteRenderer rend;//to change sides of dice images
     //private int whosTurn = 1;//who play-כהתחלה 1 הוא משתמש 1
     //private int numOfPlayers;
     private bool coroutineAllowed = true;
-    private Sprite[] NumSides;
+    public Sprite[] NumSides;
     private SpriteRenderer rendSquare;//to add image of num in the arrRes
     private void Start()
     {
