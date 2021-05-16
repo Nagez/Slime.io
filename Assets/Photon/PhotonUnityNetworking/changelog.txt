@@ -3,8 +3,15 @@ PUN 2 - Changelog
 Exit Games GmbH - www.photonengine.com - forum.photonengine.com
 
 
+v2.30 (13. April 2021)
+Changed: When the PhotonView.ControllerActorNumber should be set to 0, it now sets the backing field to the Master Client's actorNumber instead. This prevents misunderstandings when updates are sent with the Master Client's actual actorNumber
+Changed: Setting the PhotonView.ControllerActorNumber will now refresh the Controller in all cases. This makes sure that (e.g.) scene objects get a Controller value OnJoinedRoom (they might exist before a room is joined).
+Updated: EventSystemSpawner to log an error and pause the execution, if only the new input system is being used. The PUN demos are not compatible with it unless you set Active Input Handling to "Both".
+Note: Only the PUN demos are incompatible with the new input system. PUN itself is not affected. As the demos are in separate folders, you can easily delete all of them and use the new input system in your project.
+Updated: Realtime API to 4.1.5.4, preventing several error cases.
+
 v2.29 (15. March 2021)
-Updated: Minimum supported Unity version to 2018.4.x. We develop PUN 2 in Unity 2018.4.22 from now on. Also the language compatibility level '.Net Standard 2.0' is now being expected.
+Updated: Minimum supported Unity version to 2018.4.x. We develop PUN 2 in Unity 2018.4.22 from now on. Also the language compatibility level '.Net 4.x' or '.Net Standard 2.0' is now expected.
 Updated: Export settings for the dlls in Assets\PhotonLibs. All platforms will use .Net Standard 2.0, except the UWP export with .Net Runtime (which uses Metro with a placeholder being the lib in PhotonLibs\).
 Removed: Setting of protocol 1.6 when connecting directly to a Master Server. This was a workaround for older Photon Server SDKs.
 Note: If you host Photon yourself, you can set the LoadBalancingClient.SerializationProtocol to SerializationProtocol.GpBinaryV16, before you connect.

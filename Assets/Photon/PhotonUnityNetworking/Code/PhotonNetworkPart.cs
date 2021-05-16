@@ -62,11 +62,18 @@ namespace Photon.Pun
         }
 
         /// <summary>
-        /// Returns an iterable collection of current photon views.
+        /// Returns a new iterable collection of current photon views.
         /// </summary>
+        /// <remarks>
+        /// You can iterate over all PhotonViews in a simple foreach loop.
+        /// To use this in a while-loop, assign the new iterator to a variable and then call MoveNext on that.
+        /// </remarks>
         public static NonAllocDictionary<int, PhotonView>.ValueIterator PhotonViewCollection
         {
-            get { return photonViewList.Values; }
+            get
+            {
+                return photonViewList.Values;
+            }
         }
 
         public static int ViewCount
@@ -106,7 +113,7 @@ namespace Photon.Pun
                 OnOwnershipTransferFailedEv += punOwnershipCallback.OnOwnershipTransferFailed;
             }
 
-           // ???NetworkingClient.AddCallbackTarget(target);
+            NetworkingClient.AddCallbackTarget(target);
         }
 
 

@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerScript : MonoBehaviour
 {
     public List<GameObject> Slimes = new List<GameObject>();
-    //public GameObject[] Slimes=new GameObject[5];
-    public int SlimesPerTPlayer = 0;//slime lives per player
+    public int SlimesLeft;//slime lives per player
+    public int SlimesSpawned;//THe slimes spawned in game
     public int playerNum;//player ID //player1
 
-    public int[] DiceMoves = new int[5];
+    //public int[] DiceMoves = new int[5];
     public bool PTurn = false;//player turn
     public bool FirstMove = false;
 
@@ -22,7 +23,8 @@ public class PlayerScript : MonoBehaviour
         //add function
 
         //GameObject GameControlPlayer = GameObject.Find("GameControls");
-        SlimesPerTPlayer = GameControlPlayer.GetComponent<GameControl>().SlimesPerPlayer;
+        //SlimesPerTPlayer = GameControlPlayer.GetComponent<GameControl>().SlimesPerPlayer;
+        getSlimePerPlayer();
     }
     // Update is called once per frame
     void Update()
@@ -32,75 +34,59 @@ public class PlayerScript : MonoBehaviour
             PlayersTurn(PTurn); 
         } 
     }
+    public void getSlimePerPlayer()
+    {
+        if (PhotonNetwork.IsConnected) //take from lobby if connected online
+        {
+            SlimesLeft = int.Parse(PhotonNetwork.CurrentRoom.CustomProperties["NumOfSlimes"].ToString());
+        }
+        else //take from gamecontrol
+        {
+            SlimesLeft = GameControlPlayer.GetComponent<GameControl>().SlimesPerPlayer;
+        }
+    }
 
     void PlayersTurn(bool moveAllowed)
     {
         if (moveAllowed)
         {
-            //DiceAllowed
-            AlinasDice.coroutineAllowed = true;
-            //Dice Rolls
-
-            //dice pick
+            
             if(FirstMove==false)
             {
-                //DiceMoves[0] = AlinasDice.randomDiceSide;//wont do 0
+                
             }
-           
-            //Pick The Slime
-            //Enable Click only on players Slimes
 
-            if ((DiceMoves[0] == -1) && (FirstMove == true))
-            {
+            SlimeSpawnNeeded();
 
-                //GetComponent<keyMove>().CollisionChacking();
-                PTurn = false;
-                //whosTurn();
-                //GetCompone
-                //GameControl.turnSwitch();
-                GameControlPlayer.GetComponent<GameControl>().SwitchTurns();
-                FirstMove = false;
-                SlimeSpawnNeeded();
-            }
         }
     }
     
-    void SlimeSpawnNeeded()
+    public void SlimeSpawnNeeded()
     {
-        //add collishion check
-        //if (Slimes.Length < SlimesPerTPlayer)
-        
-        if (Slimes.Count < SlimesPerTPlayer)
+        if (SlimesSpawned < SlimesLeft)
         {
-            bool SlimeE = false;
-            int slimeCount = 0;
-            //add slime detector 
+            bool slimeBenchPosition = false;
+            //int slimeLevelCount = 0;
             for (int i = 0; i < this.Slimes.Count; i++)
             {
-                if (this.Slimes[i].GetComponent<keyMove>().PlayerPosition == 0)
-                    SlimeE = true;
-                slimeCount= slimeCount+this.Slimes[i].GetComponent<keyMove>().slimeLevel;
+                if (this.Slimes[i].GetComponent<Slime>().PlayerPosition == 0)
+                    slimeBenchPosition = true;
+                //slimeLevelCount= slimeLevelCount+this.Slimes[i].GetComponent<Slime>().slimeLevel;
             }
 
-            if (!SlimeE && (slimeCount<=5))
+            if (!slimeBenchPosition) //&& (slimeLevelCount< SlimesLeft))
             {
-                GameObject NewSlime = Instantiate(Slimes[0], Slimes[0].GetComponent<keyMove>().StartRock[0].transform.position, Slimes[0].GetComponent<keyMove>().StartRock[0].transform.rotation);
-                GameObject PlayerT = GameObject.Find("Player" + playerNum);
-                NewSlime.transform.parent = PlayerT.transform;
-                NewSlime.GetComponent<keyMove>().PlayerPosition = 0;
-                NewSlime.GetComponent<keyMove>().slimeLevel = 1;
-                int countN = PlayerT.GetComponent<PlayerScript>().Slimes.Count;//NewSlime.GetComponentsInParent<PlayerScript>().Length;
-                NewSlime.name = NewSlime.name.ToString() + countN;
+                GameObject NewSlime = Instantiate(Slimes[0], Slimes[0].GetComponent<Slime>().StartRock[0].transform.position, Slimes[0].GetComponent<Slime>().StartRock[0].transform.rotation);
+                var newSlime=NewSlime.GetComponent<Slime>();
+                newSlime.InitNewSlime(playerNum, Slimes.Count);
                 Slimes.Add(NewSlime);
+                SlimesSpawned++;
 
             }
-            //GameObject NewSlime = Instantiate(Slimes[0], Slimes[0].GetComponent<keyMove>().StartRock[0].transform.position, Slimes[0].GetComponent<keyMove>().StartRock[0].transform.rotation);
-            //NewSlime.transform.parent = GameObject.Find("Player" + playerNum).transform;
-            //NewSlime.GetComponent<keyMove>().PlayerPosition = 0;
-            //Slimes.Add(NewSlime);
-
-
             
+ 
         }
     }
+
+    
 }

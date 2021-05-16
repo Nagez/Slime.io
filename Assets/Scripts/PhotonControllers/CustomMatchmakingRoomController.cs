@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
 {
@@ -45,12 +46,17 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
         }
     }
 
-    public override void OnJoinedRoom()
+    public override void OnJoinedRoom() //called when local player joins the room
     {
+        if (PhotonNetwork.CurrentRoom == null)
+        {
+            Debug.Log("current room is null");
+            return;
+        }
         roomPanel.SetActive(true);
         lobbyPanel.SetActive(false);
         roomNameDisplay.text = PhotonNetwork.CurrentRoom.Name;
-        if(PhotonNetwork.IsMasterClient)
+        if(PhotonNetwork.IsMasterClient) //show the start button only for host
         {
             startButtom.SetActive(true);
         }
@@ -72,7 +78,7 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
     {
         ClearPlayerListings();
         ListPlayers();
-        if(PhotonNetwork.IsMasterClient)
+        if(PhotonNetwork.IsMasterClient) //when if master left so the next player become the host
         {
             startButtom.SetActive(true);
         }
@@ -93,7 +99,7 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby();
     }
 
-    public void BackOnClick()
+    public void BackOnClick() //for leave button
     {
         lobbyPanel.SetActive(true);
         roomPanel.SetActive(false);
