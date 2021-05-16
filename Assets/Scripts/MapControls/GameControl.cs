@@ -14,6 +14,7 @@ public class GameControl : MonoBehaviour
 
     public GameObject HudPanel;
     public GameObject PlayerHud;
+    
     public List<GameObject> HudArr = new List<GameObject>();
 
     public int[] DiceMoves = new int[5];
@@ -27,6 +28,8 @@ public class GameControl : MonoBehaviour
 
     //public static int whosTurn = 1;
     public int whosTurnT = 1;
+    public GameObject Dice;
+
     /////////////////////////////////////////////////
     public static int diceSide = 0;//check if using
 
@@ -42,6 +45,7 @@ public class GameControl : MonoBehaviour
         //Player1 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "greenplayer"));//params(file location for photon plyaer prefab,position to start, rotation) 
         //Players.Add();
 
+        Dice.GetComponent<CubeScript>().coroutineAllowed = true;
         Players[0].GetComponent<PlayerScript>().PTurn = true;
         GameObject.Find("dice6").GetComponent<AlinasDice>().coroutineAllowed = true;
 
