@@ -49,10 +49,11 @@ public class CubeScript : MonoBehaviour
         }
         //testnum = 555;
         //Debug.Log(testnum.ToString());
+
         
         
         //updateArr(results);
-        
+
     }
 
 
@@ -66,8 +67,8 @@ public class CubeScript : MonoBehaviour
         coroutineAllowed = false;
         int randomDiceSide = 0;
         int numofThrown = 0;
-
         
+
         while (((randomDiceSide > 3) || (randomDiceSide == 0 && results.Count == 0)) && (results.Count<5))
         {
             for (int i = 0; i <= 20; i++)
@@ -87,15 +88,14 @@ public class CubeScript : MonoBehaviour
             // numofThrown++;
         }
         
-        this.gameObject.SetActive(false);
-        //foreach (var x in results)//ìøàåú àú älist
-        //{
-        //    Debug.Log(x.ToString());
-        //}
-
-        //Debug.Log(testnum.ToString());
-        // updateArr(results);
-
+        //this.gameObject.SetActive(false);
+        //Alinas Add
+        GameObject GameAB = GameObject.Find("GameControls");
+        for (int i = 0; i < results.Count; i++)
+        {
+            GameAB.GetComponent<GameControl>().DiceMoves[i] = results[i];
+        }
+        results.Clear();
     }
     //function for calculating the result of the dice with precentages
     public int calcDiceResult()
@@ -133,7 +133,6 @@ public class CubeScript : MonoBehaviour
         updateArr(results);
         
     }
-
 
     //No need
     private IEnumerator updateArr(List<int> results)

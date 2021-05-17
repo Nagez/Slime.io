@@ -18,7 +18,8 @@ public class GameControl : MonoBehaviour
     public List<GameObject> HudArr = new List<GameObject>();
 
     public int[] DiceMoves = new int[5];
-
+    public int DicePICKED = 0;
+    public int DicePICKEDArr = 0;
     public bool firstDiceThrown = false;
 
     private static GameObject Player1, Player2, Player3, Player4;
@@ -79,6 +80,7 @@ public class GameControl : MonoBehaviour
         {
             SwitchTurns();
             MovePlayer(whosTurnT);
+           
         }
         MovePlayer(whosTurnT);
         
@@ -144,7 +146,7 @@ public class GameControl : MonoBehaviour
                 return false;
             }  
         }
-        return true;
+        return true;     
     }
 
     public void SwitchTurns()
@@ -160,7 +162,7 @@ public class GameControl : MonoBehaviour
 
         firstDiceThrown = false;
 
-        GameObject.Find("dice6").GetComponent<AlinasDice>().coroutineAllowed = true;
+        GameObject.Find("Dice 1").GetComponent<CubeScript>().coroutineAllowed = true;
     }
 
     public void NoMoreSlimes()

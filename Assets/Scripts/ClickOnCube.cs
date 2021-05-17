@@ -20,6 +20,19 @@ public class ClickOnCube : MonoBehaviour
 
     private void OnMouseDown()
     {
+        EnterToArray();
+    }
+
+    //function to check array place
+    private void EnterToArray()
+    {
+      for(int i=0;i< GetComponentInParent<CubeArrayPosition>().ArStepNums.Count; i++)
+        if(this.name == GetComponentInParent<CubeArrayPosition>().ArStepNums[i].name)
+            {
+                GameObject.Find("GameControls").GetComponent<GameControl>().DicePICKEDArr = i;
+            }
+
+        GameObject.Find("GameControls").GetComponent<GameControl>().DicePICKED = inumberStep;
         inumberStep = 0;
         this.GetComponent<SpriteRenderer>().sprite = null;
     }
