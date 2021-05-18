@@ -35,7 +35,7 @@ public class ClickOnCube : MonoBehaviour
         GameObject.Find("GameControls").GetComponent<GameControl>().DicePICKED = inumberStep;
         inumberStep = 0;
         this.GetComponent<SpriteRenderer>().sprite = null;
-        CubeScript.resetToAddImageToArray();
-        GetComponent<CubeScript>().resetToAddImageToArray();
+        //CubeScript.resetToAddImageToArray();
+        //GetComponent<CubeScript>().resetToAddImageToArray();
     }
 }
