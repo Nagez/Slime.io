@@ -14,10 +14,12 @@ public class GameControl : MonoBehaviour
 
     public GameObject HudPanel;
     public GameObject PlayerHud;
+    
     public List<GameObject> HudArr = new List<GameObject>();
 
     public int[] DiceMoves = new int[5];
-
+    public int DicePICKED = 0;
+    public int DicePICKEDArr = 0;
     public bool firstDiceThrown = false;
 
     private static GameObject Player1, Player2, Player3, Player4;
@@ -27,6 +29,8 @@ public class GameControl : MonoBehaviour
 
     //public static int whosTurn = 1;
     public int whosTurnT = 1;
+    public GameObject Dice;
+
     /////////////////////////////////////////////////
     public static int diceSide = 0;//check if using
 
@@ -42,6 +46,7 @@ public class GameControl : MonoBehaviour
         //Player1 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "greenplayer"));//params(file location for photon plyaer prefab,position to start, rotation) 
         //Players.Add();
 
+        Dice.GetComponent<CubeScript>().coroutineAllowed = true;
         Players[0].GetComponent<PlayerScript>().PTurn = true;
         GameObject.Find("dice6").GetComponent<AlinasDice>().coroutineAllowed = true;
 
@@ -75,6 +80,7 @@ public class GameControl : MonoBehaviour
         {
             SwitchTurns();
             MovePlayer(whosTurnT);
+           
         }
         MovePlayer(whosTurnT);
         
@@ -140,7 +146,7 @@ public class GameControl : MonoBehaviour
                 return false;
             }  
         }
-        return true;
+        return true;     
     }
 
     public void SwitchTurns()
@@ -156,7 +162,7 @@ public class GameControl : MonoBehaviour
 
         firstDiceThrown = false;
 
-        GameObject.Find("dice6").GetComponent<AlinasDice>().coroutineAllowed = true;
+        GameObject.Find("Dice 1").GetComponent<CubeScript>().coroutineAllowed = true;
     }
 
     public void NoMoreSlimes()

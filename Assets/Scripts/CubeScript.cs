@@ -4,44 +4,56 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class newtestcrubb : MonoBehaviour
+public class CubeScript : MonoBehaviour
 {
     int testnum = 3333;
-    public GameObject SlimePrefab;
-    public GameObject num1;
-    public GameObject position0;
-    private Sprite[] dicesides;
-    public List<int> results;
+    //public GameObject SlimePrefab;
+    //public GameObject num1;
+    //public GameObject position0;
+
+    public Sprite[] dicesides;//Dice images
+    public List<int> results;//Dice results max 5
     private SpriteRenderer rend;//to change sides of dice images
+    public GameObject CubeArray;
+
+
     //private int whosTurn = 1;//who play-כהתחלה 1 הוא משתמש 1
     //private int numOfPlayers;
-    private bool coroutineAllowed = true;
-    public Sprite[] NumSides;
+
+    public bool coroutineAllowed = false;
+
+    
+
+    //public Sprite[] NumSides;
+
     private SpriteRenderer rendSquare;//to add image of num in the arrRes
     private void Start()
     {
         results = new List<int>();
         rend = GetComponent<SpriteRenderer>();
         dicesides = Resources.LoadAll<Sprite>("dice/");
-        NumSides = Resources.LoadAll<Sprite>("NumRes/");
+
+        //NumSides = Resources.LoadAll<Sprite>("NumRes/");
         //for (int i = 0; i < 5; i++) { Debug.Log(dicesides[i]); }
         //rend.sprite = dicesides[1];//to be in the begining of the game the num 2 n th dice side
     }
 
     private void OnMouseDown()
     {
-        rend.sprite = dicesides[1];//to be in the begining of the game the num 2 n th dice side
+        //rend.sprite = dicesides[1];//to be in the begining of the game the num 2 n th dice side
         //if (!game.gameOver && coroutineAllowed)
         if (coroutineAllowed)
         {
             StartCoroutine("RollTheDice");//אם המשחק לא נגמר  אז זורקים קוביה מפעלים פונקציה
+            
         }
         //testnum = 555;
         //Debug.Log(testnum.ToString());
-        results.Add(4);
-        results.Add(1);
-        updateArr(results);
+
         
+        
+        //updateArr(results);
+
     }
 
 
@@ -55,31 +67,35 @@ public class newtestcrubb : MonoBehaviour
         coroutineAllowed = false;
         int randomDiceSide = 0;
         int numofThrown = 0;
+        
 
-        while (randomDiceSide != 1 && randomDiceSide != 2 && randomDiceSide != 3)
+        while (((randomDiceSide > 3) || (randomDiceSide == 0 && results.Count == 0)) && (results.Count<5))
         {
             for (int i = 0; i <= 20; i++)
             {
-                //randomDiceSide = Random.Range(0, 5);//צריך להכניס calcDiceResult=====בחירת מספר אקראי
                 randomDiceSide = calcDiceResult();
-                rend.sprite = dicesides[randomDiceSide - 1];//the new side on dice(קוביה)
-                //results.Add(randomDiceSide); //array of results
-
-                //rendSquare.sprite = NumSides[randomDiceSide];
-                //Debug.Log("pressed");
-                yield return new WaitForSeconds(0.05f);//?
+                rend.sprite = dicesides[randomDiceSide - 1];//the new side on dice(קוביה)//PICTER
+                yield return new WaitForSeconds(0.05f);//time pause
             }
-             results.Add(randomDiceSide); //array of results
+            results.Add(randomDiceSide); //array of results
+            Debug.Log(randomDiceSide);
+            AddImageToArray(results, numofThrown);
+            numofThrown++;
+            //To array
+
+
+            //rendSquare.sprite = NumSides[randomDiceSide];
             // numofThrown++;
         }
-        foreach (var x in results)//לראות את הlist
+        
+        //this.gameObject.SetActive(false);
+        //Alinas Add
+        GameObject GameAB = GameObject.Find("GameControls");
+        for (int i = 0; i < results.Count; i++)
         {
-            Debug.Log(x.ToString());
+            GameAB.GetComponent<GameControl>().DiceMoves[i] = results[i];
         }
-
-        Debug.Log(testnum.ToString());
-       // updateArr(results);
-
+        results.Clear();
     }
     //function for calculating the result of the dice with precentages
     public int calcDiceResult()
@@ -94,7 +110,36 @@ public class newtestcrubb : MonoBehaviour
         if (res >= 96) { res = 6; } //5% chance to get a 6
         return res;//הוא המספר שמופיע על הקוביה אחרי לחיצה לפי אחוזים
     }
-    private IEnumerator updateArr(List<int>results)
+
+    public void AddImageToArray(List<int> results,int Num)
+    { 
+        CubeArray.GetComponent<CubeArrayPosition>().ArStepNums[Num].GetComponent<SpriteRenderer>().sprite = dicesides[results[Num]-1];
+        CubeArray.GetComponent<CubeArrayPosition>().ArStepNums[Num].GetComponent<ClickOnCube>().inumberStep = results[Num];
+    }
+    public void resetToAddImageToArray()
+    {
+        for(int i=0;i<results.Count;i++)
+        CubeArray.GetComponent<CubeArrayPosition>().ArStepNums[i].GetComponent<SpriteRenderer>().sprite = dicesides[results[i+1] - 1];
+    }
+
+    public int ChooseNumSteps(List<int> results)//קריאה לפונקציה מסקריבת חדש בפונקציה שךו onMouse
+    {
+        int numSteps;
+        //results.RemoveAt();
+        numSteps = results.Count;
+        return numSteps;
+    }
+    public void DeletNumStepsFommArr()//קריאה לפונקציה מסקריבת חדש בפונקציה שךו onMouse
+    {
+        int numSteps;
+        //results.RemoveAt();
+        numSteps = results.Count;
+        updateArr(results);
+        
+    }
+
+    //No need
+    private IEnumerator updateArr(List<int> results)
     {
         testnum = 6666;
         Debug.Log(testnum.ToString());
@@ -366,6 +411,9 @@ public class newtestcrubb : MonoBehaviour
         //        }
         //    }
         //}
+
+        //List<int> result;
+
         List<int> ListNumStep;
         int j = 0;
         int num = 0;//if there is num on the list
@@ -380,10 +428,10 @@ public class newtestcrubb : MonoBehaviour
                 j++;//to know for who place to ad the num in the array
                 if (j == 1)
                 {
-                    Instantiate(SlimePrefab, position0.transform.position, position0.transform.rotation);
+                    //Instantiate(SlimePrefab, position0.transform.position, position0.transform.rotation);
                     if (results[i] == 1)
                     {
-                        Instantiate(num1, position0.transform.position, position0.transform.rotation);
+                        // Instantiate(num1, position0.transform.position, position0.transform.rotation);
                     }
 
                 }
@@ -391,22 +439,7 @@ public class newtestcrubb : MonoBehaviour
 
             }
         }
-       
-    }
-    public int ChooseNumSteps(List<int> results,int Placenumber)//קריאה לפונקציה מסקריבת חדש בפונקציה שךו onMouse
-    {
-        int numSteps;
-        results.RemoveAt(Placenumber);
-        numSteps = results.Count;
-        return numSteps;
-    }
-    public IEnumerator DeletNumStepsFommArr(List<int> results, int Placenumber)//קריאה לפונקציה מסקריבת חדש בפונקציה שךו onMouse
-    {
-        int numSteps;
-        results.RemoveAt(Placenumber);
-        numSteps = results.Count;
-        updateArr(results);
-        yield return new WaitForSeconds(0.05f);//?
+
     }
 }
 

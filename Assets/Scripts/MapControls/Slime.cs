@@ -121,11 +121,12 @@ public class Slime : MonoBehaviour
     //Slime selection for movment
     private void OnMouseDown()
     {
-        if (GetComponentInParent<PlayerScript>().PTurn && !(GameObject.Find("dice6").GetComponent<AlinasDice>().coroutineAllowed))
+        if (GetComponentInParent<PlayerScript>().PTurn && !(GameControl.GetComponent<GameControl>().DicePICKED == 0))
         {
-            //DiceNum = 
-            DiceNum = GameControl.GetComponent<GameControl>().DiceMoves[0];
+            DiceNum = GameControl.GetComponent<GameControl>().DicePICKED;
+            GameControl.GetComponent<GameControl>().DicePICKED = 0;
             moveAllowed = true;
+            //GameControl.GetComponent<GameControl>().DicePICKED = 0;
         }
 
     }
@@ -220,11 +221,10 @@ public class Slime : MonoBehaviour
                 DiceNum--;
             moveAllowed = false;
             CollisionChecking();
-
-            GameControl.GetComponent<GameControl>().DiceMoves[0] = 0;
+            int ArrP= GameControl.GetComponent<GameControl>().DicePICKEDArr;
+            GameControl.GetComponent<GameControl>().DiceMoves[ArrP] = 0;
+            GameControl.GetComponent<GameControl>().firstDiceThrown = true;
             Player.GetComponent<PlayerScript>().FirstMove = true;
-
-
         }
         //if (DiceRoll == -1)
         //{
