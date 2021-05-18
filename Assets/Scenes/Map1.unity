@@ -386,6 +386,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4387503327255912444, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
   m_PrefabInstance: {fileID: 4387503327329354832}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &195124144 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4387503327255912447, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
+  m_PrefabInstance: {fileID: 4387503327329354832}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &240026663 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1875291135138276451, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
@@ -1571,7 +1576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2f9360be1f09947a3224fc60af2e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlimesPerPlayer: 2
+  SlimesPerPlayer: 4
   PlayersAmount: 1
   Players:
   - {fileID: 722164908}
@@ -3135,6 +3140,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4387503327255912416, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 195124144}
     - target: {fileID: 4387503327255912416, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
       propertyPath: GameControl
       value: 

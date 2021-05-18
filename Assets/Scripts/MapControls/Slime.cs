@@ -23,6 +23,8 @@ public class Slime : MonoBehaviour
     [SerializeField] ParticleSystem smokeParticles;
     [SerializeField] ParticleSystem starsParticles;
 
+    public Animator anim; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -138,7 +140,7 @@ public class Slime : MonoBehaviour
         int addLevel = CurrentSlime.GetComponent<Slime>().slimeLevel + testSlime.GetComponent<Slime>().slimeLevel;
         Debug.Log("=" + addLevel);
         CurrentSlime.GetComponent<Slime>().slimeLevel = addLevel;
-        
+        anim.SetInteger("Level", addLevel);
     }
 
     //slime movment
