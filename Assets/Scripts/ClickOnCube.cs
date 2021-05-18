@@ -22,5 +22,7 @@ public class ClickOnCube : MonoBehaviour
     {
         inumberStep = 0;
         this.GetComponent<SpriteRenderer>().sprite = null;
+        CubeScript.resetToAddImageToArray();
+        GetComponent<CubeScript>().resetToAddImageToArray();
     }
 }

@@ -116,8 +116,12 @@ public class CubeScript : MonoBehaviour
         CubeArray.GetComponent<CubeArrayPosition>().ArStepNums[Num].GetComponent<SpriteRenderer>().sprite = dicesides[results[Num]-1];
         CubeArray.GetComponent<CubeArrayPosition>().ArStepNums[Num].GetComponent<ClickOnCube>().inumberStep = results[Num];
     }
+    public void resetToAddImageToArray()
+    {
+        for(int i=0;i<results.Count;i++)
+        CubeArray.GetComponent<CubeArrayPosition>().ArStepNums[i].GetComponent<SpriteRenderer>().sprite = dicesides[results[i+1] - 1];
+    }
 
-   
     public int ChooseNumSteps(List<int> results)//קריאה לפונקציה מסקריבת חדש בפונקציה שךו onMouse
     {
         int numSteps;
