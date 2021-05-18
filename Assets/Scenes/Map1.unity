@@ -1572,7 +1572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlimesPerPlayer: 2
-  PlayersAmount: 4
+  PlayersAmount: 1
   Players:
   - {fileID: 722164908}
   - {fileID: 650472934}
