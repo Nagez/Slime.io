@@ -160,7 +160,11 @@ public class Slime : MonoBehaviour
             Rigidbody2D SlimeMovment = GetComponent<Rigidbody2D>();
 
             try { transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime); }
-            catch (System.IndexOutOfRangeException e) { Debug.Log("boom"+e); }
+            catch (System.IndexOutOfRangeException e)
+            { Debug.Log("boom"+e);
+                int ArrP = GameControl.GetComponent<GameControl>().DicePICKEDArr;
+                GameControl.GetComponent<GameControl>().DiceMoves[ArrP] = 0;
+            }
             
 
             if ((SlimeMovment.position.x == transform.position.x) && (SlimeMovment.position.y == transform.position.y))
