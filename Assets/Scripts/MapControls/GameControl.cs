@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System.IO;
+using UnityEngine.UI;
 
 public class GameControl : MonoBehaviour
 {
@@ -127,8 +128,8 @@ public class GameControl : MonoBehaviour
         for (int i = 0; i < PlayersAmount; i++)
         {
             HudArr.Add(Instantiate(PlayerHud, Vector3.zero, Quaternion.identity, HudPanel.transform));
-            //HudArr[i].transform. = 
-            //HudArr[i].GetComponentInChildren()
+            //var namePlate = HudArr[i].transform.GetChild(2).gameObject.GetComponent<Image>().color;
+            var namePlate = HudArr[i].transform.Find("nameTag").GetComponent<Image>().color;
         }
     }
 
