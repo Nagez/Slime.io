@@ -21,9 +21,7 @@ public class GameSetupController : MonoBehaviour
 
         //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs","greenplayer"),GameSetupController.GS, Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
         PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs","Player1"),new Vector3(0, 0, 0), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "greenplayer"), new Vector3(0, 0, 0), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
+        //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "greenplayer"), new Vector3(0, 0, 0), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
         //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs","greenplayer"), position0.transform.position, Quaternion.identity);//params(file location for photon plyaer prefab,position to start, rotation) 
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player2"), new Vector3(10, 10,10), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
-
     }
 }

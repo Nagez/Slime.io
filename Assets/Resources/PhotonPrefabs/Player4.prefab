@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3063972091582968591}
   - component: {fileID: 3063972091582968588}
+  - component: {fileID: -2251783586278067492}
   m_Layer: 0
   m_Name: Player4
   m_TagString: Untagged
@@ -49,9 +50,32 @@ MonoBehaviour:
   SlimesLeft: 0
   SlimesSpawned: 1
   playerNum: 4
+  TotalSlimesSpawned: 0
   PTurn: 0
   FirstMove: 0
   GameControlPlayer: {fileID: 0}
+--- !u!114 &-2251783586278067492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3063972091582968590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &3063972091786033853
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +239,7 @@ MonoBehaviour:
   moveAllowed: 0
   smokeParticles: {fileID: 3680831284251619232}
   starsParticles: {fileID: 1140827765560665400}
+  anim: {fileID: 0}
 --- !u!50 &3063972091786033846
 Rigidbody2D:
   serializedVersion: 4

@@ -38,9 +38,11 @@ public class GameControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         if (PhotonNetwork.IsConnected) //check how many players are connected if connected online
         {
-            PlayersAmount=PhotonNetwork.CurrentRoom.PlayerCount;
+            PlayersAmount =PhotonNetwork.CurrentRoom.PlayerCount;
+            CreatePlayer();
         }
         initHUD();
         //Player1 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "greenplayer"));//params(file location for photon plyaer prefab,position to start, rotation) 
@@ -173,6 +175,18 @@ public class GameControl : MonoBehaviour
             Debug.Log("Player " + whosTurnT + " Won the game");
         }
        
+    }
+
+
+    void CreatePlayer()
+    {
+        //file location name need to match actual location in unity case sensitive
+        Debug.Log("creating player");
+        //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs","greenplayer"),GameSetupController.GS, Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
+        Player1=PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player1"), new Vector3(0, 0, 0), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
+        Players.Add(Player1);
+        //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "greenplayer"), new Vector3(0, 0, 0), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
+        //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs","greenplayer"), position0.transform.position, Quaternion.identity);//params(file location for photon plyaer prefab,position to start, rotation) 
     }
 
     //Get slimes number

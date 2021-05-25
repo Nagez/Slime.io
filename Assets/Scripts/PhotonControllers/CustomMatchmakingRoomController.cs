@@ -46,6 +46,11 @@ public class CustomMatchmakingRoomController : MonoBehaviourPunCallbacks
         }
     }
 
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        base.OnDisconnected(cause);
+    }
+
     public override void OnJoinedRoom() //called when local player joins the room
     {
         if (PhotonNetwork.CurrentRoom == null)
