@@ -117,9 +117,11 @@ public class Slime : MonoBehaviour
         DiceNum = 0;
         moveAllowed = false;
         int countN = PlayerT.GetComponent<PlayerScript>().Slimes.Count;//NewSlime.GetComponentsInParent<PlayerScript>().Length;
+        //Change name
         name = name.Replace("(Clone)", "");
-        name = name.Replace("[0-9]", "");
-        name += TotalSlimesSpawned;
+        name = System.Text.RegularExpressions.Regex.Replace(name, @"[\d-]", string.Empty);
+        name += TotalSlimesSpawned; 
+        
     }
 
     //Slime selection for movment
