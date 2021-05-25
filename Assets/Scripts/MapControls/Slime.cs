@@ -108,7 +108,7 @@ public class Slime : MonoBehaviour
 
     //////FIXED FUNCS
     /////New Slime Generator
-    public void InitNewSlime(int playerNum, int slimeNumber)
+    public void InitNewSlime(int playerNum, int slimeNumber,int TotalSlimesSpawned)
     {
         GameObject PlayerT = GameObject.Find("Player" + playerNum);
         transform.parent = PlayerT.transform;
@@ -117,7 +117,9 @@ public class Slime : MonoBehaviour
         DiceNum = 0;
         moveAllowed = false;
         int countN = PlayerT.GetComponent<PlayerScript>().Slimes.Count;//NewSlime.GetComponentsInParent<PlayerScript>().Length;
-        name += slimeNumber;
+        name = name.Replace("(Clone)", "");
+        name = name.Replace("[0-9]", "");
+        name += TotalSlimesSpawned;
     }
 
     //Slime selection for movment

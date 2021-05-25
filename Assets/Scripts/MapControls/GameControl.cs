@@ -128,6 +128,7 @@ public class GameControl : MonoBehaviour
         {
             HudArr.Add(Instantiate(PlayerHud, Vector3.zero, Quaternion.identity, HudPanel.transform));
             //HudArr[i].transform. = 
+            //HudArr[i].GetComponentInChildren()
         }
     }
 
