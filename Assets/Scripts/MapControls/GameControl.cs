@@ -182,11 +182,41 @@ public class GameControl : MonoBehaviour
     {
         //file location name need to match actual location in unity case sensitive
         Debug.Log("creating player");
+        int length = CountPlayerAmount();
         //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs","greenplayer"),GameSetupController.GS, Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
-        Player1=PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player1"), new Vector3(0, 0, 0), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
-        Players.Add(Player1);
+        switch (length)
+        {
+            case 0:
+                Player1 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player1"), new Vector3(0, 0, 0), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
+                Players.Add(Player1);
+                break;
+            case 1:
+                Player2 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player2"), new Vector3(1, 1, 1), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
+                Players.Add(Player2);
+                break;
+            case 2:
+                Player3 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player3"), new Vector3(2, 2, 2), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
+                Players.Add(Player3);
+                break;
+            case 3:
+                Player4 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player4"), new Vector3(3, 3, 3), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
+                Players.Add(Player4);
+                break;
+        }
+
+        
         //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "greenplayer"), new Vector3(0, 0, 0), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
         //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs","greenplayer"), position0.transform.position, Quaternion.identity);//params(file location for photon plyaer prefab,position to start, rotation) 
+    }
+
+    int CountPlayerAmount()
+    {
+        int amount = 0;
+        for (int i = 0; i < Players.Count; i++)
+            if (Players[i] != null)
+                amount++;
+            else break;
+        return amount;
     }
 
     //Get slimes number
