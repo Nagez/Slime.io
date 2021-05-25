@@ -153,6 +153,7 @@ public class Slime : MonoBehaviour
         if (PlayerPosition == 31)
         {
             Player.GetComponent<PlayerScript>().SlimesLeft -= slimeLevel;
+            Player.GetComponent<PlayerScript>().SlimesSpawned -= slimeLevel;
             Player.GetComponent<PlayerScript>().Slimes.Remove(this.gameObject);
             Destroy(this.gameObject);
             Destroy(this);
