@@ -4,19 +4,14 @@ using UnityEngine;
 using Photon.Pun;
 using System.IO;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameControl : MonoBehaviour
 {
 
     public int SlimesPerPlayer; //value is initialized at unity field if no gameprefence exists
     public int PlayersAmount;
-
     public List<GameObject> Players = new List<GameObject>();
-
-    public GameObject HudPanel;
-    public GameObject PlayerHud;
-    
-    public List<GameObject> HudArr = new List<GameObject>();
 
     public int[] DiceMoves = new int[5];
     public int DicePICKED = 0;
@@ -35,7 +30,14 @@ public class GameControl : MonoBehaviour
     /////////////////////////////////////////////////
     public static int diceSide = 0;//check if using
 
-    
+    [Header("HUD")]
+    public GameObject HudPanel;
+    public GameObject PlayerHud;
+    private Color[] colorsArr = new Color[] { Color.green, Color.blue, Color.red, Color.yellow };
+    public Sprite[] DefaultSlimeSprites;
+    public Sprite HPsprite;
+    public List<GameObject> HudArr = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -125,11 +127,23 @@ public class GameControl : MonoBehaviour
 
     public void initHUD()
     {
-        for (int i = 0; i < PlayersAmount; i++)
+        for (int i = 0; i < PlayersAmount; i++) //for each loop add corresponding player HUD
         {
             HudArr.Add(Instantiate(PlayerHud, Vector3.zero, Quaternion.identity, HudPanel.transform));
-            //var namePlate = HudArr[i].transform.GetChild(2).gameObject.GetComponent<Image>().color;
-            var namePlate = HudArr[i].transform.Find("nameTag").GetComponent<Image>().color;
+            var namePlate = HudArr[i].transform.GetChild(2);
+            var slimeImg = HudArr[i].transform.GetChild(1).GetChild(0);
+            var healthBar = HudArr[i].transform.GetChild(3);
+
+            namePlate.GetComponent<Image>().color = colorsArr[i];
+            namePlate.GetComponentInChildren<TextMeshProUGUI>().text = "Player "+ (i+1);
+            slimeImg.GetComponent<Image>().sprite = DefaultSlimeSprites[i];
+
+            //gray out lives that are not needed
+            //for (int j = 0; j < SlimesPerPlayer; j++)
+            //{
+
+            //}
+
         }
     }
 

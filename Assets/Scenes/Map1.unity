@@ -1587,21 +1587,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SlimesPerPlayer: 5
-  PlayersAmount: 2
+  PlayersAmount: 4
   Players:
   - {fileID: 722164908}
   - {fileID: 650472934}
   - {fileID: 240026663}
   - {fileID: 823738326}
-  HudPanel: {fileID: 1792452491}
-  PlayerHud: {fileID: 1984057648585315882, guid: 46ef2c78d3a578440bc0f56b6b71c608, type: 3}
-  HudArr: []
   DiceMoves: 0000000000000000000000000000000000000000
   DicePICKED: 0
   DicePICKEDArr: 0
   firstDiceThrown: 0
   whosTurnT: 1
   Dice: {fileID: 1821589452}
+  HudPanel: {fileID: 1792452491}
+  PlayerHud: {fileID: 1984057648585315882, guid: 46ef2c78d3a578440bc0f56b6b71c608, type: 3}
+  DefaultSlimeSprites:
+  - {fileID: -4987337320017983735, guid: 80c9e0a4af9662b459e22d49f15d3973, type: 3}
+  - {fileID: -6429493399158520243, guid: 7f423b3255fc9144fafd6d2484ddd2b9, type: 3}
+  - {fileID: 6286595657586805340, guid: 80abf326d4655444697d336e97244788, type: 3}
+  - {fileID: 6358040702757662528, guid: c2c8b118c1d48df4da958147be0d8784, type: 3}
+  HPsprite: {fileID: 0}
+  HudArr: []
 --- !u!4 &1501811279 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7669840400156319058, guid: 0d55d5239e30a2f469c38984bf80fd75, type: 3}
