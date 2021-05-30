@@ -19,7 +19,6 @@ public class GameControl : MonoBehaviour
     public bool firstDiceThrown = false;
 
     private static GameObject Player1, Player2, Player3, Player4;
-    private static GameObject TextGreen, TextBlue, TextRed, TextYellow;//Playes turn text in hud
 
     public static int player1Rock = 0, player2Rock = 0; //not using
 
@@ -38,6 +37,7 @@ public class GameControl : MonoBehaviour
     public Sprite HPsprite;
     public List<GameObject> HudArr = new List<GameObject>();
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,8 +48,6 @@ public class GameControl : MonoBehaviour
             CreatePlayer();
         }
         initHUD();
-        //Player1 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "greenplayer"));//params(file location for photon plyaer prefab,position to start, rotation) 
-        //Players.Add();
 
         Dice.GetComponent<CubeScript>().coroutineAllowed = true;
         Players[0].GetComponent<PlayerScript>().PTurn = true;
@@ -57,23 +55,11 @@ public class GameControl : MonoBehaviour
 
        // initPrefrences();
 
-        //Whos Turn
-        TextGreen = GameObject.Find("TextGreen");
-        TextBlue = GameObject.Find("TextBlue");
-        TextRed = GameObject.Find("TextRed");
-        TextYellow = GameObject.Find("TextYellow");
-
         //Players match
         //Player1 = GameObject.Find("Player1");//can be problem
         //Player2 = GameObject.Find("Player2");
         //Player3 = GameObject.Find("Player3");
         //Player4 = GameObject.Find("Player4");
-
-        //off turn text
-        TextGreen.gameObject.SetActive(false);
-        TextBlue.gameObject.SetActive(false);
-        TextRed.gameObject.SetActive(false);
-        TextYellow.gameObject.SetActive(false);
 
     }
 
@@ -84,47 +70,18 @@ public class GameControl : MonoBehaviour
         if (CheckEndTurn()&&firstDiceThrown)
         {
             SwitchTurns();
-            MovePlayer(whosTurnT);
-           
         }
-        MovePlayer(whosTurnT);
+        updateTurnHUD(whosTurnT);
         
     }
 
-    //TEMP only for display
-    public static void MovePlayer(int whosTurnN)//2
+    private void updateTurnHUD(int whosTurnT)
     {
-        TextGreen.gameObject.SetActive(false);
-        TextBlue.gameObject.SetActive(false);
-        TextRed.gameObject.SetActive(false);
-        TextYellow.gameObject.SetActive(false);
-
-        //Player1.GetComponent<PlayerScript>().PTurn = false;
-        //Player2.GetComponent<PlayerScript>().PTurn = false;
-        //Player3.GetComponent<PlayerScript>().PTurn = false;
-        //Player4.GetComponent<PlayerScript>().PTurn = false;
-
-
-        switch (whosTurnN)
+        for (int i = 0; i < PlayersAmount; i++) //for each loop add corresponding player HUD
         {
-            case 1:
-                //Player1.GetComponent<PlayerScript>().PTurn = true;
-                TextGreen.gameObject.SetActive(true);
-                break;
-            case 2:
-                //Player2.GetComponent<PlayerScript>().PTurn = true;
-                TextBlue.gameObject.SetActive(true);
-                break;
-            case 3:
-                //Player3.GetComponent<PlayerScript>().PTurn = true;
-                TextRed.gameObject.SetActive(true);
-                break;
-            case 4:
-                //Player4.GetComponent<PlayerScript>().PTurn = true;
-                TextYellow.gameObject.SetActive(true);
-                break;
-
+            HudArr[i].transform.GetChild(4).gameObject.SetActive(false);
         }
+        HudArr[whosTurnT-1].transform.GetChild(4).gameObject.SetActive(true);
     }
 
     public void initHUD()
@@ -141,14 +98,13 @@ public class GameControl : MonoBehaviour
             slimeImg.GetComponent<Image>().sprite = DefaultSlimeSprites[i];
 
             //gray out lives that are not needed
-            //for (int j = 0; j < SlimesPerPlayer; j++)
-            //{
-
-            //}
+            for (int j = 0; j < 5 - SlimesPerPlayer; j++)
+            {
+                healthBar.transform.GetChild(j).GetComponent<Image>().color = Color.gray;
+            }
 
         }
     }
-
  
     /////////////////////////////////////////Working
     //Is the player turn ended?
