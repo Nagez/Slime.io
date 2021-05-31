@@ -33,9 +33,22 @@ public class ClickOnCube : MonoBehaviour
             }
 
         GameObject.Find("GameControls").GetComponent<GameControl>().DicePICKED = inumberStep;
+
+        ////
+        for (int j = inumberStep+1; j < GetComponentInParent<CubeArrayPosition>().ArStepNums.Count; j++)
+            if (this.name == GetComponentInParent<CubeArrayPosition>().ArStepNums[j].name)
+            {
+                GameObject.Find("GameControls").GetComponent<GameControl>().DicePICKEDArr = j;
+            }
+
+        GameObject.Find("GameControls").GetComponent<GameControl>().DicePICKED = inumberStep;
+        //this.GetComponent<SpriteRenderer>().sprite = null;
+        /////
         inumberStep = 0;
         this.GetComponent<SpriteRenderer>().sprite = null;
-        CubeScript.resetToAddImageToArray();
-        GetComponent<CubeScript>().resetToAddImageToArray();
+        //CubeScript.resetToAddImageToArray();
+        //GetComponent<CubeScript>().resetToAddImageToArray();
+
+        
     }
 }
