@@ -5,6 +5,7 @@ using Photon.Pun;
 using System.IO;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameControl : MonoBehaviour
 {
@@ -33,8 +34,8 @@ public class GameControl : MonoBehaviour
     public GameObject PlayerHud;
     private Color[] colorsArr = new Color[] { Color.green, Color.blue, Color.red, Color.yellow };
     public Sprite[] DefaultSlimeSprites;
-    public Sprite HPsprite;
     public List<GameObject> HudArr = new List<GameObject>();
+    public GameObject GameOverPanel;
 
 
     // Start is called before the first frame update
@@ -146,13 +147,29 @@ public class GameControl : MonoBehaviour
         GameObject.Find("Dice 1").GetComponent<CubeScript>().coroutineAllowed = true;
     }
 
+    //Game over
     public void NoMoreSlimes()
     {
         if (Players[whosTurnT - 1].GetComponent<PlayerScript>().SlimesLeft == 0)
         {
             Debug.Log("Player " + whosTurnT + " Won the game");
+            GameOverPanel.SetActive(true);
+            var winningSlimeIMG = GameOverPanel.transform.GetChild(4);
+            var winningSlimeTXT = GameOverPanel.transform.GetChild(3);
+
+            winningSlimeIMG.GetComponent<Image>().sprite = DefaultSlimeSprites[whosTurnT - 1];
+            winningSlimeTXT.GetComponentInChildren<TextMeshProUGUI>().text = "Player " + (whosTurnT + 1) + " WON!";
         }
-       
+
+    }
+    public void BackToMain()
+    {
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.Disconnect();
+        }
+
+        SceneManager.LoadScene(0);
     }
 
     //Get slimes number
