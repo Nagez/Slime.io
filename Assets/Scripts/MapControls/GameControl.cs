@@ -93,6 +93,7 @@ public class GameControl : MonoBehaviour
             var healthBar = HudArr[i].transform.GetChild(3);
 
             namePlate.GetComponent<Image>().color = colorsArr[i];
+            //                PhotonNetwork.NickName = PlayerPrefs.GetString("NickName");
             namePlate.GetComponentInChildren<TextMeshProUGUI>().text = "Player "+ (i+1);
             slimeImg.GetComponent<Image>().sprite = DefaultSlimeSprites[i];
 

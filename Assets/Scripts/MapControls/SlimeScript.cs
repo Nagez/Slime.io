@@ -10,7 +10,7 @@ public class SlimeScript : MonoBehaviour
     public Transform[] MainMapPath;
     public int SlimePosition = 0;
     [SerializeField] public int CurrentDice = 0;
-    [SerializeField] private float SlimeSpeed = 4f;
+    //[SerializeField] private float SlimeSpeed = 4f;
     public bool SlimeMovmentAllowed = false;
 
     // Start is called before the first frame update
