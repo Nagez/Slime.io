@@ -9,7 +9,7 @@ using TMPro;
 public class GameControl : MonoBehaviour
 {
 
-    public int SlimesPerPlayer; //value is initialized at unity field if no gameprefence exists
+    public int SlimesPerPlayer; 
     public int PlayersAmount;
     public List<GameObject> Players = new List<GameObject>();
 
@@ -18,9 +18,8 @@ public class GameControl : MonoBehaviour
     public int DicePICKEDArr = 0;
     public bool firstDiceThrown = false;
 
-    private static GameObject Player1, Player2, Player3, Player4;
-
-    public static int player1Rock = 0, player2Rock = 0; //not using
+    //private static GameObject Player1, Player2, Player3, Player4;
+    //public static int player1Rock = 0, player2Rock = 0; //not using
 
     //public static int whosTurn = 1;
     public int whosTurnT = 1;
@@ -43,7 +42,8 @@ public class GameControl : MonoBehaviour
     {
         if (PhotonNetwork.IsConnected) //check how many players are connected if connected online
         {
-            PlayersAmount=PhotonNetwork.CurrentRoom.PlayerCount;
+            SlimesPerPlayer = int.Parse(PhotonNetwork.CurrentRoom.CustomProperties["NumOfSlimes"].ToString());
+            PlayersAmount = PhotonNetwork.CurrentRoom.PlayerCount;
         }
         initHUD();
 
@@ -103,7 +103,16 @@ public class GameControl : MonoBehaviour
 
         }
     }
- 
+    public void UpdatePlayerLivesHud() //update live when function call using whosTurn to detect player
+    {
+        int newlife = Players[whosTurnT - 1].GetComponent<PlayerScript>().SlimesLeft;
+        var healthBar = HudArr[whosTurnT - 1].transform.GetChild(3);
+        for (int j = 0; j < 5 - newlife; j++)
+        {
+            healthBar.transform.GetChild(j).GetComponent<Image>().color = Color.gray;
+        }
+    }
+
     /////////////////////////////////////////Working
     //Is the player turn ended?
 

@@ -49,15 +49,12 @@ public class PlayerScript : MonoBehaviour
     void PlayersTurn(bool moveAllowed)
     {
         if (moveAllowed)
-        {
-            
+        {            
             if(FirstMove==false)
             {
-                
+
             }
-
             SlimeSpawnNeeded();
-
         }
     }
     
