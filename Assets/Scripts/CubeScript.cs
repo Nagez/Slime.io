@@ -15,7 +15,7 @@ public class CubeScript : MonoBehaviour
     public List<int> results;//Dice results max 5
     private SpriteRenderer rend;//to change sides of dice images
     public GameObject CubeArray;
-
+    public bool cubeStopedRoll = true;
 
     //private int whosTurn = 1;//who play-כהתחלה 1 הוא משתמש 1
     //private int numOfPlayers;
@@ -44,6 +44,7 @@ public class CubeScript : MonoBehaviour
         //if (!game.gameOver && coroutineAllowed)
         if (coroutineAllowed)
         {
+            
             StartCoroutine("RollTheDice");//אם המשחק לא נגמר  אז זורקים קוביה מפעלים פונקציה
             
         }
@@ -64,6 +65,7 @@ public class CubeScript : MonoBehaviour
 
     private IEnumerator RollTheDice()
     {
+        cubeStopedRoll = false;
         coroutineAllowed = false;
         int randomDiceSide = 0;
         int numofThrown = 0;
@@ -96,6 +98,7 @@ public class CubeScript : MonoBehaviour
             GameAB.GetComponent<GameControl>().DiceMoves[i] = results[i];
         }
         results.Clear();
+        cubeStopedRoll = true;
     }
     //function for calculating the result of the dice with precentages
     public int calcDiceResult()

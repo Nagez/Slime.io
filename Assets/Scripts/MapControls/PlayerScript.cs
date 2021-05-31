@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
     public int SlimesLeft;//slime lives per player
     public int SlimesSpawned;//THe slimes spawned in game
     public int playerNum;//player ID //player1
-
+    public int TotalSlimesSpawned=0;
     //public int[] DiceMoves = new int[5];
     public bool PTurn = false;//player turn
     public bool FirstMove = false;
@@ -49,15 +49,12 @@ public class PlayerScript : MonoBehaviour
     void PlayersTurn(bool moveAllowed)
     {
         if (moveAllowed)
-        {
-            
+        {            
             if(FirstMove==false)
             {
-                
+
             }
-
             SlimeSpawnNeeded();
-
         }
     }
     
@@ -78,7 +75,8 @@ public class PlayerScript : MonoBehaviour
             {
                 GameObject NewSlime = Instantiate(Slimes[0], Slimes[0].GetComponent<Slime>().StartRock[0].transform.position, Slimes[0].GetComponent<Slime>().StartRock[0].transform.rotation);
                 var newSlime=NewSlime.GetComponent<Slime>();
-                newSlime.InitNewSlime(playerNum, Slimes.Count);
+                TotalSlimesSpawned++;
+                newSlime.InitNewSlime(playerNum, Slimes.Count, TotalSlimesSpawned);
                 Slimes.Add(NewSlime);
                 SlimesSpawned++;
 

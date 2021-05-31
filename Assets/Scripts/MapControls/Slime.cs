@@ -23,6 +23,8 @@ public class Slime : MonoBehaviour
     [SerializeField] ParticleSystem smokeParticles;
     [SerializeField] ParticleSystem starsParticles;
 
+    public Animator anim; 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -106,7 +108,7 @@ public class Slime : MonoBehaviour
 
     //////FIXED FUNCS
     /////New Slime Generator
-    public void InitNewSlime(int playerNum, int slimeNumber)
+    public void InitNewSlime(int playerNum, int slimeNumber,int TotalSlimesSpawned)
     {
         GameObject PlayerT = GameObject.Find("Player" + playerNum);
         transform.parent = PlayerT.transform;
@@ -115,7 +117,11 @@ public class Slime : MonoBehaviour
         DiceNum = 0;
         moveAllowed = false;
         int countN = PlayerT.GetComponent<PlayerScript>().Slimes.Count;//NewSlime.GetComponentsInParent<PlayerScript>().Length;
-        name += slimeNumber;
+        //Change name
+        name = name.Replace("(Clone)", "");
+        name = System.Text.RegularExpressions.Regex.Replace(name, @"[\d-]", string.Empty);
+        name += TotalSlimesSpawned; 
+        
     }
 
     //Slime selection for movment
@@ -138,19 +144,22 @@ public class Slime : MonoBehaviour
         int addLevel = CurrentSlime.GetComponent<Slime>().slimeLevel + testSlime.GetComponent<Slime>().slimeLevel;
         Debug.Log("=" + addLevel);
         CurrentSlime.GetComponent<Slime>().slimeLevel = addLevel;
-        
+        anim.SetInteger("Level", addLevel);
     }
 
     //slime movment
     public void SlimeMovment(int DiceRoll)
     {
-        if (PlayerPosition == 31)
+        if (PlayerPosition == 31) //end route
         {
             Player.GetComponent<PlayerScript>().SlimesLeft -= slimeLevel;
+            Player.GetComponent<PlayerScript>().SlimesSpawned -= slimeLevel;
+            GameControl.GetComponent<GameControl>().UpdatePlayerLivesHud(); // update lives at hud
+
             Player.GetComponent<PlayerScript>().Slimes.Remove(this.gameObject);
-            Destroy(this.gameObject);
+            Destroy(this.gameObject); //why is there 2 destroys?
             Destroy(this);
-            Debug.Log("OK");
+            Debug.Log("Slime finished route");
         }
 
         if (DiceRoll > 0)
@@ -160,7 +169,11 @@ public class Slime : MonoBehaviour
             Rigidbody2D SlimeMovment = GetComponent<Rigidbody2D>();
 
             try { transform.position = Vector3.MoveTowards(transform.position, MainPath[newRock].transform.position, moveSpeed * Time.deltaTime); }
-            catch (System.IndexOutOfRangeException e) { Debug.Log("boom"+e); }
+            catch (System.IndexOutOfRangeException e)
+            { Debug.Log("boom"+e);
+                int ArrP = GameControl.GetComponent<GameControl>().DicePICKEDArr;
+                GameControl.GetComponent<GameControl>().DiceMoves[ArrP] = 0;
+            }
             
 
             if ((SlimeMovment.position.x == transform.position.x) && (SlimeMovment.position.y == transform.position.y))

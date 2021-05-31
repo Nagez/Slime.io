@@ -3,29 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System.IO;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameControl : MonoBehaviour
 {
 
-    public int SlimesPerPlayer; //value is initialized at unity field if no gameprefence exists
+    public int SlimesPerPlayer; 
     public int PlayersAmount;
-
     public List<GameObject> Players = new List<GameObject>();
-
-    public GameObject HudPanel;
-    public GameObject PlayerHud;
-    
-    public List<GameObject> HudArr = new List<GameObject>();
 
     public int[] DiceMoves = new int[5];
     public int DicePICKED = 0;
     public int DicePICKEDArr = 0;
     public bool firstDiceThrown = false;
 
-    private static GameObject Player1, Player2, Player3, Player4;
-    private static GameObject TextGreen, TextBlue, TextRed, TextYellow;//Playes turn text in hud
-
-    public static int player1Rock = 0, player2Rock = 0; //not using
+    //private static GameObject Player1, Player2, Player3, Player4;
+    //public static int player1Rock = 0, player2Rock = 0; //not using
 
     //public static int whosTurn = 1;
     public int whosTurnT = 1;
@@ -34,17 +28,24 @@ public class GameControl : MonoBehaviour
     /////////////////////////////////////////////////
     public static int diceSide = 0;//check if using
 
-    
+    [Header("HUD")]
+    public GameObject HudPanel;
+    public GameObject PlayerHud;
+    private Color[] colorsArr = new Color[] { Color.green, Color.blue, Color.red, Color.yellow };
+    public Sprite[] DefaultSlimeSprites;
+    public Sprite HPsprite;
+    public List<GameObject> HudArr = new List<GameObject>();
+
+
     // Start is called before the first frame update
     void Start()
     {
         if (PhotonNetwork.IsConnected) //check how many players are connected if connected online
         {
-            PlayersAmount=PhotonNetwork.CurrentRoom.PlayerCount;
+            SlimesPerPlayer = int.Parse(PhotonNetwork.CurrentRoom.CustomProperties["NumOfSlimes"].ToString());
+            PlayersAmount = PhotonNetwork.CurrentRoom.PlayerCount;
         }
         initHUD();
-        //Player1 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "greenplayer"));//params(file location for photon plyaer prefab,position to start, rotation) 
-        //Players.Add();
 
         Dice.GetComponent<CubeScript>().coroutineAllowed = true;
         Players[0].GetComponent<PlayerScript>().PTurn = true;
@@ -52,23 +53,11 @@ public class GameControl : MonoBehaviour
 
        // initPrefrences();
 
-        //Whos Turn
-        TextGreen = GameObject.Find("TextGreen");
-        TextBlue = GameObject.Find("TextBlue");
-        TextRed = GameObject.Find("TextRed");
-        TextYellow = GameObject.Find("TextYellow");
-
         //Players match
         //Player1 = GameObject.Find("Player1");//can be problem
         //Player2 = GameObject.Find("Player2");
         //Player3 = GameObject.Find("Player3");
         //Player4 = GameObject.Find("Player4");
-
-        //off turn text
-        TextGreen.gameObject.SetActive(false);
-        TextBlue.gameObject.SetActive(false);
-        TextRed.gameObject.SetActive(false);
-        TextYellow.gameObject.SetActive(false);
 
     }
 
@@ -79,59 +68,51 @@ public class GameControl : MonoBehaviour
         if (CheckEndTurn()&&firstDiceThrown)
         {
             SwitchTurns();
-            MovePlayer(whosTurnT);
-           
         }
-        MovePlayer(whosTurnT);
+        updateTurnHUD(whosTurnT);
         
     }
 
-    //TEMP only for display
-    public static void MovePlayer(int whosTurnN)//2
+    private void updateTurnHUD(int whosTurnT)
     {
-        TextGreen.gameObject.SetActive(false);
-        TextBlue.gameObject.SetActive(false);
-        TextRed.gameObject.SetActive(false);
-        TextYellow.gameObject.SetActive(false);
-
-        //Player1.GetComponent<PlayerScript>().PTurn = false;
-        //Player2.GetComponent<PlayerScript>().PTurn = false;
-        //Player3.GetComponent<PlayerScript>().PTurn = false;
-        //Player4.GetComponent<PlayerScript>().PTurn = false;
-
-
-        switch (whosTurnN)
+        for (int i = 0; i < PlayersAmount; i++) //for each loop add corresponding player HUD
         {
-            case 1:
-                //Player1.GetComponent<PlayerScript>().PTurn = true;
-                TextGreen.gameObject.SetActive(true);
-                break;
-            case 2:
-                //Player2.GetComponent<PlayerScript>().PTurn = true;
-                TextBlue.gameObject.SetActive(true);
-                break;
-            case 3:
-                //Player3.GetComponent<PlayerScript>().PTurn = true;
-                TextRed.gameObject.SetActive(true);
-                break;
-            case 4:
-                //Player4.GetComponent<PlayerScript>().PTurn = true;
-                TextYellow.gameObject.SetActive(true);
-                break;
-
+            HudArr[i].transform.GetChild(4).gameObject.SetActive(false);
         }
+        HudArr[whosTurnT-1].transform.GetChild(4).gameObject.SetActive(true);
     }
 
     public void initHUD()
     {
-        for (int i = 0; i < PlayersAmount; i++)
+        for (int i = 0; i < PlayersAmount; i++) //for each loop add corresponding player HUD
         {
             HudArr.Add(Instantiate(PlayerHud, Vector3.zero, Quaternion.identity, HudPanel.transform));
-            //HudArr[i].transform. = 
+            var namePlate = HudArr[i].transform.GetChild(2);
+            var slimeImg = HudArr[i].transform.GetChild(1).GetChild(0);
+            var healthBar = HudArr[i].transform.GetChild(3);
+
+            namePlate.GetComponent<Image>().color = colorsArr[i];
+            namePlate.GetComponentInChildren<TextMeshProUGUI>().text = "Player "+ (i+1);
+            slimeImg.GetComponent<Image>().sprite = DefaultSlimeSprites[i];
+
+            //gray out lives that are not needed
+            for (int j = 0; j < 5 - SlimesPerPlayer; j++)
+            {
+                healthBar.transform.GetChild(j).GetComponent<Image>().color = Color.gray;
+            }
+
+        }
+    }
+    public void UpdatePlayerLivesHud() //update live when function call using whosTurn to detect player
+    {
+        int newlife = Players[whosTurnT - 1].GetComponent<PlayerScript>().SlimesLeft;
+        var healthBar = HudArr[whosTurnT - 1].transform.GetChild(3);
+        for (int j = 0; j < 5 - newlife; j++)
+        {
+            healthBar.transform.GetChild(j).GetComponent<Image>().color = Color.gray;
         }
     }
 
- 
     /////////////////////////////////////////Working
     //Is the player turn ended?
 
