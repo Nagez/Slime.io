@@ -65,7 +65,7 @@ public class GameControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        NoMoreSlimes();
+        //GameOverFunc();
         if (CheckEndTurn()&&firstDiceThrown)
         {
             SwitchTurns();
@@ -149,7 +149,7 @@ public class GameControl : MonoBehaviour
     }
 
     //Game over
-    public void NoMoreSlimes()
+    public void GameOverFunc()
     {
         if (Players[whosTurnT - 1].GetComponent<PlayerScript>().SlimesLeft == 0)
         {
@@ -159,7 +159,7 @@ public class GameControl : MonoBehaviour
             var winningSlimeTXT = GameOverPanel.transform.GetChild(3);
 
             winningSlimeIMG.GetComponent<Image>().sprite = DefaultSlimeSprites[whosTurnT - 1];
-            winningSlimeTXT.GetComponentInChildren<TextMeshProUGUI>().text = "Player " + (whosTurnT + 1) + " WON!";
+            winningSlimeTXT.GetComponentInChildren<TextMeshProUGUI>().text = "Player " + (whosTurnT) + " WON!";
         }
 
     }
