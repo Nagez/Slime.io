@@ -5,11 +5,12 @@ using Photon.Pun;
 using System.IO;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameControl : MonoBehaviour
 {
 
-    public int SlimesPerPlayer; //value is initialized at unity field if no gameprefence exists
+    public int SlimesPerPlayer; 
     public int PlayersAmount;
     public List<GameObject> Players = new List<GameObject>();
 
@@ -18,9 +19,8 @@ public class GameControl : MonoBehaviour
     public int DicePICKEDArr = 0;
     public bool firstDiceThrown = false;
 
-    private static GameObject Player1, Player2, Player3, Player4;
-
-    public static int player1Rock = 0, player2Rock = 0; //not using
+    //private static GameObject Player1, Player2, Player3, Player4;
+    //public static int player1Rock = 0, player2Rock = 0; //not using
 
     //public static int whosTurn = 1;
     public int whosTurnT = 1;
@@ -34,8 +34,8 @@ public class GameControl : MonoBehaviour
     public GameObject PlayerHud;
     private Color[] colorsArr = new Color[] { Color.green, Color.blue, Color.red, Color.yellow };
     public Sprite[] DefaultSlimeSprites;
-    public Sprite HPsprite;
     public List<GameObject> HudArr = new List<GameObject>();
+    public GameObject GameOverPanel;
 
 
     // Start is called before the first frame update
@@ -46,6 +46,8 @@ public class GameControl : MonoBehaviour
         {
             PlayersAmount =PhotonNetwork.CurrentRoom.PlayerCount;
             CreatePlayer();
+            SlimesPerPlayer = int.Parse(PhotonNetwork.CurrentRoom.CustomProperties["NumOfSlimes"].ToString());
+            PlayersAmount = PhotonNetwork.CurrentRoom.PlayerCount;
         }
         initHUD();
 
@@ -94,6 +96,7 @@ public class GameControl : MonoBehaviour
             var healthBar = HudArr[i].transform.GetChild(3);
 
             namePlate.GetComponent<Image>().color = colorsArr[i];
+            //                PhotonNetwork.NickName = PlayerPrefs.GetString("NickName");
             namePlate.GetComponentInChildren<TextMeshProUGUI>().text = "Player "+ (i+1);
             slimeImg.GetComponent<Image>().sprite = DefaultSlimeSprites[i];
 
@@ -105,7 +108,16 @@ public class GameControl : MonoBehaviour
 
         }
     }
- 
+    public void UpdatePlayerLivesHud() //update live when function call using whosTurn to detect player
+    {
+        int newlife = Players[whosTurnT - 1].GetComponent<PlayerScript>().SlimesLeft;
+        var healthBar = HudArr[whosTurnT - 1].transform.GetChild(3);
+        for (int j = 0; j < 5 - newlife; j++)
+        {
+            healthBar.transform.GetChild(j).GetComponent<Image>().color = Color.gray;
+        }
+    }
+
     /////////////////////////////////////////Working
     //Is the player turn ended?
 
@@ -139,11 +151,26 @@ public class GameControl : MonoBehaviour
         GameObject.Find("Dice 1").GetComponent<CubeScript>().coroutineAllowed = true;
     }
 
+    //Game over
     public void NoMoreSlimes()
     {
         if (Players[whosTurnT - 1].GetComponent<PlayerScript>().SlimesLeft == 0)
         {
             Debug.Log("Player " + whosTurnT + " Won the game");
+            GameOverPanel.SetActive(true);
+            var winningSlimeIMG = GameOverPanel.transform.GetChild(4);
+            var winningSlimeTXT = GameOverPanel.transform.GetChild(3);
+
+            winningSlimeIMG.GetComponent<Image>().sprite = DefaultSlimeSprites[whosTurnT - 1];
+            winningSlimeTXT.GetComponentInChildren<TextMeshProUGUI>().text = "Player " + (whosTurnT + 1) + " WON!";
+        }
+
+    }
+    public void BackToMain()
+    {
+        if (PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.Disconnect();
         }
        
     }

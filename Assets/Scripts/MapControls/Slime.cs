@@ -150,14 +150,16 @@ public class Slime : MonoBehaviour
     //slime movment
     public void SlimeMovment(int DiceRoll)
     {
-        if (PlayerPosition == 31)
+        if (PlayerPosition == 31) //end route
         {
             Player.GetComponent<PlayerScript>().SlimesLeft -= slimeLevel;
             Player.GetComponent<PlayerScript>().SlimesSpawned -= slimeLevel;
+            GameControl.GetComponent<GameControl>().UpdatePlayerLivesHud(); // update lives at hud
+
             Player.GetComponent<PlayerScript>().Slimes.Remove(this.gameObject);
-            Destroy(this.gameObject);
+            Destroy(this.gameObject); //why is there 2 destroys?
             Destroy(this);
-            Debug.Log("OK");
+            Debug.Log("Slime finished route");
         }
 
         if (DiceRoll > 0)

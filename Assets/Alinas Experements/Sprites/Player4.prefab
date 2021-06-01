@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 70365114160044701}
+  GameControl: {fileID: 0}
   StartRock:
   - {fileID: 0}
   MainPath:
@@ -159,10 +160,10 @@ MonoBehaviour:
   FirstRollMove: 1
   moveSpeed: 4
   DiceNum: 0
-  RockNumber: 0
   moveAllowed: 0
   smokeParticles: {fileID: 0}
   starsParticles: {fileID: 0}
+  anim: {fileID: 0}
 --- !u!50 &70365113555112741
 Rigidbody2D:
   serializedVersion: 4
@@ -220,6 +221,8 @@ GameObject:
   m_Component:
   - component: {fileID: 70365114160044700}
   - component: {fileID: 70365114160044703}
+  - component: {fileID: 3746914412671835199}
+  - component: {fileID: 2983957570426041083}
   m_Layer: 0
   m_Name: Player4
   m_TagString: Untagged
@@ -256,12 +259,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Slimes:
   - {fileID: 70365113555112750}
-  SlimesPerTPlayer: 0
+  SlimesLeft: 0
+  SlimesSpawned: 0
   playerNum: 4
-  DiceMoves: 0000000000000000000000000000000000000000
+  TotalSlimesSpawned: 0
   PTurn: 0
   FirstMove: 0
   GameControlPlayer: {fileID: 0}
+--- !u!114 &3746914412671835199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70365114160044701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 2983957570426041083}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &2983957570426041083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 70365114160044701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 1
+  m_UseLocal: 1
 --- !u!1001 &680025515107771306
 PrefabInstance:
   m_ObjectHideFlags: 0
