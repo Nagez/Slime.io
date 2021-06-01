@@ -19,7 +19,7 @@ public class GameControl : MonoBehaviour
     public int DicePICKEDArr = 0;
     public bool firstDiceThrown = false;
 
-    //private static GameObject Player1, Player2, Player3, Player4;
+    private static GameObject Player1, Player2, Player3, Player4;
     //public static int player1Rock = 0, player2Rock = 0; //not using
 
     //public static int whosTurn = 1;
