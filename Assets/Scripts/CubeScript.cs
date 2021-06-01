@@ -16,7 +16,8 @@ public class CubeScript : MonoBehaviour
     private SpriteRenderer rend;//to change sides of dice images
     public GameObject CubeArray;
     public bool cubeStopedRoll = true;
-
+    public int randomDiceSide = 0;
+    public int numofThrown = 0;
     //private int whosTurn = 1;//who play-כהתחלה 1 הוא משתמש 1
     //private int numOfPlayers;
 
@@ -48,15 +49,7 @@ public class CubeScript : MonoBehaviour
             StartCoroutine("RollTheDice");//אם המשחק לא נגמר  אז זורקים קוביה מפעלים פונקציה
             
         }
-        //testnum = 555;
-        //Debug.Log(testnum.ToString());
-
-        
-        
-        //updateArr(results);
-
     }
-
 
     private void Instantiate(int v, Vector3 position, Quaternion rotation)
     {
@@ -67,10 +60,9 @@ public class CubeScript : MonoBehaviour
     {
         cubeStopedRoll = false;
         coroutineAllowed = false;
-        int randomDiceSide = 0;
-        int numofThrown = 0;
+        randomDiceSide = 0;
+        numofThrown = 0;
         
-
         while (((randomDiceSide > 3) || (randomDiceSide == 0 && results.Count == 0)) && (results.Count<5))
         {
             for (int i = 0; i <= 20; i++)
@@ -83,15 +75,8 @@ public class CubeScript : MonoBehaviour
             Debug.Log(randomDiceSide);
             AddImageToArray(results, numofThrown);
             numofThrown++;
-            //To array
-
-
-            //rendSquare.sprite = NumSides[randomDiceSide];
-            // numofThrown++;
         }
         
-        //this.gameObject.SetActive(false);
-        //Alinas Add
         GameObject GameAB = GameObject.Find("GameControls");
         for (int i = 0; i < results.Count; i++)
         {
@@ -175,6 +160,33 @@ public class CubeScript : MonoBehaviour
         }
 
     }
+
+    private IEnumerator DiceRollImagegg()
+    {
+        while (((randomDiceSide > 3) || (randomDiceSide == 0 && results.Count == 0)) && (results.Count < 5))
+        {
+            for (int i = 0; i <= 20; i++)
+            {
+                randomDiceSide = calcDiceResult();
+                rend.sprite = dicesides[randomDiceSide - 1];//the new side on dice(קוביה)//PICTER
+                yield return new WaitForSeconds(0.05f);//time pause
+            }
+            results.Add(randomDiceSide); //array of results
+            Debug.Log(randomDiceSide);
+            AddImageToArray(results, numofThrown);
+            numofThrown++;
+        }
+
+        GameObject GameAB = GameObject.Find("GameControls");
+        for (int i = 0; i < results.Count; i++)
+        {
+            GameAB.GetComponent<GameControl>().DiceMoves[i] = results[i];
+        }
+        results.Clear();
+        cubeStopedRoll = true;
+    }
+
+    
 }
 
 

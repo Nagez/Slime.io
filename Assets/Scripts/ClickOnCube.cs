@@ -37,7 +37,33 @@ public class ClickOnCube : MonoBehaviour
         GameObject.Find("GameControls").GetComponent<GameControl>().DicePICKED = inumberStep;
         inumberStep = 0;
         this.GetComponent<SpriteRenderer>().sprite = null;
+        //move cube position
+        SwapingCube();
+        //updateDiceinGameControl
+        //UpdateDiceInGameControl();
+
         //CubeScript.resetToAddImageToArray();
         //GetComponent<CubeScript>().resetToAddImageToArray();
     }
+
+    void SwapingCube()
+    {
+        //GameObject CubeS = GetComponentInParent<CubeArrayPosition>().ArStepNums;
+        for (int i = 0; i < GetComponentInParent<CubeArrayPosition>().ArStepNums.Count; i++)
+        {
+            if((GetComponentInParent<CubeArrayPosition>().ArStepNums[i].GetComponent<ClickOnCube>().inumberStep == 0) && i != (GetComponentInParent<CubeArrayPosition>().ArStepNums.Count - 1))//0->1
+            {
+                Vector3 tempPosition = GetComponentInParent<CubeArrayPosition>().ArStepNums[i].transform.position;
+                GetComponentInParent<CubeArrayPosition>().ArStepNums[i].transform.position = GetComponentInParent<CubeArrayPosition>().ArStepNums[i+1].transform.position;
+                GetComponentInParent<CubeArrayPosition>().ArStepNums[i+1].transform.position = tempPosition;
+
+                GameObject T = GetComponentInParent<CubeArrayPosition>().ArStepNums[i];
+                GetComponentInParent<CubeArrayPosition>().ArStepNums.RemoveAt(i);
+                GetComponentInParent<CubeArrayPosition>().ArStepNums.Insert((i+1), T);
+            }
+        }
+    }
+
+    
+    
 }
