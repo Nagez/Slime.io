@@ -44,10 +44,9 @@ public class GameControl : MonoBehaviour
 
         if (PhotonNetwork.IsConnected) //check how many players are connected if connected online
         {
-            PlayersAmount =PhotonNetwork.CurrentRoom.PlayerCount;
-            CreatePlayer();
             SlimesPerPlayer = int.Parse(PhotonNetwork.CurrentRoom.CustomProperties["NumOfSlimes"].ToString());
             PlayersAmount = PhotonNetwork.CurrentRoom.PlayerCount;
+            CreatePlayer();
         }
         initHUD();
 
