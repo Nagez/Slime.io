@@ -98,6 +98,9 @@ public class Slime : MonoBehaviour
                         
                         //add cube if no 5 cubes
                         PlayerS.GetComponent<PlayerScript>().Slimes.RemoveAt(j);
+
+                        //
+                        //addCubeAfterDe();
                         break;
                     }
                 }
@@ -236,6 +239,8 @@ public class Slime : MonoBehaviour
             CollisionChecking();
             int ArrP= GameControl.GetComponent<GameControl>().DicePICKEDArr;
             GameControl.GetComponent<GameControl>().DiceMoves[ArrP] = 0;
+            UpdateDiceInGameControl();
+       
             GameControl.GetComponent<GameControl>().firstDiceThrown = true;
             Player.GetComponent<PlayerScript>().FirstMove = true;
         }
@@ -250,5 +255,27 @@ public class Slime : MonoBehaviour
         FirstRollMove = false;
     }
 
-    
+    //Update Dice In Game
+    void UpdateDiceInGameControl()
+    {
+        GameObject GameAB = GameObject.Find("GameControls");
+        for (int i = 0; i < GameAB.GetComponent<GameControl>().DiceMoves.Length; i++)
+        {
+            if ((GameAB.GetComponent<GameControl>().DiceMoves[i] == 0) && (i != (GameAB.GetComponent<GameControl>().DiceMoves.Length - 1)))
+            {
+                int T = GameAB.GetComponent<GameControl>().DiceMoves[i];
+                GameAB.GetComponent<GameControl>().DiceMoves[i] = GameAB.GetComponent<GameControl>().DiceMoves[i + 1];
+                GameAB.GetComponent<GameControl>().DiceMoves[i + 1] = T;
+            }
+
+        }
+    }
+
+    //add one more Cube
+    void addCubeAfterDe()
+    {
+        GameControl.GetComponent<GameControl>().firstDiceThrown = false;
+        GameObject.Find("Dice 1").GetComponent<CubeScript>().StartCoroutine("DiceRollImagegg");
+        GameControl.GetComponent<GameControl>().firstDiceThrown = true;
+    }
 }
