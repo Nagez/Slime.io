@@ -44,9 +44,9 @@ public class Slime : MonoBehaviour
     {
         Rigidbody2D CurrentSlime = GetComponent<Rigidbody2D>();
         
-        for (int i=0;i< 4 ; i++)//add mex players
+        for (int i=0;i< GameControl.GetComponent<GameControl>().PlayersAmount ; i++)
         {
-            GameObject GameControlsP = GameObject.Find("GameControls");//GetComponent<GameControl>().Players[i];
+            GameObject GameControlsP = GameObject.Find("GameControls");
             GameObject PlayerS = GameControlsP.GetComponent<GameControl>().Players[i];
 
             for (int j=0;j< PlayerS.GetComponent<PlayerScript>().Slimes.Count ; j++)

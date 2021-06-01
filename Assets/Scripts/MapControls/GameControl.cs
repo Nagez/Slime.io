@@ -53,7 +53,6 @@ public class GameControl : MonoBehaviour
         Dice.GetComponent<CubeScript>().coroutineAllowed = true;
         Players[0].GetComponent<PlayerScript>().PTurn = true;
         GameObject.Find("dice6").GetComponent<AlinasDice>().coroutineAllowed = true;
-
        // initPrefrences();
 
         //Players match
@@ -185,19 +184,27 @@ public class GameControl : MonoBehaviour
         {
             case 0:
                 Player1 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player1"), new Vector3(0, 0, 0), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
+                Player1.name = "Player1";
                 Players.Add(Player1);
+                firstUpdate("Green");
                 break;
             case 1:
                 Player2 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player2"), new Vector3(1, 1, 1), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
+                Player2.name = "Player2";
                 Players.Add(Player2);
+                firstUpdate("Blue");
                 break;
             case 2:
                 Player3 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player3"), new Vector3(2, 2, 2), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
+                Player3.name = "Player3";
                 Players.Add(Player3);
+                firstUpdate("Red");
                 break;
             case 3:
                 Player4 = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Player4"), new Vector3(3, 3, 3), Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
+                Player4.name = "Player4";
                 Players.Add(Player4);
+                firstUpdate("Yellow");
                 break;
         }
 
@@ -216,6 +223,28 @@ public class GameControl : MonoBehaviour
         return amount;
     }
 
+    void firstUpdate(string color)
+    {
+
+        Transform moshe= GameObject.Find(color+"StartRock").transform;
+        GameObject.Find(color+"Slime").GetComponent<Slime>().StartRock[0] = moshe;
+        GameObject yossi = GameObject.Find("GameControls");
+        GameObject.Find(color + "Slime").GetComponent<Slime>().GameControl = yossi;
+        Animator kuku = GameObject.Find(color + "Slime").GetComponent<Animator>();
+        GameObject.Find(color + "Slime").GetComponent<Slime>().anim = kuku;
+
+        mapSet();
+    }
+
+    void mapSet()
+    {
+        GameObject ah = GameObject.Find("way");
+        for(int i=0;i<32;i++)
+        { 
+        GameObject.Find("GreenSlime").GetComponent<Slime>().MainPath[i] = ah.transform.GetChild(i).transform;
+        }
+
+    }
     //Get slimes number
     //public void initPrefrences()
     //{

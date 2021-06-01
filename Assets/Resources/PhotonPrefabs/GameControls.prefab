@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5748633102178856332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5748633102178856335}
+  - component: {fileID: 5748633102178856334}
+  m_Layer: 0
+  m_Name: GameControls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5748633102178856335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5748633102178856332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.62, y: -8.27, z: -3.9498284}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5748633102178856334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5748633102178856332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2f9360be1f09947a3224fc60af2e10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SlimesPerPlayer: 5
+  PlayersAmount: 1
+  Players:
+  - {fileID: 0}
+  DiceMoves: 0000000000000000000000000000000000000000
+  DicePICKED: 0
+  DicePICKEDArr: 0
+  firstDiceThrown: 0
+  whosTurnT: 1
+  Dice: {fileID: 0}
+  HudPanel: {fileID: 0}
+  PlayerHud: {fileID: 1984057648585315882, guid: 46ef2c78d3a578440bc0f56b6b71c608, type: 3}
+  DefaultSlimeSprites:
+  - {fileID: -4987337320017983735, guid: 80c9e0a4af9662b459e22d49f15d3973, type: 3}
+  - {fileID: -6429493399158520243, guid: 7f423b3255fc9144fafd6d2484ddd2b9, type: 3}
+  - {fileID: 6286595657586805340, guid: 80abf326d4655444697d336e97244788, type: 3}
+  - {fileID: 6358040702757662528, guid: c2c8b118c1d48df4da958147be0d8784, type: 3}
+  HudArr:
+  - {fileID: 0}
+  GameOverPanel: {fileID: 0}
