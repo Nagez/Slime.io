@@ -155,9 +155,9 @@ public class Slime : MonoBehaviour
             Player.GetComponent<PlayerScript>().SlimesLeft -= slimeLevel;
             Player.GetComponent<PlayerScript>().SlimesSpawned -= slimeLevel;
             GameControl.GetComponent<GameControl>().UpdatePlayerLivesHud(); // update lives at hud
-
-            Player.GetComponent<PlayerScript>().Slimes.Remove(this.gameObject);
-            Destroy(this.gameObject); //why is there 2 destroys?
+            GameControl.GetComponent<GameControl>().GameOverFunc();
+           Player.GetComponent<PlayerScript>().Slimes.Remove(this.gameObject);
+            Destroy(this.gameObject); 
             Destroy(this);
             Debug.Log("Slime finished route");
         }
