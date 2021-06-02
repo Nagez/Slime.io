@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using Photon.Realtime;
 using System.IO;
 using UnityEngine.UI;
 using TMPro;
@@ -19,8 +20,10 @@ public class GameControl : MonoBehaviour
     public int DicePICKEDArr = 0;
     public bool firstDiceThrown = false;
 
-    //private static GameObject Player1, Player2, Player3, Player4;
+    //private GameObject Player1, Player2, Player3, Player4;
     //public static int player1Rock = 0, player2Rock = 0; //not using
+    PhotonView myPV;
+    Player[] allPlayers;
 
     //public static int whosTurn = 1;
     public int whosTurnT = 1;
@@ -45,6 +48,7 @@ public class GameControl : MonoBehaviour
         {
             SlimesPerPlayer = int.Parse(PhotonNetwork.CurrentRoom.CustomProperties["NumOfSlimes"].ToString());
             PlayersAmount = PhotonNetwork.CurrentRoom.PlayerCount;
+            addPlayers();
         }
         initHUD();
 
@@ -171,6 +175,20 @@ public class GameControl : MonoBehaviour
         }
 
         SceneManager.LoadScene(0);
+    }
+
+    private void addPlayers()
+    {
+        myPV = GetComponent<PhotonView>();
+        allPlayers = PhotonNetwork.PlayerList;
+        foreach(Player p in allPlayers)
+        {
+            //Players.Add()
+            //if (p != PhotonNetwork.LocalPlayer)
+            //{
+            //    myNumberInRoom++;
+            //}
+        }
     }
 
     //Get slimes number
