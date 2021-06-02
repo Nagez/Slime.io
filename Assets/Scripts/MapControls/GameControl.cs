@@ -179,16 +179,18 @@ public class GameControl : MonoBehaviour
 
     private void addPlayers()
     {
+        int myNumberInRoom=0;
         myPV = GetComponent<PhotonView>();
         allPlayers = PhotonNetwork.PlayerList;
-        foreach(Player p in allPlayers)
+        foreach (Player p in allPlayers)
         {
-            //Players.Add()
-            //if (p != PhotonNetwork.LocalPlayer)
-            //{
-            //    myNumberInRoom++;
-            //}
+            if (p != PhotonNetwork.LocalPlayer)
+            {
+                myNumberInRoom++;
+            }
         }
+        Players[myNumberInRoom].GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
+
     }
 
     //Get slimes number

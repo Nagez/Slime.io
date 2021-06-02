@@ -3122,6 +3122,10 @@ PrefabInstance:
       propertyPath: OwnershipTransfer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3746914412671835199, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
 --- !u!198 &70365114321263546 stripped
@@ -3148,6 +3152,10 @@ PrefabInstance:
     - target: {fileID: 228329473927664962, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
       propertyPath: OwnershipTransfer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 228329473927664962, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1875291135138276450, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
       propertyPath: m_RootOrder
@@ -3600,6 +3608,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4055257173017086350, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+      propertyPath: sceneViewId
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5986695541204570781, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
       propertyPath: sceneViewId
       value: 2
@@ -3608,8 +3620,14 @@ PrefabInstance:
       propertyPath: OwnershipTransfer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5986695541204570781, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2556815277836101549, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+    - {fileID: 4055257173017086350, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+    - {fileID: 5517585035881125547, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
 --- !u!198 &2556815277974195328 stripped
 ParticleSystem:
@@ -3635,6 +3653,10 @@ PrefabInstance:
     - target: {fileID: 3399254842865461973, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
       propertyPath: OwnershipTransfer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399254842865461973, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3814112286389365304, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3988,6 +4010,14 @@ PrefabInstance:
       propertyPath: GameControlPlayer
       value: 
       objectReference: {fileID: 1467106165}
+    - target: {fileID: 6546743327783548903, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
+      propertyPath: sceneViewId
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6546743327783548903, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7421630030647692103, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
       propertyPath: sceneViewId
       value: 1
@@ -3995,6 +4025,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 4387503327255912420, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
     - {fileID: 4387503327255912419, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
+    - {fileID: 6546743327783548903, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
+    - {fileID: 4318282888582703553, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
 --- !u!198 &4387503327329354833 stripped
 ParticleSystem:
