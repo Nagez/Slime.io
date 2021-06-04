@@ -189,7 +189,7 @@ public class GameControl : MonoBehaviour
             Debug.Log(p);
             if (p == PhotonNetwork.LocalPlayer)
             {
-                Players[myNumberInRoom].GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
+                Players[myNumberInRoom-1].GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
             }
         }
 
