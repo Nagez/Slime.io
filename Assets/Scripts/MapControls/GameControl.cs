@@ -179,6 +179,8 @@ public class GameControl : MonoBehaviour
         //file location name need to match actual location in unity case sensitive
         Debug.Log("creating player");
         int length = CountPlayerAmount();
+        Debug.Log(length);
+        Debug.Log(PlayersAmount);
         //PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs","greenplayer"),GameSetupController.GS, Quaternion.identity, 0);//params(file location for photon plyaer prefab,position to start, rotation) 
         switch (length)
         {
