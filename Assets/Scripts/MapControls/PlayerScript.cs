@@ -54,7 +54,7 @@ public class PlayerScript : MonoBehaviour
             {
 
             }
-            SlimeSpawnNeeded();
+            //SlimeSpawnNeeded();
         }
     }
     
