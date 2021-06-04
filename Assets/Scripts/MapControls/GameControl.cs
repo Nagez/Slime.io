@@ -184,9 +184,12 @@ public class GameControl : MonoBehaviour
         allPlayers = PhotonNetwork.PlayerList;
         foreach (Player p in allPlayers)
         {
+            Debug.Log(p);
             if (p != PhotonNetwork.LocalPlayer)
             {
                 myNumberInRoom++;
+                Debug.Log(myNumberInRoom);
+
             }
         }
         Players[myNumberInRoom].GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
