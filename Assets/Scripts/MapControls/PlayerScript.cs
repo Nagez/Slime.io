@@ -52,7 +52,6 @@ public class PlayerScript : MonoBehaviour
         {            
             if(FirstMove==false)
             {
-
             }
             //SlimeSpawnNeeded();
         }
