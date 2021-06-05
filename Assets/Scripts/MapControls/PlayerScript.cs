@@ -26,7 +26,7 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MyPv = GetComponent<PhotonView>();
+        
         //locate Slimes per player
         //add function
 
@@ -57,19 +57,16 @@ public class PlayerScript : MonoBehaviour
     void PlayersTurn(bool moveAllowed)
     {
         if (moveAllowed)
-        {
-            //if(FirstMove==true)
-            //{
-            //    //SlimeSpawnNeeded();
-            //}
-            if (MyPv.IsMine)
+        {            
+            if(FirstMove==true)
             {
-                MyPv.RPC("SlimeSpawnNeeded", RpcTarget.AllBuffered);
                 //SlimeSpawnNeeded();
             }
+            
+            SlimeSpawnNeeded();
         }
     }
-    [PunRPC]
+    
     public void SlimeSpawnNeeded()
     {
         if (SlimesSpawned < SlimesLeft)
