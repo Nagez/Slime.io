@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class GameControl : MonoBehaviourPun , IPunObservable
+public class GameControl : MonoBehaviourPunCallbacks , IPunObservable
 {
 
     public int SlimesPerPlayer; 
@@ -208,7 +208,7 @@ public class GameControl : MonoBehaviourPun , IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(whosTurnT);
-        }else if (stream.IsReading)
+        }else
         {
             whosTurnT = (int)stream.ReceiveNext();
         }
