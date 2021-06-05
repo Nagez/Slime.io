@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Slime : MonoBehaviour
 {
@@ -23,11 +24,14 @@ public class Slime : MonoBehaviour
     [SerializeField] ParticleSystem smokeParticles;
     [SerializeField] ParticleSystem starsParticles;
 
-    public Animator anim; 
+    public Animator anim;
+
+    PhotonView myPV;
 
     // Start is called before the first frame update
     void Start()
     {
+        myPV = GetComponent<PhotonView>();
         transform.position = StartRock[0].transform.position;
     }
 
@@ -130,6 +134,7 @@ public class Slime : MonoBehaviour
     //Slime selection for movment
     private void OnMouseDown()
     {
+        if (myPV.IsMine == false) { return; } //in mp if slime isnt owned by me return
         if (GetComponentInParent<PlayerScript>().PTurn && !(GameControl.GetComponent<GameControl>().DicePICKED == 0))
         {
             DiceNum = GameControl.GetComponent<GameControl>().DicePICKED;
