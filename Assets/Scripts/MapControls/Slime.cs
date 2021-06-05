@@ -10,7 +10,7 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
     public GameObject GameControl;
     public Transform[] StartRock;
     public Transform[] MainPath;
-
+    
     public int slimeLevel = 1;
     public int PlayerPosition = 0;
     public bool FirstRollMove = true;
@@ -319,10 +319,15 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(this.transform.position);
+            stream.SendNext(Player);
+            stream.SendNext(name);
         }
         else
         {
+            
             this.transform.position = (Vector3)stream.ReceiveNext();
+            Player = (GameObject)stream.ReceiveNext();
+            name = (string)stream.ReceiveNext();
         }
     }
 }
