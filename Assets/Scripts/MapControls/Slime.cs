@@ -32,7 +32,18 @@ public class Slime : MonoBehaviour
     void Start()
     {
         myPV = GetComponent<PhotonView>();
+        string SColor = name.Replace("Slime", "");
+        Debug.Log(SColor);
+        SColor = SColor.Replace("(Clone)", "");
+        Debug.Log(SColor);
+
+
+        firstUpdate(SColor);
         transform.position = StartRock[0].transform.position;
+        if (myPV.IsMine)
+        {
+            myPV.RPC("firstUpdate", RpcTarget.AllBuffered, StartRock[0]);
+        }
     }
 
     // Update is called once per frame
