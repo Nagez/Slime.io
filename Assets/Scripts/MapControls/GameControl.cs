@@ -22,8 +22,6 @@ public class GameControl : MonoBehaviour
     public int DicePICKEDArr = 0;
     public bool firstDiceThrown = false;
 
-    //private GameObject Player1, Player2, Player3, Player4;
-    //public static int player1Rock = 0, player2Rock = 0; //not using
     PhotonView myPV;
     Player[] allPlayers;
 
@@ -60,12 +58,6 @@ public class GameControl : MonoBehaviour
         GameObject.Find("dice6").GetComponent<AlinasDice>().coroutineAllowed = true;
 
        // initPrefrences();
-
-        //Players match
-        //Player1 = GameObject.Find("Player1");//can be problem
-        //Player2 = GameObject.Find("Player2");
-        //Player3 = GameObject.Find("Player3");
-        //Player4 = GameObject.Find("Player4");
 
     }
 
