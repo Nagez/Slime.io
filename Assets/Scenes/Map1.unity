@@ -2950,6 +2950,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 70365114321263546}
     - target: {fileID: 70365113555112736, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
+      propertyPath: MainPath.Array.size
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 70365113555112736, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
       propertyPath: MainPath.Array.data[0]
       value: 
       objectReference: {fileID: 1733484091}
@@ -3074,6 +3078,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1420199829}
     - target: {fileID: 70365113555112736, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
+      propertyPath: MainPath.Array.data[31]
+      value: 
+      objectReference: {fileID: 552991623}
+    - target: {fileID: 70365113555112736, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
       propertyPath: StartRock.Array.data[0]
       value: 
       objectReference: {fileID: 525027204}
@@ -3133,6 +3141,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player4
       objectReference: {fileID: 0}
+    - target: {fileID: 70365114160044703, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
+      propertyPath: StartRock
+      value: 
+      objectReference: {fileID: 525027203}
+    - target: {fileID: 70365114160044703, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
+      propertyPath: SlimePrefab
+      value: 
+      objectReference: {fileID: 614591601827152045, guid: ed6683082d6d3d743a67ed983021442a, type: 3}
     - target: {fileID: 70365114160044703, guid: c2c9c042eb6927241b2d6d31bfc7cd81, type: 3}
       propertyPath: SlimesSpawned
       value: 1
@@ -3249,6 +3265,14 @@ PrefabInstance:
       value: Player3
       objectReference: {fileID: 0}
     - target: {fileID: 1875291135138276453, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
+      propertyPath: StartRock
+      value: 
+      objectReference: {fileID: 1825423269}
+    - target: {fileID: 1875291135138276453, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
+      propertyPath: SlimePrefab
+      value: 
+      objectReference: {fileID: 8074254874798727991, guid: 7650b8ddd5b77e64186a271a6cfe6a38, type: 3}
+    - target: {fileID: 1875291135138276453, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
       propertyPath: SlimesSpawned
       value: 1
       objectReference: {fileID: 0}
@@ -3272,6 +3296,10 @@ PrefabInstance:
       propertyPath: starsParticles
       value: 
       objectReference: {fileID: 1875291135491951178}
+    - target: {fileID: 1875291136398578884, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
+      propertyPath: MainPath.Array.size
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 1875291136398578884, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
       propertyPath: MainPath.Array.data[0]
       value: 
@@ -3397,6 +3425,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1420199829}
     - target: {fileID: 1875291136398578884, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
+      propertyPath: MainPath.Array.data[31]
+      value: 
+      objectReference: {fileID: 552991623}
+    - target: {fileID: 1875291136398578884, guid: cb187b64358e88145aff8f2c12b866e4, type: 3}
       propertyPath: StartRock.Array.data[0]
       value: 
       objectReference: {fileID: 1825423270}
@@ -3435,6 +3467,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2556815277328337505, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+      propertyPath: StartRock
+      value: 
+      objectReference: {fileID: 1617250505}
+    - target: {fileID: 2556815277328337505, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+      propertyPath: SlimePrefab
+      value: 
+      objectReference: {fileID: 5242525324487066924, guid: 1f05b57b65c38fd438ff7bb2dd693c53, type: 3}
     - target: {fileID: 2556815277328337505, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
       propertyPath: SlimesSpawned
       value: 1
@@ -3528,6 +3568,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2556815277974195328}
     - target: {fileID: 2556815277836101552, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+      propertyPath: MainPath.Array.size
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2556815277836101552, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
       propertyPath: MainPath.Array.data[0]
       value: 
       objectReference: {fileID: 1733484091}
@@ -3651,6 +3695,10 @@ PrefabInstance:
       propertyPath: MainPath.Array.data[30]
       value: 
       objectReference: {fileID: 1420199829}
+    - target: {fileID: 2556815277836101552, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
+      propertyPath: MainPath.Array.data[31]
+      value: 
+      objectReference: {fileID: 552991623}
     - target: {fileID: 2556815277836101552, guid: e6ac7bb51d284a542a777456696bc5f7, type: 3}
       propertyPath: StartRock.Array.data[0]
       value: 
@@ -4055,6 +4103,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4387503327284870476, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
+      propertyPath: StartRock
+      value: 
+      objectReference: {fileID: 1033785179}
+    - target: {fileID: 4387503327284870476, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
+      propertyPath: SlimePrefab
+      value: 
+      objectReference: {fileID: 6924982399579884707, guid: fff191f6be8704443b53639c90848fd3, type: 3}
     - target: {fileID: 4387503327284870476, guid: 70d4aba8023a53c4395773e196e98072, type: 3}
       propertyPath: SlimesSpawned
       value: 1

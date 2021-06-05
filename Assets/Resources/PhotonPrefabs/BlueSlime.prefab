@@ -157,6 +157,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   slimeLevel: 1
   PlayerPosition: 0
   FirstRollMove: 1
