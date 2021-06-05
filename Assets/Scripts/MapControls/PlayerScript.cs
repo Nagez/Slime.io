@@ -26,12 +26,17 @@ public class PlayerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        MyPv = GetComponent<PhotonView>();
+        if(MyPv.IsMine)
+        {
+            MyPv.RPC("SlimeSpawnNeeded",RpcTarget.AllBuffered, Slimes);
+        }
         //locate Slimes per player
         //add function
 
         //GameObject GameControlPlayer = GameObject.Find("GameControls");
         //SlimesPerTPlayer = GameControlPlayer.GetComponent<GameControl>().SlimesPerPlayer;
+
         getSlimePerPlayer();
     }
     // Update is called once per frame
@@ -67,6 +72,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
     
+    [PunRPC]
     public void SlimeSpawnNeeded()
     {
         if (SlimesSpawned < SlimesLeft)
