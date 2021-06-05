@@ -196,6 +196,30 @@ public class GameControl : MonoBehaviour
 
     }
 
+    void firstUpdate(string color)
+    {
+
+        Transform moshe = GameObject.Find(color + "StartRock").transform;
+        GameObject.Find(color + "Slime").GetComponent<Slime>().StartRock[0] = moshe;
+        GameObject yossi = GameObject.Find("GameControls");
+        GameObject.Find(color + "Slime").GetComponent<Slime>().GameControl = yossi;
+        Animator kuku = GameObject.Find(color + "Slime").GetComponent<Animator>();
+        GameObject.Find(color + "Slime").GetComponent<Slime>().anim = kuku;
+
+        mapSet();
+    }
+
+    void mapSet()
+    {
+        GameObject ah = GameObject.Find("way");
+        for (int i = 0; i < 32; i++)
+        {
+            GameObject.Find("GreenSlime").GetComponent<Slime>().MainPath[i] = ah.transform.GetChild(i).transform;
+        }
+
+    }
+
+
     //Get slimes number
     //public void initPrefrences()
     //{
