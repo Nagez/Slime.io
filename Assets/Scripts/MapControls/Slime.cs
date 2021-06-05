@@ -318,16 +318,11 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
-            stream.SendNext(this.transform.position);
-            stream.SendNext(Player);
-            stream.SendNext(name);
+            stream.SendNext(transform.position);
         }
-        else
+        else if (stream.IsReading)
         {
-            
-            this.transform.position = (Vector3)stream.ReceiveNext();
-            Player = (GameObject)stream.ReceiveNext();
-            name = (string)stream.ReceiveNext();
+            transform.position = (Vector3)stream.ReceiveNext();
         }
     }
 }
