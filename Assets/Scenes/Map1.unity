@@ -1808,6 +1808,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SlimesPerPlayer: 4
   PlayersAmount: 2
+  maxPlayersAllowed: 4
   Players:
   - {fileID: 722164908}
   - {fileID: 650472934}

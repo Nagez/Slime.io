@@ -13,6 +13,8 @@ public class GameControl : MonoBehaviour
 
     public int SlimesPerPlayer; 
     public int PlayersAmount;
+    private int maxPlayersAllowed = 4;
+
     public List<GameObject> Players = new List<GameObject>();
 
     public int[] DiceMoves = new int[5];
@@ -48,8 +50,9 @@ public class GameControl : MonoBehaviour
         {
             SlimesPerPlayer = int.Parse(PhotonNetwork.CurrentRoom.CustomProperties["NumOfSlimes"].ToString());
             PlayersAmount = PhotonNetwork.CurrentRoom.PlayerCount;
-            addPlayers();
+            initPlayerOwnerships();
         }
+        setActivePlayers();
         initHUD();
 
         Dice.GetComponent<CubeScript>().coroutineAllowed = true;
@@ -177,7 +180,7 @@ public class GameControl : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    private void addPlayers()
+    private void initPlayerOwnerships()
     {
         int myNumberInRoom=0;
         myPV = GetComponent<PhotonView>();
@@ -193,9 +196,17 @@ public class GameControl : MonoBehaviour
                 Players[myNumberInRoom - 1].transform.GetChild(0).GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer);
             }
         }
-
     }
 
+    private void setActivePlayers()
+    {
+        int maximumPlayers = maxPlayersAllowed - 1;
+        for (int i = maximumPlayers; i >= PlayersAmount; i--) 
+        {
+            Players[maximumPlayers].gameObject.SetActive(false);
+            maximumPlayers--;
+        }
+    }
     //Get slimes number
     //public void initPrefrences()
     //{
