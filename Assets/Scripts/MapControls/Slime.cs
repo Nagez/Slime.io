@@ -118,11 +118,14 @@ public class Slime : MonoBehaviour
     public void InitNewSlime(int playerNum, int slimeNumber,int TotalSlimesSpawned)
     {
         GameObject PlayerT = GameObject.Find("Player" + playerNum);
+        Player = PlayerT;
         transform.parent = PlayerT.transform;
         PlayerPosition = 0;
         slimeLevel = 1;
         DiceNum = 0;
         moveAllowed = false;
+        string SColor = name.Replace("Slime(Clone)", "");
+        firstUpdate(SColor);
         int countN = PlayerT.GetComponent<PlayerScript>().Slimes.Count;//NewSlime.GetComponentsInParent<PlayerScript>().Length;
         //Change name
         name = name.Replace("(Clone)", "");
@@ -130,6 +133,31 @@ public class Slime : MonoBehaviour
         name += TotalSlimesSpawned; 
         
     }
+
+    void firstUpdate(string color)
+    {
+
+        Transform StartRock1 = GameObject.Find(color + "StartRock").transform;
+        StartRock[0] = StartRock1;
+        GameObject GC = GameObject.Find("GameControls");
+        GameControl = GC;
+        
+
+        mapSet(color);
+    }
+
+    void mapSet(string color)
+    {
+        GameObject ah = GameObject.Find("way");
+        for (int i = 0; i < 32; i++)
+        {
+            //GameObject.Find(color + "Slime").GetComponent<Slime>().
+            MainPath[i] = ah.transform.GetChild(i).transform;
+        }
+
+    }
+
+
 
     //Slime selection for movment
     private void OnMouseDown()

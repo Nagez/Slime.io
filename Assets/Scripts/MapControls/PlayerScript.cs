@@ -19,6 +19,8 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject SlimePrefab;
 
+    public GameObject StartRock;
+
     PhotonView MyPv;
 
     // Start is called before the first frame update
@@ -80,23 +82,24 @@ public class PlayerScript : MonoBehaviour
 
             if (!slimeBenchPosition) //&& (slimeLevelCount< SlimesLeft))
             {
-                //if (PhotonNetwork.IsConnected)
-                //{
-                //    MyPv = Slimes[0].GetComponent<PhotonView>();
-                //    GameObject NewSlime = PhotonNetwork.Instantiate(Path.Combine("path", "slime"), position, Quaternion.identity);
-                //    var newSlime = NewSlime.GetComponent<Slime>();
-                //    TotalSlimesSpawned++;
-                //    newSlime.InitNewSlime(playerNum, Slimes.Count, TotalSlimesSpawned);
-                //    Slimes.Add(NewSlime);
-                //    SlimesSpawned++;
-                //}
-                //else
+                if (PhotonNetwork.IsConnected)
                 {
-                    //MyPv = Slimes[0].GetComponent<PhotonView>();
-                    GameObject NewSlime = Instantiate(SlimePrefab, Slimes[0].GetComponent<Slime>().StartRock[0].transform.position, Slimes[0].GetComponent<Slime>().StartRock[0].transform.rotation);
-                    //GameObject NewEEEESlime = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "GreenSlime"), Slimes[0].GetComponent<Slime>().StartRock[0].transform.position, Quaternion.identity);//params(file location for photon plyaer prefab,position to start, rotation)
+                    string SColor = SlimePrefab.name.Replace("Slime", "");
+                    GameObject NewSlime = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", SColor + "Slime"), StartRock.transform.position, Quaternion.identity);//params(file location for photon plyaer prefab,position to start, rotation)
 
-
+                    var newSlime = NewSlime.GetComponent<Slime>();
+                    TotalSlimesSpawned++;
+                    newSlime.InitNewSlime(playerNum, Slimes.Count, TotalSlimesSpawned);
+                    Debug.Log(NewSlime.GetComponent<PhotonView>().ViewID);
+                    Slimes.Add(NewSlime);
+                    SlimesSpawned++;
+                }
+                else
+                {
+                    GameObject NewSlime = Instantiate(SlimePrefab, StartRock.transform.position, Slimes[0].GetComponent<Slime>().StartRock[0].transform.rotation);
+                    //GameObject NewSlime = Instantiate(SlimePrefab, Slimes[0].GetComponent<Slime>().StartRock[0].transform.position, Slimes[0].GetComponent<Slime>().StartRock[0].transform.rotation);
+                    //GameObject NewSlime = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "GreenSlime"), StartRock.transform.position, Quaternion.identity);//params(file location for photon plyaer prefab,position to start, rotation)
+                    Destroy(NewSlime.GetComponent<PhotonView>());
                     var newSlime = NewSlime.GetComponent<Slime>();
                     TotalSlimesSpawned++;
                     newSlime.InitNewSlime(playerNum, Slimes.Count, TotalSlimesSpawned);
