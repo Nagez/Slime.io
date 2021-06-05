@@ -63,11 +63,11 @@ public class PlayerScript : MonoBehaviour
             //{
             //    //SlimeSpawnNeeded();
             //}
-            if (MyPv.IsMine)
-            {
-                MyPv.RPC("SlimeSpawnNeeded", RpcTarget.AllBuffered);
-            }
-            //SlimeSpawnNeeded();
+            //if (MyPv.IsMine)
+            //{
+            //    MyPv.RPC("SlimeSpawnNeeded", RpcTarget.AllBuffered);
+            //}
+            SlimeSpawnNeeded();
         }
     }
     
@@ -94,7 +94,7 @@ public class PlayerScript : MonoBehaviour
 
                     var newSlime = NewSlime.GetComponent<Slime>();
                     TotalSlimesSpawned++;
-                    newSlime.InitNewSlime(playerNum, Slimes.Count, TotalSlimesSpawned);
+                    newSlime.InitNewSlime(playerNum, TotalSlimesSpawned);
                     Debug.Log(NewSlime.GetComponent<PhotonView>().ViewID);
                     Slimes.Add(NewSlime);
                     SlimesSpawned++;
@@ -107,7 +107,7 @@ public class PlayerScript : MonoBehaviour
                     Destroy(NewSlime.GetComponent<PhotonView>());
                     var newSlime = NewSlime.GetComponent<Slime>();
                     TotalSlimesSpawned++;
-                    newSlime.InitNewSlime(playerNum, Slimes.Count, TotalSlimesSpawned);
+                    newSlime.InitNewSlime(playerNum, TotalSlimesSpawned);
                     Debug.Log(NewSlime.GetComponent<PhotonView>().ViewID);
                     Slimes.Add(NewSlime);
                     SlimesSpawned++;

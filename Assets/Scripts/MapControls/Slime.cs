@@ -33,17 +33,13 @@ public class Slime : MonoBehaviour
     {
         myPV = GetComponent<PhotonView>();
         string SColor = name.Replace("Slime", "");
-        Debug.Log(SColor);
         SColor = SColor.Replace("(Clone)", "");
-        Debug.Log(SColor);
-
+        SColor = System.Text.RegularExpressions.Regex.Replace(SColor, @"[\d-]", string.Empty);
 
         firstUpdate(SColor);
+
         transform.position = StartRock[0].transform.position;
-        if (myPV.IsMine)
-        {
-            myPV.RPC("firstUpdate", RpcTarget.AllBuffered, StartRock[0]);
-        }
+        
     }
 
     // Update is called once per frame
@@ -126,19 +122,12 @@ public class Slime : MonoBehaviour
 
     //////FIXED FUNCS
     /////New Slime Generator
-    public void InitNewSlime(int playerNum, int slimeNumber,int TotalSlimesSpawned)
+    public void InitNewSlime(int playerNum,int TotalSlimesSpawned)
     {
         GameObject PlayerT = GameObject.Find("Player" + playerNum);
         Player = PlayerT;
         transform.parent = PlayerT.transform;
-        PlayerPosition = 0;
-        slimeLevel = 1;
-        DiceNum = 0;
-        moveAllowed = false;
         string SColor = name.Replace("Slime(Clone)", "");
-        firstUpdate(SColor);
-        int countN = PlayerT.GetComponent<PlayerScript>().Slimes.Count;//NewSlime.GetComponentsInParent<PlayerScript>().Length;
-        //Change name
         name = name.Replace("(Clone)", "");
         name = System.Text.RegularExpressions.Regex.Replace(name, @"[\d-]", string.Empty);
         name += TotalSlimesSpawned; 
@@ -148,12 +137,9 @@ public class Slime : MonoBehaviour
     void firstUpdate(string color)
     {
 
-        Transform StartRock1 = GameObject.Find(color + "StartRock").transform;
-        StartRock[0] = StartRock1;
-        GameObject GC = GameObject.Find("GameControls");
-        GameControl = GC;
+        StartRock[0] = GameObject.Find(color + "StartRock").transform;
+        GameControl = GameObject.Find("GameControls");
         
-
         mapSet(color);
     }
 
