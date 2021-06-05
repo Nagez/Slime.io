@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Slime : MonoBehaviour
+public class Slime : MonoBehaviourPunCallbacks, IPunObservable
 {
  
     public GameObject Player;
@@ -39,6 +39,7 @@ public class Slime : MonoBehaviour
         firstUpdate(SColor);
 
         transform.position = StartRock[0].transform.position;
+        Debug.Log(StartRock[0].transform.position+" This is start"+ SColor);
         
     }
 
@@ -134,10 +135,14 @@ public class Slime : MonoBehaviour
         
     }
 
+    
     void firstUpdate(string color)
     {
-
+        
         StartRock[0] = GameObject.Find(color + "StartRock").transform;
+        Debug.Log(StartRock[0] + color + "StartRock[0] This is FirstUpdate");
+        Debug.Log(StartRock[0].transform.position + "StartRock[0].transform.position This is FirstUpdate");
+        Debug.Log(StartRock[0].position + "StartRock[0].position This is FirstUpdate");
         GameControl = GameObject.Find("GameControls");
         
         mapSet(color);
@@ -307,5 +312,17 @@ public class Slime : MonoBehaviour
         GameControl.GetComponent<GameControl>().firstDiceThrown = false;
         GameObject.Find("Dice 1").GetComponent<CubeScript>().StartCoroutine("DiceRollImagegg");
         GameControl.GetComponent<GameControl>().firstDiceThrown = true;
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(this.transform.position);
+        }
+        else
+        {
+            this.transform.position = (Vector3)stream.ReceiveNext();
+        }
     }
 }
