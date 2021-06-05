@@ -27,10 +27,6 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         MyPv = GetComponent<PhotonView>();
-        if(MyPv.IsMine)
-        {
-            MyPv.RPC("SlimeSpawnNeeded",RpcTarget.AllBuffered, Slimes);
-        }
         //locate Slimes per player
         //add function
 
@@ -63,12 +59,15 @@ public class PlayerScript : MonoBehaviour
     {
         if (moveAllowed)
         {            
-            if(FirstMove==true)
+            //if(FirstMove==true)
+            //{
+            //    //SlimeSpawnNeeded();
+            //}
+            if (MyPv.IsMine)
             {
-                //SlimeSpawnNeeded();
+                MyPv.RPC("SlimeSpawnNeeded", RpcTarget.AllBuffered);
             }
-            
-            SlimeSpawnNeeded();
+            //SlimeSpawnNeeded();
         }
     }
     
