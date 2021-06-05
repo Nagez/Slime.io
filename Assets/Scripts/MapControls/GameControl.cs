@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class GameControl : MonoBehaviour
+public class GameControl : MonoBehaviourPun , IPunObservable
 {
 
     public int SlimesPerPlayer; 
@@ -46,6 +46,7 @@ public class GameControl : MonoBehaviour
     {
         if (PhotonNetwork.IsConnected) //check how many players are connected if connected online
         {
+            myPV = GetComponent<PhotonView>();
             SlimesPerPlayer = int.Parse(PhotonNetwork.CurrentRoom.CustomProperties["NumOfSlimes"].ToString());
             PlayersAmount = PhotonNetwork.CurrentRoom.PlayerCount;
             initPlayerOwnerships();
@@ -61,16 +62,14 @@ public class GameControl : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    // Update is called once per frame    
     void Update()
     {
-        //GameOverFunc();
-        if (CheckEndTurn()&&firstDiceThrown)
+        if (CheckEndTurn() && firstDiceThrown)
         {
             SwitchTurns();
         }
-        updateTurnHUD(whosTurnT);
-        
+        updateTurnHUD(whosTurnT);             
     }
 
     private void updateTurnHUD(int whosTurnT)
@@ -104,6 +103,8 @@ public class GameControl : MonoBehaviour
 
         }
     }
+
+    [PunRPC]
     public void UpdatePlayerLivesHud() //update live when function call using whosTurn to detect player
     {
         int newlife = Players[whosTurnT - 1].GetComponent<PlayerScript>().SlimesLeft;
@@ -118,6 +119,7 @@ public class GameControl : MonoBehaviour
     //Is the player turn ended?
 
     //check if need to end turn
+    [PunRPC]
     public bool CheckEndTurn()
     {
     ///insode player    
@@ -131,6 +133,7 @@ public class GameControl : MonoBehaviour
         return true;     
     }
 
+    [PunRPC]
     public void SwitchTurns()
     {
         Players[whosTurnT - 1].GetComponent<PlayerScript>().PTurn = false;
@@ -197,6 +200,17 @@ public class GameControl : MonoBehaviour
         {
             Players[maximumPlayers].gameObject.SetActive(false);
             maximumPlayers--;
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(whosTurnT);
+        }else if (stream.IsReading)
+        {
+            whosTurnT = (int)stream.ReceiveNext();
         }
     }
 
