@@ -1806,9 +1806,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2f9360be1f09947a3224fc60af2e10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SlimesPerPlayer: 4
-  PlayersAmount: 2
-  maxPlayersAllowed: 4
+  SlimesPerPlayer: 5
+  PlayersAmount: 4
   Players:
   - {fileID: 722164908}
   - {fileID: 650472934}
