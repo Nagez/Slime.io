@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using System.IO;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
 {
     public List<GameObject> Slimes = new List<GameObject>();
     public int SlimesLeft;//slime lives per player
@@ -119,4 +119,18 @@ public class PlayerScript : MonoBehaviour
  
         }
     }
+
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(PTurn);
+        }
+        else
+        {
+            PTurn = (bool)stream.ReceiveNext();
+        }
+    }
+
 }

@@ -208,9 +208,11 @@ public class GameControl : MonoBehaviourPunCallbacks , IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(whosTurnT);
+            stream.SendNext(firstDiceThrown);
         }else
         {
             whosTurnT = (int)stream.ReceiveNext();
+            firstDiceThrown=(bool)stream.ReceiveNext();
         }
     }
 

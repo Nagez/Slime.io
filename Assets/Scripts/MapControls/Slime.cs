@@ -26,6 +26,8 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
 
     public Animator anim;
 
+    int playerNumber = 0;
+
     PhotonView myPV;
 
     // Start is called before the first frame update
@@ -125,6 +127,7 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
     /////New Slime Generator
     public void InitNewSlime(int playerNum,int TotalSlimesSpawned)
     {
+        playerNumber = playerNum;
         GameObject PlayerT = GameObject.Find("Player" + playerNum);
         Player = PlayerT;
         transform.parent = PlayerT.transform;
@@ -132,7 +135,6 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
         name = name.Replace("(Clone)", "");
         name = System.Text.RegularExpressions.Regex.Replace(name, @"[\d-]", string.Empty);
         name += TotalSlimesSpawned; 
-        
     }
 
     
@@ -318,11 +320,24 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
     {
         if (stream.IsWriting)
         {
+            Debug.Log("OnPhotonSerialize - write");
             //stream.SendNext(transform.position);
+            stream.SendNext(name);
+            stream.SendNext(playerNumber);
         }
         else if (stream.IsReading)
         {
+
             //transform.position = (Vector3)stream.ReceiveNext();
+            name = (string)stream.ReceiveNext();
+            playerNumber = (int)stream.ReceiveNext();
+
+
+            GameObject PlayerT = GameObject.Find("Player" + playerNumber);
+            Player = PlayerT;
+            transform.parent = PlayerT.transform;
+            Debug.Log($"OnPhotonSerialize - read {name}");
+
         }
     }
 }
