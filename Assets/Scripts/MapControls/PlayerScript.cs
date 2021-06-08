@@ -103,7 +103,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
                     newSlime.name = newSlime.name.Replace("(Clone)", "");
                     newSlime.name = System.Text.RegularExpressions.Regex.Replace(newSlime.name, @"[\d-]", string.Empty);
                     newSlime.name += TotalSlimesSpawned;
-                    
+
 
 
                     //newSlime.InitNewSlime(playerNum, TotalSlimesSpawned);
