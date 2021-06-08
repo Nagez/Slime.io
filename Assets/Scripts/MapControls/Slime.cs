@@ -120,28 +120,33 @@ public class Slime : MonoBehaviour
         GameObject PlayerT = GameObject.Find("Player" + playerNum);
         Player = PlayerT;
         transform.parent = PlayerT.transform;
-        PlayerPosition = 0;
-        slimeLevel = 1;
-        DiceNum = 0;
-        moveAllowed = false;
+        
         string SColor = name.Replace("Slime(Clone)", "");
-        firstUpdate(SColor);
-        int countN = PlayerT.GetComponent<PlayerScript>().Slimes.Count;//NewSlime.GetComponentsInParent<PlayerScript>().Length;
+        //firstUpdate(SColor);
+        //int countN = PlayerT.GetComponent<PlayerScript>().Slimes.Count;//NewSlime.GetComponentsInParent<PlayerScript>().Length;
         //Change name
         name = name.Replace("(Clone)", "");
         name = System.Text.RegularExpressions.Regex.Replace(name, @"[\d-]", string.Empty);
-        name += TotalSlimesSpawned; 
-        
+        name += TotalSlimesSpawned;
+
     }
 
     void firstUpdate(string color)
     {
 
-        Transform StartRock1 = GameObject.Find(color + "StartRock").transform;
-        StartRock[0] = StartRock1;
-        GameObject GC = GameObject.Find("GameControls");
-        GameControl = GC;
-        
+        //Transform StartRock1 = GameObject.Find(color + "StartRock").transform;
+        //StartRock[0] = StartRock1;
+        //GameObject GC = GameObject.Find("GameControls");
+        //GameControl = GC;
+
+        StartRock[0] = GameObject.Find(color + "StartRock").transform;
+        Debug.Log(StartRock[0] + color + "StartRock[0] This is FirstUpdate");
+        Debug.Log(StartRock[0].transform.position + "StartRock[0].transform.position This is FirstUpdate");
+        Debug.Log(StartRock[0].position + "StartRock[0].position This is FirstUpdate");
+        GameControl = GameObject.Find("GameControls");
+
+        mapSet(color);
+
 
         mapSet(color);
     }
