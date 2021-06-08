@@ -95,13 +95,14 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
                     TotalSlimesSpawned++;
 
                     newSlime.transform.parent = GameObject.Find("Player" + playerNum).transform;
+                    newSlime.Player = GameObject.Find("Player" + playerNum);
 
-  
+
                     string RColor = newSlime.name.Replace("Slime(Clone)", "");
                     newSlime.name = newSlime.name.Replace("(Clone)", "");
                     newSlime.name = System.Text.RegularExpressions.Regex.Replace(newSlime.name, @"[\d-]", string.Empty);
                     newSlime.name += TotalSlimesSpawned;
-
+                    
 
 
                     //newSlime.InitNewSlime(playerNum, TotalSlimesSpawned);
