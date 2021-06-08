@@ -8,7 +8,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class GameControl : MonoBehaviour
+public class GameControl : MonoBehaviourPunCallbacks, IPunObservable
 {
 
     public int SlimesPerPlayer; 
@@ -197,6 +197,20 @@ public class GameControl : MonoBehaviour
         {
             Players[maximumPlayers].gameObject.SetActive(false);
             maximumPlayers--;
+        }
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(whosTurnT);
+            
+        }
+        else
+        {
+            whosTurnT = (int)stream.ReceiveNext();
+            
         }
     }
 
