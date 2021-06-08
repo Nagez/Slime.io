@@ -41,10 +41,10 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
         transform.position = StartRock[0].transform.position;
         Debug.Log(StartRock[0].transform.position+" This is start "+ SColor);
 
-        if (photonView.IsMine)
-        {
-            photonView.RPC("InitNewSlime", RpcTarget.All, photonView.ViewID);
-        }
+        //if (photonView.IsMine)
+        //{
+        //    photonView.RPC("InitNewSlime", RpcTarget.All, photonView.ViewID);
+        //}
 
     }
 
@@ -85,17 +85,11 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
                             CurrentSlime.GetComponent<Slime>().starsParticles.Play();
 
                             Debug.Log("Destroy " + testSlime.name);
-
-                            
+                           
                             testSlime.GetComponentInParent<PlayerScript>().SlimeSpawnNeeded();
                             //SlimeSpawnNeeded();
 
-
-
                             Destroy(testSlime);
-                            
-
-
                             PlayerS.GetComponent<PlayerScript>().Slimes.RemoveAt(j);
                             break;
                         }
@@ -326,13 +320,13 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
         {
             Debug.Log("OnPhotonSerialize - write");
             stream.SendNext(name);
-            stream.SendNext(playerNumber);
+            //stream.SendNext(playerNumber);
             stream.SendNext(slimeLevel);
             stream.SendNext(PlayerPosition);
-            stream.SendNext(FirstRollMove);
-            stream.SendNext(moveSpeed);
-            stream.SendNext(DiceNum);
-            stream.SendNext(moveAllowed);
+            //stream.SendNext(FirstRollMove);
+            //stream.SendNext(moveSpeed);
+            //stream.SendNext(DiceNum);
+            //stream.SendNext(moveAllowed);
 
 
         }
@@ -340,13 +334,13 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
         {
             Debug.Log("OnPhotonSerialize - read");
             name = (string)stream.ReceiveNext();
-            playerNumber = (int)stream.ReceiveNext();
+            //playerNumber = (int)stream.ReceiveNext();
             slimeLevel = (int)stream.ReceiveNext();
             PlayerPosition = (int)stream.ReceiveNext();
-            FirstRollMove = (bool)stream.ReceiveNext();
-            moveSpeed = (int)stream.ReceiveNext();
-            DiceNum = (int)stream.ReceiveNext();
-            moveAllowed = (bool)stream.ReceiveNext();
+            //FirstRollMove = (bool)stream.ReceiveNext();
+            //moveSpeed = (int)stream.ReceiveNext();
+            //DiceNum = (int)stream.ReceiveNext();
+            //moveAllowed = (bool)stream.ReceiveNext();
 
 
         }

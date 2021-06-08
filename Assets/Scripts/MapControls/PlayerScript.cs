@@ -93,7 +93,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
                     GameObject NewSlime = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", SColor + "Slime"), StartRock.transform.position, Quaternion.identity);//params(file location for photon plyaer prefab,position to start, rotation)
                     var newSlime = NewSlime.GetComponent<Slime>();
                     TotalSlimesSpawned++;
-                    transform.parent = GameObject.Find("Player" + playerNum).transform;
+                    newSlime.transform.parent = GameObject.Find("Player" + playerNum).transform;
                     newSlime.InitNewSlime(playerNum, TotalSlimesSpawned);
                     Debug.Log(NewSlime.GetComponent<PhotonView>().ViewID);
 
@@ -128,17 +128,17 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
         {
             stream.SendNext(PTurn);
             stream.SendNext(playerNum);
-            stream.SendNext(TotalSlimesSpawned);
-            stream.SendNext(SlimesLeft);
-            stream.SendNext(FirstMove);
+            //stream.SendNext(TotalSlimesSpawned);
+            //stream.SendNext(SlimesLeft);
+            //stream.SendNext(FirstMove);
         }
         else
         {
             PTurn = (bool)stream.ReceiveNext();
             playerNum = (int)stream.ReceiveNext();
-            TotalSlimesSpawned = (int)stream.ReceiveNext();
-            SlimesLeft = (int)stream.ReceiveNext();
-            FirstMove = (bool)stream.ReceiveNext();
+            //TotalSlimesSpawned = (int)stream.ReceiveNext();
+            //SlimesLeft = (int)stream.ReceiveNext();
+            //FirstMove = (bool)stream.ReceiveNext();
         }
     }
 

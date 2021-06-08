@@ -209,26 +209,26 @@ public class GameControl : MonoBehaviourPunCallbacks , IPunObservable
         {
 
             stream.SendNext(whosTurnT);
-            stream.SendNext(firstDiceThrown);
-            stream.SendNext(SlimesPerPlayer);
-            stream.SendNext(PlayersAmount);
-            stream.SendNext(maxPlayersAllowed);
-            stream.SendNext(DiceMoves);
-            stream.SendNext(DicePICKED);
-            stream.SendNext(DicePICKEDArr);
-            stream.SendNext(diceSide);
+            //stream.SendNext(firstDiceThrown);
+            //stream.SendNext(SlimesPerPlayer);
+            //stream.SendNext(PlayersAmount);
+            //stream.SendNext(maxPlayersAllowed);
+            //stream.SendNext(DiceMoves);
+            //stream.SendNext(DicePICKED);
+            //stream.SendNext(DicePICKEDArr);
+            //stream.SendNext(diceSide);
         }
         else
         {
             whosTurnT = (int)stream.ReceiveNext();
-            firstDiceThrown=(bool)stream.ReceiveNext();
-            SlimesPerPlayer = (int)stream.ReceiveNext();
-            PlayersAmount = (int)stream.ReceiveNext();
-            maxPlayersAllowed = (int)stream.ReceiveNext();
-            DiceMoves = (int[])stream.ReceiveNext();
-            DicePICKED = (int)stream.ReceiveNext();
-            DicePICKEDArr = (int)stream.ReceiveNext();
-            diceSide = (int)stream.ReceiveNext();
+            //WfirstDiceThrown=(bool)stream.ReceiveNext();
+            //SlimesPerPlayer = (int)stream.ReceiveNext();
+            //PlayersAmount = (int)stream.ReceiveNext();
+            //maxPlayersAllowed = (int)stream.ReceiveNext();
+            //DiceMoves = (int[])stream.ReceiveNext();
+            //DicePICKED = (int)stream.ReceiveNext();
+            //DicePICKEDArr = (int)stream.ReceiveNext();
+            //diceSide = (int)stream.ReceiveNext();
         }
     }
 
