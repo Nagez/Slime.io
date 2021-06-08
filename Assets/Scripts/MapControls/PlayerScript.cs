@@ -114,4 +114,20 @@ public class PlayerScript : MonoBehaviour
  
         }
     }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+
+            stream.SendNext(PTurn);
+           
+        }
+        else
+        {
+            PTurn = (bool)stream.ReceiveNext();
+            
+        }
+    }
+
 }
