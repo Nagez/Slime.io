@@ -31,6 +31,12 @@ public class Slime : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        string SColor = name.Replace("Slime", "");
+        SColor = SColor.Replace("(Clone)", "");
+        SColor = System.Text.RegularExpressions.Regex.Replace(SColor, @"[\d-]", string.Empty);
+        firstUpdate(SColor);
+
+
         myPV = GetComponent<PhotonView>();
         transform.position = StartRock[0].transform.position;
     }
@@ -134,19 +140,11 @@ public class Slime : MonoBehaviour
     void firstUpdate(string color)
     {
 
-        //Transform StartRock1 = GameObject.Find(color + "StartRock").transform;
-        //StartRock[0] = StartRock1;
-        //GameObject GC = GameObject.Find("GameControls");
-        //GameControl = GC;
-
         StartRock[0] = GameObject.Find(color + "StartRock").transform;
         Debug.Log(StartRock[0] + color + "StartRock[0] This is FirstUpdate");
         Debug.Log(StartRock[0].transform.position + "StartRock[0].transform.position This is FirstUpdate");
         Debug.Log(StartRock[0].position + "StartRock[0].position This is FirstUpdate");
         GameControl = GameObject.Find("GameControls");
-
-        mapSet(color);
-
 
         mapSet(color);
     }
@@ -156,7 +154,6 @@ public class Slime : MonoBehaviour
         GameObject ah = GameObject.Find("way");
         for (int i = 0; i < 32; i++)
         {
-            //GameObject.Find(color + "Slime").GetComponent<Slime>().
             MainPath[i] = ah.transform.GetChild(i).transform;
         }
 
