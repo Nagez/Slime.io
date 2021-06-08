@@ -41,8 +41,13 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
         firstUpdate(SColor);
 
         transform.position = StartRock[0].transform.position;
-        Debug.Log(StartRock[0].transform.position+" This is start"+ SColor);
-        
+        Debug.Log(StartRock[0].transform.position+" This is start "+ SColor);
+
+        if (photonView.IsMine)
+        {
+            photonView.RPC("InitNewSlime", RpcTarget.All, photonView.ViewID);
+        }
+
     }
 
     // Update is called once per frame
@@ -125,6 +130,7 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
 
     //////FIXED FUNCS
     /////New Slime Generator
+    [PunRPC]
     public void InitNewSlime(int playerNum,int TotalSlimesSpawned)
     {
         playerNumber = playerNum;
@@ -333,10 +339,10 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
             playerNumber = (int)stream.ReceiveNext();
 
 
-            GameObject PlayerT = GameObject.Find("Player" + playerNumber);
-            Player = PlayerT;
-            transform.parent = PlayerT.transform;
-            Debug.Log($"OnPhotonSerialize - read {name}");
+            //GameObject PlayerT = GameObject.Find("Player" + playerNumber);
+            //Player = PlayerT;
+            //transform.parent = PlayerT.transform;
+            //Debug.Log($"OnPhotonSerialize - read {name}");
 
         }
     }

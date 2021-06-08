@@ -209,6 +209,9 @@ public class GameControl : MonoBehaviourPunCallbacks , IPunObservable
         {
             stream.SendNext(whosTurnT);
             stream.SendNext(firstDiceThrown);
+
+
+
         }else
         {
             whosTurnT = (int)stream.ReceiveNext();
