@@ -64,7 +64,6 @@ public class GameControl : MonoBehaviourPunCallbacks, IPunObservable
     // Update is called once per frame
     void Update()
     {
-        //GameOverFunc();
         if (CheckEndTurn()&&firstDiceThrown)
         {
             SwitchTurns();
