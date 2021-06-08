@@ -125,7 +125,7 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
     [PunRPC]
     public void InitNewSlime(int playerNum,int TotalSlimesSpawned)
     {
-        playerNumber = playerNum;
+        //playerNumber = playerNum;
         GameObject PlayerT = GameObject.Find("Player" + playerNum);
         Player = PlayerT;
         transform.parent = PlayerT.transform;
@@ -319,9 +319,12 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             Debug.Log("OnPhotonSerialize - write");
+            Debug.Log(name);
             stream.SendNext(name);
             //stream.SendNext(playerNumber);
+            Debug.Log(slimeLevel);
             stream.SendNext(slimeLevel);
+            Debug.Log(PlayerPosition);
             stream.SendNext(PlayerPosition);
             //stream.SendNext(FirstRollMove);
             //stream.SendNext(moveSpeed);
@@ -341,6 +344,15 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
             //moveSpeed = (int)stream.ReceiveNext();
             //DiceNum = (int)stream.ReceiveNext();
             //moveAllowed = (bool)stream.ReceiveNext();
+
+            Debug.Log(name);
+            Debug.Log(playerNumber);
+            Debug.Log(slimeLevel);
+            Debug.Log(PlayerPosition);
+            Debug.Log(FirstRollMove);
+            Debug.Log(moveSpeed);
+            Debug.Log(DiceNum);
+            Debug.Log(moveAllowed);
 
 
         }
