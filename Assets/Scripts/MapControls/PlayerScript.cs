@@ -93,8 +93,18 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
                     GameObject NewSlime = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", SColor + "Slime"), StartRock.transform.position, Quaternion.identity);//params(file location for photon plyaer prefab,position to start, rotation)
                     var newSlime = NewSlime.GetComponent<Slime>();
                     TotalSlimesSpawned++;
-                    transform.parent = GameObject.Find("Player" + playerNum).transform;
-                    newSlime.InitNewSlime(playerNum, TotalSlimesSpawned);
+
+                    newSlime.transform.parent = GameObject.Find("Player" + playerNum).transform;
+
+  
+                    string RColor = newSlime.name.Replace("Slime(Clone)", "");
+                    newSlime.name = newSlime.name.Replace("(Clone)", "");
+                    newSlime.name = System.Text.RegularExpressions.Regex.Replace(newSlime.name, @"[\d-]", string.Empty);
+                    newSlime.name += TotalSlimesSpawned;
+
+
+
+                    //newSlime.InitNewSlime(playerNum, TotalSlimesSpawned);
                     Debug.Log(NewSlime.GetComponent<PhotonView>().ViewID);
 
                     Slimes.Add(NewSlime);
