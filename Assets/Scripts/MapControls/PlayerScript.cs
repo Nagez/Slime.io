@@ -129,12 +129,16 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
             stream.SendNext(PTurn);
             stream.SendNext(playerNum);
             stream.SendNext(TotalSlimesSpawned);
+            stream.SendNext(SlimesLeft);
+            stream.SendNext(FirstMove);
         }
         else
         {
             PTurn = (bool)stream.ReceiveNext();
             playerNum = (int)stream.ReceiveNext();
             TotalSlimesSpawned = (int)stream.ReceiveNext();
+            SlimesLeft = (int)stream.ReceiveNext();
+            FirstMove = (bool)stream.ReceiveNext();
         }
     }
 

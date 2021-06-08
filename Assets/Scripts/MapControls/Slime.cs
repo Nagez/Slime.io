@@ -14,19 +14,17 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
     public int slimeLevel = 1;
     public int PlayerPosition = 0;
     public bool FirstRollMove = true;
-    
+    int playerNumber = 0;
+
     [SerializeField] private float moveSpeed = 4f;
     [SerializeField] public int DiceNum = 0;
-
-    
+   
     public bool moveAllowed = false;
 
     [SerializeField] ParticleSystem smokeParticles;
     [SerializeField] ParticleSystem starsParticles;
 
     public Animator anim;
-
-    int playerNumber = 0;
 
     PhotonView myPV;
 
@@ -327,22 +325,29 @@ public class Slime : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             Debug.Log("OnPhotonSerialize - write");
-            //stream.SendNext(transform.position);
             stream.SendNext(name);
             stream.SendNext(playerNumber);
+            stream.SendNext(slimeLevel);
+            stream.SendNext(PlayerPosition);
+            stream.SendNext(FirstRollMove);
+            stream.SendNext(moveSpeed);
+            stream.SendNext(DiceNum);
+            stream.SendNext(moveAllowed);
+
+
         }
         else if (stream.IsReading)
         {
-
-            //transform.position = (Vector3)stream.ReceiveNext();
+            Debug.Log("OnPhotonSerialize - read");
             name = (string)stream.ReceiveNext();
             playerNumber = (int)stream.ReceiveNext();
+            slimeLevel = (int)stream.ReceiveNext();
+            PlayerPosition = (int)stream.ReceiveNext();
+            FirstRollMove = (bool)stream.ReceiveNext();
+            moveSpeed = (int)stream.ReceiveNext();
+            DiceNum = (int)stream.ReceiveNext();
+            moveAllowed = (bool)stream.ReceiveNext();
 
-
-            //GameObject PlayerT = GameObject.Find("Player" + playerNumber);
-            //Player = PlayerT;
-            //transform.parent = PlayerT.transform;
-            //Debug.Log($"OnPhotonSerialize - read {name}");
 
         }
     }
