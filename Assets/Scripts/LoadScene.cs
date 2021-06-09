@@ -9,13 +9,17 @@ public class LoadScene : MonoBehaviour
 
     public void LoadNextScene()
     {
-        StartCoroutine(DelayIt());
+        StartCoroutine(DelayIt(1)); //multiplayer is set to the next scene build index so we pass down 1 
     }
-    public IEnumerator DelayIt()
+    public void LoadLocal() 
+    {
+        StartCoroutine(DelayIt(2)); //the local lobby build index is current build index + 2
+    }
+    public IEnumerator DelayIt(int index)
     {
         //load the scene asynchrounously, it's important you set allowsceneactivation to false
         //in order to wait for the audioclip to finish playing
-        AsyncOperation sceneLoading = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        AsyncOperation sceneLoading = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + index);
         sceneLoading.allowSceneActivation = false;
 
         //wait for the audioclip to end

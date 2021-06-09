@@ -44,6 +44,7 @@ public class GameControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        initLocalPrefrences();
         if (PhotonNetwork.IsConnected) //check how many players are connected if connected online
         {
             SlimesPerPlayer = int.Parse(PhotonNetwork.CurrentRoom.CustomProperties["NumOfSlimes"].ToString());
@@ -201,17 +202,15 @@ public class GameControl : MonoBehaviour
     }
 
 
-
-
-    //Get slimes number
-    //public void initPrefrences()
-    //{
-    //    if (GamePrefrences.instance)
-    //    {
-    //        SlimesPerPlayer = GamePrefrences.instance.numberOfSlimes;
-    //        PlayersAmount = GamePrefrences.instance.numberOfPlayers;
-    //    }
-    //}
+    //init number of slimes and players for local play
+    public void initLocalPrefrences()
+    {
+        if (GamePrefrences.instance)
+        {
+            SlimesPerPlayer = GamePrefrences.instance.getNumOfSlime();
+            PlayersAmount = GamePrefrences.instance.getRoomSize();
+        }
+    }
 
 
 }
