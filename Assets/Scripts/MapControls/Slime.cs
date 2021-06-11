@@ -58,7 +58,7 @@ public class Slime : MonoBehaviour
             {
                 GameObject testSlime = PlayerS.GetComponent<PlayerScript>().Slimes[j];
 
-                if((CurrentSlime.GetComponent<Slime>().PlayerPosition == testSlime.GetComponent<Slime>().PlayerPosition) && (CurrentSlime.GetComponent<Slime>().PrevPlayerPosition != 24 && testSlime.GetComponent<Slime>().PlayerPosition != 14))
+                if((CurrentSlime.GetComponent<Slime>().PlayerPosition == testSlime.GetComponent<Slime>().PlayerPosition) && (CurrentSlime.GetComponent<Slime>().PrevPlayerPosition != 24 && testSlime.GetComponent<Slime>().PlayerPosition != 14) && (CurrentSlime.GetComponent<Slime>().PlayerPosition != 29 && testSlime.GetComponent<Slime>().PrevPlayerPosition != 28))
                 {
                     if (CurrentSlime.GetComponentInParent<PlayerScript>().playerNum == testSlime.GetComponentInParent<PlayerScript>().playerNum)
                     {
@@ -263,7 +263,9 @@ public class Slime : MonoBehaviour
                 //End
                 else if ((PlayerPosition == 19) || (PlayerPosition == 29))
                 {
+                    if(PrevPlayerPosition!=28)
                     PrevPlayerPosition = PlayerPosition;
+
                     PlayerPosition = 29;
                 }
 
