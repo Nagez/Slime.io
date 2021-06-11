@@ -13,6 +13,7 @@ public class Slime : MonoBehaviour
 
     public int slimeLevel = 1;
     public int PlayerPosition = 0;
+    public int PrevPlayerPosition = 0;
     public bool FirstRollMove = true;
     
     [SerializeField] private float moveSpeed = 4f;
@@ -57,7 +58,7 @@ public class Slime : MonoBehaviour
             {
                 GameObject testSlime = PlayerS.GetComponent<PlayerScript>().Slimes[j];
 
-                if(CurrentSlime.GetComponent<Slime>().PlayerPosition == testSlime.GetComponent<Slime>().PlayerPosition)
+                if((CurrentSlime.GetComponent<Slime>().PlayerPosition == testSlime.GetComponent<Slime>().PlayerPosition) && (CurrentSlime.GetComponent<Slime>().PrevPlayerPosition != 24 && testSlime.GetComponent<Slime>().PlayerPosition != 14))
                 {
                     if (CurrentSlime.GetComponentInParent<PlayerScript>().playerNum == testSlime.GetComponentInParent<PlayerScript>().playerNum)
                     {
@@ -216,6 +217,7 @@ public class Slime : MonoBehaviour
             {
                 //Player.GetComponent<PlayerScript>().DiceMoves[0]--;
                 DiceNum--;
+                PrevPlayerPosition = PlayerPosition;
                 PlayerPosition++;
 
                 //if (PlayerPosition == 31)
@@ -229,14 +231,15 @@ public class Slime : MonoBehaviour
                 //out
                 if ((PlayerPosition == 5) && (DiceNum == 0))
                 {
+                    PrevPlayerPosition = PlayerPosition;
                     PlayerPosition = 19;
-
                 }
 
                 //Secend Path
                 //out
                 else if ((PlayerPosition == 10) && (DiceNum == 0))
                 {
+                    PrevPlayerPosition = PlayerPosition;
                     PlayerPosition = 24;
                 }
 
@@ -245,6 +248,7 @@ public class Slime : MonoBehaviour
                 //in
                 else if ((PlayerPosition == 24))
                 {
+                    PrevPlayerPosition = PlayerPosition;
                     PlayerPosition = 14;
                 }
 
@@ -252,12 +256,14 @@ public class Slime : MonoBehaviour
                 //out
                 else if ((PlayerPosition == 22) && (DiceNum == 0))
                 {
+                    PrevPlayerPosition = PlayerPosition;
                     PlayerPosition = 27;
                 }
 
                 //End
                 else if ((PlayerPosition == 19) || (PlayerPosition == 29))
                 {
+                    PrevPlayerPosition = PlayerPosition;
                     PlayerPosition = 29;
                 }
 
