@@ -21,11 +21,14 @@ public class ClickOnCube : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(GameObject.Find("GameControls").GetComponent<GameControl>().CubeClicked==false && GameObject.Find("Dice 1").GetComponent<CubeScript>().cubeStopedRoll == true)
+        if(GameObject.Find("GameControls").GetComponent<GameControl>().CubeClicked == false && GameObject.Find("Dice 1").GetComponent<CubeScript>().cubeStopedRoll == true)
         {
             GameObject.Find("GameControls").GetComponent<GameControl>().CubeClicked = true;
             if (GameObject.Find("Dice 1").GetComponent<CubeScript>().cubeStopedRoll == true)
-            { EnterToArray(); }
+            { EnterToArray();
+                this.gameObject.SetActive(false);
+            }
+            
         }
     }
 

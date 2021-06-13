@@ -81,9 +81,11 @@ public class CubeScript : MonoBehaviour
     }
 
     public void AddImageToArray(List<int> results,int Num)
-    { 
+    {
+        CubeArray.GetComponent<CubeArrayPosition>().ArStepNums[Num].SetActive(true);
         CubeArray.GetComponent<CubeArrayPosition>().ArStepNums[Num].GetComponent<SpriteRenderer>().sprite = dicesides[results[Num]-1];
         CubeArray.GetComponent<CubeArrayPosition>().ArStepNums[Num].GetComponent<ClickOnCube>().inumberStep = results[Num];
+        
     }
     public void resetToAddImageToArray()
     {
