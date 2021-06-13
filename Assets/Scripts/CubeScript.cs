@@ -6,10 +6,6 @@ using UnityEngine;
 
 public class CubeScript : MonoBehaviour
 {
-    int testnum = 3333;
-    //public GameObject SlimePrefab;
-    //public GameObject num1;
-    //public GameObject position0;
 
     public Sprite[] dicesides;//Dice images
     public List<int> results;//Dice results max 5
@@ -18,14 +14,8 @@ public class CubeScript : MonoBehaviour
     public bool cubeStopedRoll = true;
     public int randomDiceSide = 0;
     public int numofThrown = 0;
-    //private int whosTurn = 1;//who play-כהתחלה 1 הוא משתמש 1
-    //private int numOfPlayers;
 
     public bool coroutineAllowed = false;
-
-    
-
-    //public Sprite[] NumSides;
 
     private SpriteRenderer rendSquare;//to add image of num in the arrRes
     private void Start()
@@ -34,26 +24,17 @@ public class CubeScript : MonoBehaviour
         rend = GetComponent<SpriteRenderer>();
         dicesides = Resources.LoadAll<Sprite>("dice/");
 
-        //NumSides = Resources.LoadAll<Sprite>("NumRes/");
-        //for (int i = 0; i < 5; i++) { Debug.Log(dicesides[i]); }
-        //rend.sprite = dicesides[1];//to be in the begining of the game the num 2 n th dice side
     }
 
     private void OnMouseDown()
     {
-        //rend.sprite = dicesides[1];//to be in the begining of the game the num 2 n th dice side
-        //if (!game.gameOver && coroutineAllowed)
+
         if (coroutineAllowed)
         {
             
             StartCoroutine("RollTheDice");//אם המשחק לא נגמר  אז זורקים קוביה מפעלים פונקציה
             
         }
-    }
-
-    private void Instantiate(int v, Vector3 position, Quaternion rotation)
-    {
-        throw new NotImplementedException();
     }
 
     private IEnumerator RollTheDice()
@@ -126,13 +107,8 @@ public class CubeScript : MonoBehaviour
         
     }
 
-    //No need
     private IEnumerator updateArr(List<int> results)
     {
-        testnum = 6666;
-        Debug.Log(testnum.ToString());
-        //List<int> result;
-
         List<int> ListNumStep;
         int j = 0;
         int num = 0;//if there is num on the list
@@ -160,32 +136,6 @@ public class CubeScript : MonoBehaviour
         }
 
     }
-
-    private IEnumerator DiceRollImagegg()
-    {
-        while (((randomDiceSide > 3) || (randomDiceSide == 0 && results.Count == 0)) && (results.Count < 5))
-        {
-            for (int i = 0; i <= 20; i++)
-            {
-                randomDiceSide = calcDiceResult();
-                rend.sprite = dicesides[randomDiceSide - 1];//the new side on dice(קוביה)//PICTER
-                yield return new WaitForSeconds(0.05f);//time pause
-            }
-            results.Add(randomDiceSide); //array of results
-            Debug.Log(randomDiceSide);
-            AddImageToArray(results, numofThrown);
-            numofThrown++;
-        }
-
-        GameObject GameAB = GameObject.Find("GameControls");
-        for (int i = 0; i < results.Count; i++)
-        {
-            GameAB.GetComponent<GameControl>().DiceMoves[i] = results[i];
-        }
-        results.Clear();
-        cubeStopedRoll = true;
-    }
-
     
 }
 
