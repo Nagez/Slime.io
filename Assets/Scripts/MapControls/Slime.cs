@@ -18,8 +18,7 @@ public class Slime : MonoBehaviour
     
     [SerializeField] private float moveSpeed = 4f;
     [SerializeField] public int DiceNum = 0;
-
-    
+ 
     public bool moveAllowed = false;
 
     [SerializeField] ParticleSystem smokeParticles;
@@ -167,19 +166,16 @@ public class Slime : MonoBehaviour
 
     }
 
-
-
     //Slime selection for movment
     private void OnMouseDown()
     {
+
         if (myPV.IsMine == false) { return; } //in mp if slime isnt owned by me return
         if (GetComponentInParent<PlayerScript>().PTurn && !(GameControl.GetComponent<GameControl>().DicePICKED == 0))
         {
             DiceNum = GameControl.GetComponent<GameControl>().DicePICKED;
             GameControl.GetComponent<GameControl>().DicePICKED = 0;
             moveAllowed = true;
-            //GameControl.GetComponent<GameControl>().DicePICKED = 0;
-            GameObject.Find("GameControls").GetComponent<GameControl>().CubeClicked = false;
         }
 
     }
@@ -294,14 +290,9 @@ public class Slime : MonoBehaviour
        
             GameControl.GetComponent<GameControl>().firstDiceThrown = true;
             Player.GetComponent<PlayerScript>().FirstMove = true;
+            GameObject.Find("GameControls").GetComponent<GameControl>().CubeClicked = false;
+
         }
-        //if (DiceRoll == -1)
-        //{
-        //    CollisionChecking();
-        //    moveAllowed = false;
-        //    GameControl.GetComponent<GameControl>().DiceMoves[0] = -1;
-        //    Player.GetComponent<PlayerScript>().FirstMove = true;
-        //}
 
         FirstRollMove = false;
     }

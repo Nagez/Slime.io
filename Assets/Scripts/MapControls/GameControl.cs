@@ -78,8 +78,11 @@ public class GameControl : MonoBehaviour
         for (int i = 0; i < PlayersAmount; i++) //for each loop add corresponding player HUD
         {
             HudArr[i].transform.GetChild(4).gameObject.SetActive(false);
+            HudArr[i].transform.GetChild(5).gameObject.SetActive(false);
         }
         HudArr[whosTurnT-1].transform.GetChild(4).gameObject.SetActive(true);
+        HudArr[whosTurnT - 1].transform.GetChild(5).gameObject.SetActive(true);
+
     }
 
     public void initHUD()
