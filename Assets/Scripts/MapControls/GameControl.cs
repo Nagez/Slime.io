@@ -37,8 +37,8 @@ public class GameControl : MonoBehaviour
     public GameObject HudPanel;
     public GameObject PlayerHud;
     private Color[] colorsArr = new Color[] { Color.green, Color.blue, Color.red, Color.yellow };
-    private Color[] outerColorsArr = new Color[] { Color.green, Color.blue, Color.red, Color.yellow };
-    private Color[] innerColorsArr = new Color[] { Color.green, Color.blue, Color.red, Color.yellow };
+    private Color[] outerColorsArr = new Color[] { new Color32(88, 180, 74, 255), new Color32(62, 146, 221, 255), new Color32(245, 89, 75, 255), new Color32(250, 224, 63, 255) };
+    private Color[] innerColorsArr = new Color[] { new Color32(45, 130, 0, 255), new Color32(16, 84, 144, 255), new Color32(156, 21, 8, 255), new Color32(173, 153, 32, 255) };
 
     public Sprite[] DefaultSlimeSprites;
     public List<GameObject> HudArr = new List<GameObject>();
