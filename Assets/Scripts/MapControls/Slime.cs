@@ -204,6 +204,7 @@ public class Slime : MonoBehaviour
             Destroy(this.gameObject); 
             Destroy(this);
             Debug.Log("Slime finished route");
+            DiceRoll = 0;
         }
 
         if (DiceRoll > 0)
