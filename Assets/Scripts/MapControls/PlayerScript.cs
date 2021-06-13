@@ -49,9 +49,13 @@ public class PlayerScript : MonoBehaviour
         {
             SlimesLeft = int.Parse(PhotonNetwork.CurrentRoom.CustomProperties["NumOfSlimes"].ToString());
         }
-        else //take from gamecontrol
+        else //for local
         {
-            SlimesLeft = GameControlPlayer.GetComponent<GameControl>().SlimesPerPlayer;
+            SlimesLeft = GameControlPlayer.GetComponent<GameControl>().SlimesPerPlayer; //to be able to start the game not from lobby
+            if (GamePrefrences.instance)
+            {
+                SlimesLeft = GamePrefrences.instance.getNumOfSlime();
+            }
         }
     }
 
