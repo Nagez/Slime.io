@@ -58,8 +58,17 @@ public class Slime : MonoBehaviour
             {
                 GameObject testSlime = PlayerS.GetComponent<PlayerScript>().Slimes[j];
 
-                if((CurrentSlime.GetComponent<Slime>().PlayerPosition == testSlime.GetComponent<Slime>().PlayerPosition) && (CurrentSlime.GetComponent<Slime>().PrevPlayerPosition != 24 && testSlime.GetComponent<Slime>().PlayerPosition != 14) && (CurrentSlime.GetComponent<Slime>().PlayerPosition != 29 && testSlime.GetComponent<Slime>().PrevPlayerPosition != 28))
+                if((CurrentSlime.GetComponent<Slime>().PlayerPosition == testSlime.GetComponent<Slime>().PlayerPosition))// || (CurrentSlime.GetComponent<Slime>().PrevPlayerPosition == 24 && testSlime.GetComponent<Slime>().PlayerPosition == 14) || (CurrentSlime.GetComponent<Slime>().PlayerPosition == 29 && testSlime.GetComponent<Slime>().PrevPlayerPosition == 28))
                 {
+                    if((CurrentSlime.GetComponent<Slime>().PrevPlayerPosition == 24 && testSlime.GetComponent<Slime>().PrevPlayerPosition == 13)|| (CurrentSlime.GetComponent<Slime>().PrevPlayerPosition == 13 && testSlime.GetComponent<Slime>().PrevPlayerPosition == 24))
+                    {
+                        break;
+                    }
+                    if((CurrentSlime.GetComponent<Slime>().PrevPlayerPosition == 28 && testSlime.GetComponent<Slime>().PrevPlayerPosition == 19)|| (CurrentSlime.GetComponent<Slime>().PrevPlayerPosition == 19 && testSlime.GetComponent<Slime>().PrevPlayerPosition == 28))
+                    {
+                        break;
+                    }
+
                     if (CurrentSlime.GetComponentInParent<PlayerScript>().playerNum == testSlime.GetComponentInParent<PlayerScript>().playerNum)
                     {
                         if(CurrentSlime.name == testSlime.name)
@@ -77,7 +86,7 @@ public class Slime : MonoBehaviour
                             
                             testSlime.GetComponentInParent<PlayerScript>().SlimeSpawnNeeded();
                             //SlimeSpawnNeeded();
-
+                            addCubeAfterDe();
 
 
                             Destroy(testSlime);
