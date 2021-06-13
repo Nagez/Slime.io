@@ -195,6 +195,7 @@ public class Slime : MonoBehaviour
     {
         if (PlayerPosition == 31) //end route
         {
+
             Player.GetComponent<PlayerScript>().SlimesLeft -= slimeLevel;
             Player.GetComponent<PlayerScript>().SlimesSpawned -= slimeLevel;
             GameControl.GetComponent<GameControl>().UpdatePlayerLivesHud(); // update lives at hud
