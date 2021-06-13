@@ -44,7 +44,6 @@ public class GameControl : MonoBehaviour
     public List<GameObject> HudArr = new List<GameObject>();
     public GameObject GameOverPanel;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -60,16 +59,12 @@ public class GameControl : MonoBehaviour
 
         Dice.GetComponent<CubeScript>().coroutineAllowed = true;
         Players[0].GetComponent<PlayerScript>().PTurn = true;
-        GameObject.Find("dice6").GetComponent<AlinasDice>().coroutineAllowed = true;
-
-       // initPrefrences();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        //GameOverFunc();
         if (CheckEndTurn()&&firstDiceThrown)
         {
             SwitchTurns();

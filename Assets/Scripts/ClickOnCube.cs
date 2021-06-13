@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ClickOnCube : MonoBehaviour
 {
+
     public int inumberStep = 0;
     private SpriteRenderer rend;
     // Start is called before the first frame update
