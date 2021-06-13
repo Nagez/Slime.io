@@ -21,6 +21,7 @@ public class GameControl : MonoBehaviour
     public int DicePICKED = 0;
     public int DicePICKEDArr = 0;
     public bool firstDiceThrown = false;
+    public bool CubeClicked = false;
 
     PhotonView myPV;
     Player[] allPlayers;

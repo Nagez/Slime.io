@@ -20,9 +20,12 @@ public class ClickOnCube : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (GameObject.Find("Dice 1").GetComponent<CubeScript>().cubeStopedRoll == true)
-        { EnterToArray(); }
-        
+        if(GameObject.Find("GameControls").GetComponent<GameControl>().CubeClicked==false)
+        {
+            GameObject.Find("GameControls").GetComponent<GameControl>().CubeClicked = true;
+            if (GameObject.Find("Dice 1").GetComponent<CubeScript>().cubeStopedRoll == true)
+            { EnterToArray(); }
+        }
     }
 
     //function to check array place

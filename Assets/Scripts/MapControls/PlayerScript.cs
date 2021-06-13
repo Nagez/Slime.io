@@ -14,6 +14,7 @@ public class PlayerScript : MonoBehaviour
     //public int[] DiceMoves = new int[5];
     public bool PTurn = false;//player turn
     public bool FirstMove = false;
+    
 
     public GameObject GameControlPlayer;
 

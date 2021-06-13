@@ -170,6 +170,7 @@ public class Slime : MonoBehaviour
             GameControl.GetComponent<GameControl>().DicePICKED = 0;
             moveAllowed = true;
             //GameControl.GetComponent<GameControl>().DicePICKED = 0;
+            GameObject.Find("GameControls").GetComponent<GameControl>().CubeClicked = false;
         }
 
     }
