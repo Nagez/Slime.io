@@ -37,6 +37,9 @@ public class GameControl : MonoBehaviour
     public GameObject HudPanel;
     public GameObject PlayerHud;
     private Color[] colorsArr = new Color[] { Color.green, Color.blue, Color.red, Color.yellow };
+    private Color[] outerColorsArr = new Color[] { Color.green, Color.blue, Color.red, Color.yellow };
+    private Color[] innerColorsArr = new Color[] { Color.green, Color.blue, Color.red, Color.yellow };
+
     public Sprite[] DefaultSlimeSprites;
     public List<GameObject> HudArr = new List<GameObject>();
     public GameObject GameOverPanel;
@@ -89,10 +92,14 @@ public class GameControl : MonoBehaviour
         for (int i = 0; i < PlayersAmount; i++) //for each loop add corresponding player HUD
         {
             HudArr.Add(Instantiate(PlayerHud, Vector3.zero, Quaternion.identity, HudPanel.transform));
+            var outersquare = HudArr[i].transform.GetChild(0);
+            var innerrsquare = HudArr[i].transform.GetChild(1);
             var namePlate = HudArr[i].transform.GetChild(2);
             var slimeImg = HudArr[i].transform.GetChild(1).GetChild(0);
             var healthBar = HudArr[i].transform.GetChild(3);
 
+            outersquare.GetComponent<Image>().color = outerColorsArr[i];
+            innerrsquare.GetComponent<Image>().color = innerColorsArr[i];
             namePlate.GetComponent<Image>().color = colorsArr[i];
             //                PhotonNetwork.NickName = PlayerPrefs.GetString("NickName");
             namePlate.GetComponentInChildren<TextMeshProUGUI>().text = "Player "+ (i+1);
