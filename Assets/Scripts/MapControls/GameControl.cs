@@ -54,8 +54,10 @@ public class GameControl : MonoBehaviour
             PlayersAmount = PhotonNetwork.CurrentRoom.PlayerCount;
             initPlayerOwnerships();
         }
-        setActivePlayers();
         initHUD();
+        
+        setActivePlayers();
+        
 
         Dice.GetComponent<CubeScript>().coroutineAllowed = true;
         Players[0].GetComponent<PlayerScript>().PTurn = true;
@@ -108,10 +110,21 @@ public class GameControl : MonoBehaviour
             {
                 healthBar.transform.GetChild(j).GetComponent<Image>().color = Color.gray;
             }
-
+            
+        }
+        ////set nicknames in online
+        if (PhotonNetwork.IsConnected)
+        {
+            int myNumberInRoom = 0;
+            foreach (Player p in allPlayers)
+            {
+                var playerNametxt = HudArr[myNumberInRoom].transform.GetChild(2).GetChild(0);
+                playerNametxt.GetComponentInChildren<TextMeshProUGUI>().text = p.NickName;
+                myNumberInRoom++;
+            }
         }
     }
-    public void UpdatePlayerLivesHud() //update live when function call using whosTurn to detect player
+    public void UpdatePlayerLivesHud() //update lives when function call using whosTurn to detect which player live was changed
     {
         int newlife = Players[whosTurnT - 1].GetComponent<PlayerScript>().SlimesLeft;
         var healthBar = HudArr[whosTurnT - 1].transform.GetChild(3);
