@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
+using UnityEngine.SceneManagement;
+
 public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
 {
     [SerializeField]
@@ -168,5 +170,11 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(false);
         PhotonNetwork.LeaveLobby();
     }
+    public void BacktoMain()
+    {
+        SceneManager.LoadScene(0);
+        PhotonNetwork.Disconnect();
+    }
+
 
 }

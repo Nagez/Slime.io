@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
+    public GameObject rulesPanel;
+
     public void LoadNextScene()
     {
         StartCoroutine(DelayIt(1)); //multiplayer is set to the next scene build index so we pass down 1 
@@ -32,5 +34,13 @@ public class LoadScene : MonoBehaviour
     public void doExitGame()
     {
         Application.Quit();
+    }
+    public void RulesPanelOn()
+    {
+        rulesPanel.SetActive(true);
+    }
+    public void RulesPanelOff()
+    {
+        rulesPanel.SetActive(false);
     }
 }

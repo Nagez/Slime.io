@@ -40,6 +40,8 @@ public class GameControl : MonoBehaviour
     public Sprite[] DefaultSlimeSprites;
     public List<GameObject> HudArr = new List<GameObject>();
     public GameObject GameOverPanel;
+    public GameObject settingPanel;
+
 
     // Start is called before the first frame update
     void Start()
@@ -176,6 +178,16 @@ public class GameControl : MonoBehaviour
         }
 
     }
+
+    public void settingsPanelOn()
+    {
+        settingPanel.SetActive(true);
+    }
+    public void settingsPanelOff()
+    {
+        settingPanel.SetActive(false);
+    }
+
     public void BackToMain()
     {
         if (PhotonNetwork.IsConnected)
