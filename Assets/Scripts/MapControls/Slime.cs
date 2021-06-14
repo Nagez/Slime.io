@@ -81,12 +81,10 @@ public class Slime : MonoBehaviour
                             CurrentSlime.GetComponent<Slime>().starsParticles.Play();
 
                             Debug.Log("Destroy " + testSlime.name);
-
-                            
+                        
                             testSlime.GetComponentInParent<PlayerScript>().SlimeSpawnNeeded();
                             //SlimeSpawnNeeded();
-                            addCubeAfterDe();
-
+                            //addCubeAfterDe();
 
                             Destroy(testSlime);
                             
@@ -151,7 +149,6 @@ public class Slime : MonoBehaviour
         GameObject GC = GameObject.Find("GameControls");
         GameControl = GC;
         
-
         mapSet(color);
     }
 
@@ -316,10 +313,10 @@ public class Slime : MonoBehaviour
     }
 
     //add one more Cube
-    void addCubeAfterDe()
-    {
-        GameControl.GetComponent<GameControl>().firstDiceThrown = false;
-        GameObject.Find("Dice 1").GetComponent<CubeScript>().StartCoroutine("DiceRollImagegg");
-        GameControl.GetComponent<GameControl>().firstDiceThrown = true;
-    }
+    //void addCubeAfterDe()
+    //{
+    //    GameControl.GetComponent<GameControl>().firstDiceThrown = false;
+    //    GameObject.Find("Dice 1").GetComponent<CubeScript>().StartCoroutine("DiceRollImagegg");
+    //    GameControl.GetComponent<GameControl>().firstDiceThrown = true;
+    //}
 }

@@ -6,18 +6,6 @@ public class ClickOnCube : MonoBehaviour
 {
 
     public int inumberStep = 0;
-    private SpriteRenderer rend;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnMouseDown()
     {
@@ -27,8 +15,7 @@ public class ClickOnCube : MonoBehaviour
             if (GameObject.Find("Dice 1").GetComponent<CubeScript>().cubeStopedRoll == true)
             { EnterToArray();
                 this.gameObject.SetActive(false);
-            }
-            
+            }            
         }
     }
 

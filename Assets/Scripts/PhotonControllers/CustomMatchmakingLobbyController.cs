@@ -16,8 +16,6 @@ public class CustomMatchmakingLobbyController : MonoBehaviourPunCallbacks
     private GameObject lobbyPanel; //panel for displaying lobby.
     [SerializeField]
     private GameObject mainPanel; //panel for displaying the main menu
-   // [SerializeField]
-   // private InputField playerNameInput; //Input field so player can change their NickName
     [SerializeField]
     private TMP_InputField playerNameInput; //Input field so player can change their NickName
 

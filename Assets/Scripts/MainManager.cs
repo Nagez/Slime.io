@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LoadScene : MonoBehaviour
+public class MainManager : MonoBehaviour
 {
     public GameObject rulesPanel;
 

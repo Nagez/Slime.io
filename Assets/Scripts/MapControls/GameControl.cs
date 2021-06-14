@@ -83,21 +83,22 @@ public class GameControl : MonoBehaviour
 
     }
 
+    //init HUD at start considering player amount
     public void initHUD()
     {
         for (int i = 0; i < PlayersAmount; i++) //for each loop add corresponding player HUD
         {
-            HudArr.Add(Instantiate(PlayerHud, Vector3.zero, Quaternion.identity, HudPanel.transform));
+            HudArr.Add(Instantiate(PlayerHud, Vector3.zero, Quaternion.identity, HudPanel.transform)); //add each player hud to an array
+            //access HUD prefab individual objects
             var outersquare = HudArr[i].transform.GetChild(0);
             var innerrsquare = HudArr[i].transform.GetChild(1);
             var namePlate = HudArr[i].transform.GetChild(2);
             var slimeImg = HudArr[i].transform.GetChild(1).GetChild(0);
             var healthBar = HudArr[i].transform.GetChild(3);
-
+            //change each component to fit each player slime color and name
             outersquare.GetComponent<Image>().color = outerColorsArr[i];
             innerrsquare.GetComponent<Image>().color = innerColorsArr[i];
             namePlate.GetComponent<Image>().color = colorsArr[i];
-            //                PhotonNetwork.NickName = PlayerPrefs.GetString("NickName");
             namePlate.GetComponentInChildren<TextMeshProUGUI>().text = "Player "+ (i+1);
             slimeImg.GetComponent<Image>().sprite = DefaultSlimeSprites[i];
 
@@ -108,7 +109,7 @@ public class GameControl : MonoBehaviour
             }
             
         }
-        ////set nicknames in online
+        //set nicknames in online
         if (PhotonNetwork.IsConnected)
         {
             int myNumberInRoom = 0;
@@ -120,7 +121,9 @@ public class GameControl : MonoBehaviour
             }
         }
     }
-    public void UpdatePlayerLivesHud() //update lives when function call using whosTurn to detect which player live was changed
+
+    //update lives when function call using whosTurn to detect which player live was changed
+    public void UpdatePlayerLivesHud() 
     {
         int newlife = Players[whosTurnT - 1].GetComponent<PlayerScript>().SlimesLeft;
         var healthBar = HudArr[whosTurnT - 1].transform.GetChild(3);
@@ -129,9 +132,6 @@ public class GameControl : MonoBehaviour
             healthBar.transform.GetChild(j).GetComponent<Image>().color = Color.gray;
         }
     }
-
-    /////////////////////////////////////////Working
-    //Is the player turn ended?
 
     //check if need to end turn
     public bool CheckEndTurn()
@@ -163,7 +163,7 @@ public class GameControl : MonoBehaviour
         GameObject.Find("Dice 1").GetComponent<CubeScript>().coroutineAllowed = true;
     }
 
-    //Game over
+    //display Game over panel and winner
     public void GameOverFunc()
     {
         if (Players[whosTurnT - 1].GetComponent<PlayerScript>().SlimesLeft == 0)
@@ -176,7 +176,6 @@ public class GameControl : MonoBehaviour
             winningSlimeIMG.GetComponent<Image>().sprite = DefaultSlimeSprites[whosTurnT - 1];
             winningSlimeTXT.GetComponentInChildren<TextMeshProUGUI>().text = "Player " + (whosTurnT) + " WON!";
         }
-
     }
 
     public void settingsPanelOn()
@@ -195,9 +194,10 @@ public class GameControl : MonoBehaviour
             PhotonNetwork.Disconnect();
         }
 
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0); //back to main menue
     }
 
+    //in online transfer the photon view ownership to the right players
     private void initPlayerOwnerships()
     {
         int myNumberInRoom=0;
@@ -216,6 +216,7 @@ public class GameControl : MonoBehaviour
         }
     }
 
+    
     private void setActivePlayers()
     {
         int maximumPlayers = maxPlayersAllowed - 1;
@@ -226,8 +227,7 @@ public class GameControl : MonoBehaviour
         }
     }
 
-
-    //init number of slimes and players for local play
+    //init number of slimes and players for local play trough gamepreferences from the local lobby
     public void initLocalPrefrences()
     {
         if (GamePrefrences.instance)

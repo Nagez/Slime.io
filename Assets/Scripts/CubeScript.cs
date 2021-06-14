@@ -23,17 +23,13 @@ public class CubeScript : MonoBehaviour
         results = new List<int>();
         rend = GetComponent<SpriteRenderer>();
         dicesides = Resources.LoadAll<Sprite>("dice/");
-
     }
 
     private void OnMouseDown()
     {
-
         if (coroutineAllowed)
-        {
-            
-            StartCoroutine("RollTheDice");//אם המשחק לא נגמר  אז זורקים קוביה מפעלים פונקציה
-            
+        {           
+            StartCoroutine("RollTheDice");//אם המשחק לא נגמר  אז זורקים קוביה מפעלים פונקציה           
         }
     }
 
@@ -49,7 +45,7 @@ public class CubeScript : MonoBehaviour
             for (int i = 0; i <= 20; i++)
             {
                 randomDiceSide = calcDiceResult();
-                rend.sprite = dicesides[randomDiceSide - 1];//the new side on dice(קוביה)//PICTER
+                rend.sprite = dicesides[randomDiceSide - 1];//the new side on dice
                 yield return new WaitForSeconds(0.05f);//time pause
             }
             results.Add(randomDiceSide); //array of results
@@ -66,6 +62,7 @@ public class CubeScript : MonoBehaviour
         results.Clear();
         cubeStopedRoll = true;
     }
+
     //function for calculating the result of the dice with precentages
     public int calcDiceResult()
     {
@@ -77,7 +74,7 @@ public class CubeScript : MonoBehaviour
         if (res >= 58 && res <= 76) { res = 4; }
         if (res >= 77 && res <= 95) { res = 5; }
         if (res >= 96) { res = 6; } //5% chance to get a 6
-        return res;//הוא המספר שמופיע על הקוביה אחרי לחיצה לפי אחוזים
+        return res;
     }
 
     public void AddImageToArray(List<int> results,int Num)
