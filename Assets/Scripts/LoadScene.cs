@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class LoadScene : MonoBehaviour
 {
-
     public void LoadNextScene()
     {
         StartCoroutine(DelayIt(1)); //multiplayer is set to the next scene build index so we pass down 1 
     }
+
     public void LoadLocal() 
     {
         StartCoroutine(DelayIt(2)); //the local lobby build index is current build index + 2
@@ -28,5 +28,9 @@ public class LoadScene : MonoBehaviour
         while (sceneLoading.progress < 0.9f) yield return null;
         //allow the scene to load
         sceneLoading.allowSceneActivation = true;
+    }
+    public void doExitGame()
+    {
+        Application.Quit();
     }
 }

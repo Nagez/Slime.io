@@ -26,11 +26,9 @@ public class GameControl : MonoBehaviour
     PhotonView myPV;
     Player[] allPlayers;
 
-    //public static int whosTurn = 1;
     public int whosTurnT = 1;
     public GameObject Dice;
 
-    /////////////////////////////////////////////////
     public static int diceSide = 0;//check if using
 
     [Header("HUD")]
@@ -39,7 +37,6 @@ public class GameControl : MonoBehaviour
     private Color[] colorsArr = new Color[] { Color.green, Color.blue, Color.red, Color.yellow };
     private Color[] outerColorsArr = new Color[] { new Color32(88, 180, 74, 255), new Color32(62, 146, 221, 255), new Color32(245, 89, 75, 255), new Color32(250, 224, 63, 255) };
     private Color[] innerColorsArr = new Color[] { new Color32(45, 130, 0, 255), new Color32(16, 84, 144, 255), new Color32(156, 21, 8, 255), new Color32(173, 153, 32, 255) };
-
     public Sprite[] DefaultSlimeSprites;
     public List<GameObject> HudArr = new List<GameObject>();
     public GameObject GameOverPanel;
@@ -54,14 +51,11 @@ public class GameControl : MonoBehaviour
             PlayersAmount = PhotonNetwork.CurrentRoom.PlayerCount;
             initPlayerOwnerships();
         }
-        initHUD();
-        
+        initHUD();       
         setActivePlayers();
         
-
         Dice.GetComponent<CubeScript>().coroutineAllowed = true;
         Players[0].GetComponent<PlayerScript>().PTurn = true;
-
     }
 
     // Update is called once per frame
@@ -71,10 +65,10 @@ public class GameControl : MonoBehaviour
         {
             SwitchTurns();
         }
-        updateTurnHUD(whosTurnT);
-        
+        updateTurnHUD(whosTurnT);       
     }
 
+    //updates the your turn in hud when turns switches
     private void updateTurnHUD(int whosTurnT)
     {
         for (int i = 0; i < PlayersAmount; i++) //for each loop add corresponding player HUD
