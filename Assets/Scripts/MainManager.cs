@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MainManager : MonoBehaviour
 {
     public GameObject rulesPanel;
+    public GameObject mpButton;
 
     public void LoadNextScene()
     {
@@ -42,5 +43,10 @@ public class MainManager : MonoBehaviour
     public void RulesPanelOff()
     {
         rulesPanel.SetActive(false);
+    }
+    public void mpbuttonOn()
+    {
+        Debug.Log("mpbutton");
+        mpButton.SetActive(true);
     }
 }
